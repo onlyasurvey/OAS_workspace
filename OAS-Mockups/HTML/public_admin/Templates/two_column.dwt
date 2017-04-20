@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" 
+	 "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<!-- TemplateBeginEditable name="pageTitle" -->
+<title>
+	Only A Survey
+</title>
+<!-- TemplateEndEditable -->
+
+<link rel="stylesheet" href="../js/yui/build/reset-fonts-grids/reset-fonts-grids.css" type="text/css">
+<link rel="stylesheet" href="../css/styles.css" type="text/css">
+<link rel="stylesheet" href="../css/utility.css" type="text/css">
+
+</head>
+<body>
+<div id="doc" class="yui-t1">
+  <div id="hd">
+      
+       <div class="yui-gc"> 
+             <div class="yui-u first"> 
+       				<div id="logo">
+                   	    <a href="dashboard.htm"><img src="../images/oas_logo.gif" alt="Only a Survey Logo" /></a>                    </div>
+               <div id="message"> Accessible, Secure  Surveys </div>
+
+         </div> 
+             
+          <div class="yui-u"> 
+              <div id="navLinks">
+                  <a href="../sign_in.htm">Sign out</a> | <a href="#">My Account</a> | <a href="#">Help</a> | <a href="#">Contact </a>
+              </div>
+              
+              <div id="changeLang"> 
+                     <a href="#">English</a> | <a href="#">French</a> 
+              </div>
+              
+           </div> 
+       
+       </div>
+       
+                 
+        
+        <div class="headerBottomBar"> &nbsp; </div>
+        
+  </div>
+
+  <div id="bd">
+      <div id="yui-main">
+        <div class="yui-b">
+		  <!-- TemplateBeginEditable name="body" --> 
+                   <!--  Row 1 -->
+                   <div class="yui-g"> 
+                       <h1> page heading </h1>
+                        <p>On this page you have full control over your surveys, reports and account.Select a section below to get started. </p>
+                   
+                   
+                   
+                    </div> 
+
+          <!-- TemplateEndEditable --> 
+        </div>
+      </div>
+      <div class="yui-b">
+        <div id="nav">
+          <ul>
+            <li class="activelink"><a href="../dashboard.htm">DashBoard</a></li>
+            <li ><a href="../manage_surveys.htm">Manage Surveys</a></li>
+            <li ><a href="../new_survey_general.htm">New  Survey</a></li>
+            <li > <a href="../manage_reports.htm">View Reports</a></li>
+            <li > <a href="#">Upgrade Account</a></li>
+          </ul>
+        </div>
+      </div>
+  </div>
+    <div id="ft">
+       <div id="bottomNav"> <a href="#">Privacy Policy</a> | <a href="#">Terms and Conditions</a> </div>
+
+       <div id="copyRightNotice"> Copyright Only A Survey All rights reserved</div>
+    </div>
+</div>
+</body>
+</html>

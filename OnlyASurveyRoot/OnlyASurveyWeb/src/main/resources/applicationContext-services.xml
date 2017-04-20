@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+      http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+      http://www.springframework.org/schema/aop 
+      http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+      http://www.springframework.org/schema/tx 
+      http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+      http://www.directwebremoting.org/schema/spring-dwr
+      http://www.directwebremoting.org/schema/spring-dwr-2.5.xsd
+      http://www.springframework.org/schema/context
+	  http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+
+	<context:component-scan base-package="com.oas.service.export.excel"/>
+
+
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host">
+			<value>localhost</value>
+		</property>
+	</bean>
+
+	<bean id="invitationFromAddress" class="java.lang.String">
+		<constructor-arg>
+			<value>Survey-Invite@onlyasurvey.com</value>
+		</constructor-arg>
+	</bean>
+
+	<!-- 
+		
+		SERVICE LAYER IMPLEMENTATIONS		
+		
+	-->
+	<bean id="dashboardService" class="com.oas.service.impl.DashboardServiceImpl"
+		parent="abstractServiceImpl">
+	</bean>
+
+	<bean id="responseService" class="com.oas.service.impl.ResponseServiceImpl"
+		parent="abstractServiceImpl">
+	</bean>
+
+	<bean id="surveyService" class="com.oas.service.impl.SurveyServiceImpl"
+		parent="abstractServiceImpl">
+	</bean>
+
+	<bean id="supportedLanguageService" class="com.oas.service.impl.SupportedLanguageServiceImpl"
+		parent="abstractServiceImpl">
+	</bean>
+
+	<bean id="reportingService" class="com.oas.service.impl.ReportingServiceImpl"
+		parent="abstractServiceImpl">
+	</bean>
+
+	<bean id="rawExcelExportService" class="com.oas.service.impl.RawExcelExportServiceImpl"
+		parent="abstractServiceImpl">
+	</bean>
+
+	<bean id="signupService" class="com.oas.service.impl.SignupServiceImpl"
+		parent="abstractServiceImpl">
+	</bean>
+
+	<bean id="accountService" class="com.oas.service.impl.AccountServiceImpl"
+		parent="abstractServiceImpl">
+	</bean>
+
+	<bean id="siteService" class="com.oas.service.impl.SiteServiceImpl"
+		parent="abstractServiceImpl">
+	</bean>
+
+	<bean id="enterpriseDashboardService"
+		class="com.oas.service.enterprise.impl.EnterpriseDashboardServiceImpl"
+		parent="abstractServiceImpl">
+	</bean>
+
+	<bean id="domainModelService" class="com.oas.service.impl.DomainModelServiceImpl"
+		parent="abstractServiceImpl">
+	</bean>
+
+	<bean id="branchingService" class="com.oas.service.impl.BranchingServiceImpl"
+		parent="abstractServiceImpl">
+	</bean>
+
+	<bean id="invitationService" class="com.oas.service.invitations.impl.InvitationServiceImpl"
+		parent="abstractServiceImpl">
+	</bean>
+
+	<bean id="mailOutService" class="com.oas.service.invitations.impl.MailOutServiceImpl"
+		parent="abstractServiceImpl">
+	</bean>
+
+	<bean id="mailOutBackingService" class="com.oas.service.invitations.impl.MailOutBackingServiceImpl"
+		parent="abstractServiceImpl">
+	</bean>
+
+	<bean id="responseMaintenanceService" class="com.oas.service.maintenance.impl.ResponseMaintenanceServiceImpl"
+		parent="abstractServiceImpl">
+	</bean>
+
+	<!--
+
+		example: <bean id="preferenceService"
+		class="ca.inforealm.core.service.impl.PreferenceServiceImpl"
+		parent="abstractServiceImpl"> </bean>
+	-->
+
+</beans>

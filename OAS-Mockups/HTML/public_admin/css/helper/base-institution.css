@@ -1,0 +1,468 @@
+/* CLF 2.0 TEMPLATE VERSION 1.03 | VERSION 1.03 DU GABARIT NSI 2.0 */
+	/* GENERAL CSS BEGINS | DEBUT DU CSS GENERAL */
+body {
+	background-color: #FFF;
+}
+
+div.colLayout {
+	background-color: #FFF;
+	height: 100%;
+}
+
+/* GENERAL CSS ENDS | FIN DU CSS GENERAL */
+	/* FIP HEADER CSS BEGINS | DEBUT DU CSS DE L'EN-TETE PCIM */
+div.fip,div.cwm {
+	height: 20px;
+}
+
+div.cwm img {
+	padding-top: 0px;
+}
+
+/* FIP HEADER CSS ENDS | FIN DU CSS DE L'EN-TETE PCIM */
+	/* INSTITUTIONAL BANNER CSS BEGINS | DEBUT DU CSS DE LA BANNIERE INSTITUTIONNELLE */
+div.banner {
+	color: #FFF;
+	background-color: #696;
+}
+
+div.banner-eng,div.banner-lfcoa-eng {
+	background: url() #FFF no-repeat center center;
+}
+
+div.banner-fra,div.banner-lfcoa-fra {
+	background: url() #FFF no-repeat center center;
+}
+
+/* INSTITUTIONAL BANNER CSS ENDS | FIN DU CSS DE LA BANNIERE INSTITUTIONNELLE */
+	/* SKIP NAVIGATION CSS BEGINS | DEBUT DU CSS DU SAUT DE NAVIGATION */
+div.page div.core div.navaid {
+	width: 450px;
+	padding-left: 50px;
+}
+
+* html div.page div.core div.navaid {
+	width: 450px;
+	padding-left: 50px;
+}
+
+* :first-child+html div.page div.core div.navaid {
+	width: 450px;
+	padding-left: 50px;
+}
+
+div.page div.core div.navaid a:hover,div.page div.core div.navaid a:active,div.page div.core div.navaid a:focus
+	{
+	color: #000;
+	background-color: #CC9;
+	border-color: #000;
+}
+
+/* SKIP NAVIGATION CSS ENDS | FIN DU CSS DU SAUT DE NAVIGATION */
+	/* GENERAL NAVIGATION CSS BEGINS | DEBUT DU CSS DE NAVIGATION GENERALE */
+h2.nav,h2.nav a:link,h2.nav a:visited {
+	background-color: #696;
+	color: #FFF;
+	text-decoration: none;
+}
+
+h2.nav a:hover {
+	text-decoration: underline;
+}
+
+div.right li ul.nav {
+	border: 1px solid #000;
+}
+
+/* GENERAL NAVIGATION CSS ENDS | FIN DU CSS DE NAVIGATION GENERALE */
+	/* SIDE MENU CSS BEGINS | DEBUT DU CSS DU MENU LATERAL */
+
+
+div.right li.menucontent,div.right div.menucontent {
+	color: #000;
+	background-color: #FFF;
+}
+
+div.right a.menulink {
+	color: #000;
+	background-color: #FFF;
+}
+
+div.prodis {
+	background-color: #696;
+}
+
+/* SIDE MENU CSS ENDS | FIN DU CSS DU MENU LATERAL */
+	/* CONTENT CSS BEGINS | DEBUT DU CSS DU CONTENU */
+div.center h1,h2,h3,h4,h5,h6 {
+	color: #000;
+	background-color:inherit;
+}
+
+div.center a:link {
+	color: #039;
+}
+
+div.center a:visited {
+	color: #663;
+}
+
+div.blackborder {
+	border: solid #000 1px;
+}
+
+div.blackborder:after {
+	content: "";
+	display: block;
+	height: 0;
+	clear: left;
+	visibility: hidden;
+}
+
+/* CONTENT CSS ENDS | FIN DU CSS DU CONTENU */
+	/* FOOTER CSS BEGINS | DEBUT DU CSS DU PIED DE LA PAGE */
+div.footer div.footerline {
+	background-color: #696;
+}
+
+div.footer a:link,div.footer a:visited,div.center div.footer a:link,div.center div.footer a:visited,div.center div.topPage a:link,div.center div.topPage a:visited,div.center p.topPage a:link,div.center p.topPage a:visited
+	{
+	color: #039;
+	background-color: #FFF;
+}
+
+/* FOOTER CSS ENDS | FIN DU CSS DU PIED DE LA PAGE */
+
+
+
+/* ----- INDUSTRY CANADA SPECIFIC ----- */
+
+/* INSTITUTIONAL BANNER CSS BEGINS | DEBUT DU CSS DE LA BANNIERE INSTITUTIONNELLE */
+div.banner {
+	color: #FFF;
+	background-color: #6699CC;
+	background:
+		url(http://graphics.strategis.ic.gc.ca/common/images/ic_banner.jpg)
+		#369 no-repeat bottom center;
+	background-attachment: scroll;
+}
+/* INSTITUTIONAL BANNER CSS ENDS | FIN DU CSS DE LA BANNIERE INSTITUTIONNELLE */
+
+/* GENERAL NAVIGATION CSS BEGINS | DEBUT DU CSS DE NAVIGATION GENERALE */
+ul.nav2 {
+	margin-left: 0px;
+}
+h2.nav,h2.nav a:link,h2.nav a:visited {
+	background-color: #003366;
+	color: #FFF;
+	text-decoration: none;
+	font-size: 0.94em;
+	line-height: 1.3em;
+	padding: 2px 5px;
+	border-top-width: 0px;
+	margin-bottom: 1px;
+	margin-top: 0px;
+	display: block;
+}
+.corpicspace {
+	margin: 0 0 5px 0;
+	background-color: #000;
+	color: #FFFFFF;
+}
+div.left a {
+	display: block;
+	padding: 3px 8px 3px 12px;
+	color: #FFFFFF;
+	background-color: #336699;
+	text-decoration: none;
+	line-height: 1.3em;
+	list-style-type: none;
+	list-style: none;
+    border-bottom: #FFFFFF 1px solid;
+}
+div.left a:hover {
+	color: #ffffff;
+	background-color: #336699;
+	text-decoration: underline;
+}
+div.left a.selected {
+	color: #ffffff;
+	background-color: #336699;
+	text-decoration: underline;
+}
+div.left li.menucontent{
+	list-style-type: none;
+	list-style: none;
+	display: block;
+	padding: 0px;
+	margin: 0px;
+	line-height: 0px;
+}
+
+div.left ul ul ul {
+	margin-left: 0px;
+	background-color: #DDEEFF;
+	color: #000000;
+	display: block;
+
+}
+
+div.left ul ul ul a
+{
+	padding-top: 4px;
+	padding-right: 11px;
+	padding-bottom: 4px;
+	padding-left: 16px;
+	width: 123px;
+	text-decoration: none;
+	font-size: .89em;
+	font-weight: normal;
+	background-color: #DDEEFF;
+	color: #000000;
+	border-bottom: 0px;
+}
+
+div.left ul ul ul ul a
+{
+	padding: 5px 17px 5px 24px;
+	width: 109px;
+	text-decoration: none;
+	font-size: .89em;
+	font-weight: normal;
+	background-color: #DDEEFF;
+	color: #000000;
+}
+
+div.left ul ul ul a:hover, div.left ul ul ul a:hover 
+{
+color: #003366;
+background-color: #ddeeff;
+text-decoration: underline;
+}
+
+div.left a.selected2, div.left a.selected3 
+{
+color: #003366;
+background-color: #ddeeff;
+text-decoration: underline;
+}
+
+div.prodis {
+	background-color: #6699CC;
+}
+form.leftnavform {
+	margin: 0pt 0pt 0pt 0pt;
+	padding: 8px 3px 8px 4px;
+	background-color: #336699;
+}
+fieldset.hidefieldset {
+	border: 0;
+	padding: 0;
+	margin: 0;
+	display: block;
+}
+input.inputedt {
+	font-size: 90%;
+	padding: 0pt 0pt 0pt 0pt;
+	margin: 0pt 0pt 0pt 0pt;
+}
+input.inputedt2 {
+	font-size: 70%;
+	padding: 0pt 0pt 0pt 0pt;
+	margin: 0pt 0pt 0pt 0pt;
+}
+/* GENERAL NAVIGATION CSS ENDS | FIN DU CSS DE NAVIGATION GENERALE */
+
+/* SIDE MENU CSS BEGINS | DEBUT DU CSS DU MENU LATERAL */
+div.right li ul.nav {
+	border: 1px solid #CCC;
+}
+div.right li ul.nav2  {
+    margin-left: 18px;
+}
+/* SIDE MENU CSS ENDS | FIN DU CSS DU MENU LATERAL */
+
+/* BREADCRUMB CSS BEGINS | DEBUT DU CSS DE LA PISTE DE NAVIGATION */
+p.breadcrumb a:link,p.breadcrumb a:visited {
+	color: #000;
+	text-decoration: none;
+	background-color:inherit;
+}
+
+p.breadcrumb a:hover {
+	color: #000;
+	text-decoration: underline;
+	background-color:inherit;
+}
+/* BREAD CRUMB CSS ENDS | FIN DU CSS DE LA PISTE DE NAVIGATION */
+
+/* CONTENT CSS BEGINS | DEBUT DU CSS DU CONTENU */
+div.blackborder {
+	border: solid #CCC 1px;
+}
+
+div.center h2 {
+	font-size: 130%;
+	color: #336699;
+	background-color: inherit;
+}
+
+div.center h3,h4,h5,h6 {
+	font-size: 100%;
+	color: #000000;
+	background-color: inherit;
+}
+
+div.blackborder {
+	border: solid #CCC 1px;
+}
+
+/* CSS IMPORTED FROM OLD IC.CSS */ /* LISTS */
+/* TEXT STYLE CLASSES */
+.boldText {
+	font-weight: bold;
+}
+
+.italicText {
+	font-style: italic;
+}
+
+.boldItalicText {
+	font-weight: bold;
+	font-style: italic;
+}
+
+.mandatory {
+	font-weight: bold;
+	color: #FF0000;
+	background-color: transparent;
+}
+
+.success {
+	font-weight: bold;
+	color: #0066CC;
+	background-color: #FFFFFF;
+}
+
+/* END CSS IMPORTED FROM OLD IC.CSS */
+
+/* SUB SITE BEGINS */
+
+/* IC SUB SITE and SOA CLASSES BEGIN*/
+/*IC SUB SITE CLASSES BEGIN*/
+div.subbanner {
+          padding: 9px 0px 7px 5px;
+          margin:0 0 5px 0;
+          width: 98.7%;
+          border-bottom: 3px solid  #369;
+          background-color: #036;
+}
+div.subbanner p {
+          font-family: verdana;  
+          text-decoration: none;
+          font-size: 130%;
+          color: #ffffff;
+          margin:0;
+}
+div.subbanner2 {
+         margin:0 0 5px 0;
+    
+}
+/* IC SUB SITE CLASSES END*/
+/*CORPORATE LINK TO IC SITE CLASSES BEGINS*/
+#iclink  h2 { 
+	background-color: #036;	
+}
+#iclink  h2.nav  {
+	display: block;
+	width: 140px;
+	background-color: #036;
+	color: #FFF;
+	text-decoration: none;
+         font-size: 0.9em;
+         line-height: 1.3; /*if % is is ued, this class cerates a 1px space on bottom of h2 container*/
+         padding: 2px 5px 2px 5px;
+}
+/*CORPORATE LINK TO IC SITE CLASSES ENDS*/
+
+div.footer div.footerline{
+	background-color: #003366;
+}
+h2.nav, h2.nav a:link, h2.nav a:visited{
+	font-size: 0.99em;
+}
+h2.iclink, h2.iclink a:link, h2.iclink a:visited{
+	background-color: #003366;
+	color: #ffffff;
+	text-decoration: none;
+	font-size: 0.9em;
+	line-height: 1.3em;
+	padding: 2px 5px;
+	border-top-width: 0px;
+	margin-bottom: 1px;
+	margin-top: 0px;
+	display: block;
+}
+h2.navP,h2.navP a:link,h2.navP a:visited {
+	background-color: #003366;
+	color: #FFF;
+	text-decoration: none;
+	font-size: 0.94em;
+	line-height: 1.25em;
+	padding: 0px 5px 0px 5px;
+	border-top-width: 0px;
+	margin-bottom: 0px;
+	margin-top: 0px;
+	display: block;
+}
+/* COMMON DESIGN STYLES OF ENTIRE LIST */
+#iclink  ul {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	font-family: verdana, arial, Helvetica, sans-serif;
+}
+/* LEVEL 1 WHITE HOROSONTAL DEVIDERS*/
+#iclink  li { 
+          margin: 0px 0 1px 0; 
+}
+/* LEVEL 1  */
+#iclink  a {
+         display: block;
+         padding: 3px 8px 3px 12px;
+         width: 130px;
+         color: #FFF;
+         background-color: #369;
+         text-decoration: none;
+         font-size: 0.9em;
+         line-height: 1.3; /*if % is is ued, this class cerates a 1px space on bottom of h2 container*/
+}
+#iclink a:hover {
+         color: #FFF;
+         background-color: #369;
+         text-decoration: underline;
+}
+#iclink ul li a#selected1 {
+         color: #FFF;
+         background-color: #369;
+         text-decoration: underline;
+}
+#iclink ul li a#expanded1 {
+         color: #FFF;
+         background-color: #369;
+         text-decoration: underline;
+}
+.corpicspace {
+        margin:0 0 5px 0;
+        background-color:#000;
+}
+/*CORPORATE LINK TO IC SITE CLASSES END*/
+/* SUB SITE ENDS /*
+/* CONTENT CSS ENDS | FIN DU CSS DU CONTENU */
+/* FOOTER CSS BEGINS | DEBUT DU CSS DU PIED DE LA PAGE */
+div.footer div.footerline {
+	background-color: #336699;
+}
+/* FOOTER CSS ENDS | FIN DU CSS DU PIED DE LA PAGE */ /* SUB SITE */
+
+/* ----- INDUSTRY CANADA SPECIFIC ENDS ----- */

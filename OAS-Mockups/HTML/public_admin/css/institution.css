@@ -1,0 +1,754 @@
+/* CLF 2.0 TEMPLATE VERSION 1.0 | VERSION 1.0 DU GABARIT NSI 2.0 */
+
+/*----------------------*/
+/* Home page */
+/*----------------------*/
+dl.listOfFeatures{
+	margin: .2em .2em ;
+	padding: .2em .2em ;
+}
+
+dl.listOfFeatures dt{
+	margin: .2em .2em ;
+	padding: .2em .2em ;
+}
+
+dl.listOfFeatures dd{
+	margin: .2em .2em ;
+	padding: .2em .2em ;
+	padding-left: 2.5em ;
+}
+
+/*----------------------*/
+/*  Manage Plans page */
+/*----------------------*/
+.backgroundRight {
+	background-color: #eeeeee;
+	text-align: right;
+}	
+
+.backgroundLeft {
+	background-color: #eeeeee;
+	text-align: left;
+}
+
+.borderSearch  {
+	border-top-width: 2px ;
+}
+
+.plansAddSection{margin-left: 1em ; border: none ;}
+
+.planssSearch{margin-left: 1em ; border: none ;}
+
+/*----------------------*/
+/* Add Plan wizard */
+/*----------------------*/
+/* =Add wrap to text areas */
+/*
+textarea { wrap:virtual }
+*/
+
+fieldset.optionList{
+	border: 1px solid #ccc ;
+	margin-top:10px ;
+	margin-bottom:10px ;
+	width:90% ;
+	vertical-align:middle ;
+}
+
+fieldset.optionList legend{
+	padding-bottom:4px ;
+	font-size: 130%;
+	color: #336699;
+	background-color: inherit;
+}
+
+fieldset.optionList div{
+	clear: both ;
+	padding: .2em 0 0;
+	margin: 0.2em 0 0 ;
+}
+
+fieldset.optionList input{
+	float: left;
+	padding: .2em;
+	font-weight: normal;
+}
+
+fieldset.optionList label{
+	float: left;
+ 	width: 60%;
+	height:1% ;
+	clear:right ;
+}
+
+.markTimePeriodCompleted {
+	background:#E8FFE1 ;
+	text-align: center;
+}
+
+/* Used on Add/Edit plan LD page */
+.markTimePeriod_NA{
+	background-color:#EEEEEE ;
+	text-align: center;
+}
+
+/* Fieldsets on the plan options page */
+.roamingCanUS {
+	margin-bottom:5px ;
+	padding: 10px ;
+	border: 1px solid #ccc ;
+	width: 55% ;
+}
+
+.roamingCanUS legend {
+	padding-bottom:5px ;
+}
+
+.roamingCanUS div {
+	float:left ;
+	margin-left: 1em ;
+}
+
+.roamingCanUS label {
+	clear: left ;
+	width: 5% ;
+	float: left;
+	padding: .2em;
+	font-weight: normal;
+}
+
+#localMinutesTable {
+	margin-top:10px ;
+}
+
+/* Fieldsets on the plan options page */
+.planOptions {
+	margin-top:10px ;
+	margin-bottom:10px ;
+	padding: 10px ;
+	border: 1px solid #ccc ;
+	width: 55% ;
+}
+
+.planOptions legend {
+	padding-bottom:5px ;
+}
+
+.planOptions div {
+	float:left ;
+	margin-left: 1em ;
+}
+
+.planOptions label {
+	clear: left ;
+	width: 5% ;
+	float: left;
+	padding: .2em;
+	font-weight: normal;
+}
+
+.planOptionsVariable {
+	margin-top:10px ;
+	margin-bottom:10px ;
+	padding: 10px ;
+	border: 1px solid #ccc ;
+	width: 95% ;
+}
+
+.planOptionsVariable legend {
+	padding-bottom:5px ;
+}
+
+.planOptionsVariable div {
+	float:left ;
+	margin-left: 1em ;
+}
+
+.planOptionsVariable label {
+	clear: left ;
+	width: auto ; 
+	float: left;
+	padding: .2em;
+	font-weight: normal;
+}
+
+/*----------------------*/
+/*  Plans View page */
+/*----------------------*/
+#planProviderWrapper div.grid_row{
+	padding-bottom: .4em ;
+	border-bottom: 1px solid #ccc ;
+}
+
+#planProviderWrapper div.cell_1{
+	width: 25%;
+	padding: .5em ;
+	background: #EBEBEB ;
+}
+
+#planProviderWrapper div.cell_2{
+	padding: .5em ;
+	padding-left: 1em ;
+}
+
+#planProviderWrapper  div.indentSection{
+	padding-left: 2em ;
+}
+
+/*  Jurisdictions lists */
+#planProviderWrapper li{
+	margin-bottom: .4em ;
+
+}
+
+/* Bundles lists */
+#planProviderWrapper dl{
+	margin: .2em .2em ;
+	padding: .2em .2em ;
+}
+
+#planProviderWrapper dt{
+	margin: .2em .2em ;
+	padding: .2em .2em ;
+}
+
+#planProviderWrapper dd{
+	margin: .2em .2em ;
+	padding: .2em .2em ;
+	padding-left: 2.5em ;
+}
+
+img.viewEditIcon{
+	float:right ;
+}
+
+
+/*----------------------*/
+/* Review Statuses - Plan */
+/*----------------------*/
+
+/*  Tab's  float:left; */
+div#tabmenu{width:100%;padding-top:10px;background: #BBD9EE}
+ul#tabnav,ul#nav li{list-style-type:none;margin:0;padding:0}
+ul#tabnav{margin-left: 5px;width:580px}
+ul#tabnav li{float:left;margin-right: 3px;text-align: center}
+ul#tabnav a{float:left;width: 7em;padding: 3px 0;background: #E7F1F8;text-decoration:none;color: #666}
+ul#tabnav a:hover{background: #FFA826;color: #FFF}
+ul#tabnav li.activelink a,ul#nav li.activelink a:hover{background: #FFF;color: #003}
+
+.headingBackground{
+  padding: 4px;
+  border: 1px dashed  #D8E0FE ;
+  background-color: #F3F5FE;
+  width:100% ;
+  vertical-align: middle ;
+  margin-bottom: 10px ; 
+    margin-bottom: 10px ;  
+	margin-top: 20px ;
+}
+
+.headingBackground h3{
+  padding-top: 4px;
+}
+
+.headingWithBottomLine{
+  padding: 4px;
+  border-bottom: 1px solid  #eeeeee ;
+  width:100% ;
+  margin-bottom: 10px ;
+}
+
+.buttonRight {
+	border-top-width: 1px;
+	border-top-style: solid;
+	border-top-color: #aab4bd;
+	border-left-width: 1px;
+	border-left-style: solid;
+	border-left-color: #aab4bd;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #aab4bd;
+	border-right-width: 1px;
+	border-right-style: solid;
+	border-right-color: #aab4bd;
+	padding-top: 0.2em;
+	padding-bottom: 0.2em;
+	background-image: url(../buttons/images/gradient.jpg);
+	color: #000000;
+	font-weight: bold;
+	float: right;
+}
+
+/*----------------------*/
+/* Providers Add/Edit page */
+/*----------------------*/
+fieldset.planBasedFees{
+	border:1px solid #336699 ;
+	width:80% ;
+	vertical-align:middle ;
+	padding-left:5px ;
+}
+
+fieldset.planBasedFees legend{
+	padding: .5em ;
+	padding-bottom: 4px;
+	margin-top:.8em ;
+}
+
+/*----------------------*/
+/*  Providers View page */
+/*----------------------*/
+#viewProviderWrapper div.grid_row{
+	padding-bottom: .4em ;
+	border-bottom: 1px solid #ccc ;
+
+}
+
+#viewProviderWrapper div.cell_1{
+	width: 25%;
+	padding: .5em ;
+	background: #EBEBEB ;
+}
+
+#viewProviderWrapper div.cell_2{
+	padding: .5em ;
+	padding-left: 1em;
+}
+
+#viewProviderWrapper  div.indentSection{
+	padding-left: 2em ;
+}
+
+/*  Jurisdictions lists */
+#viewProviderWrapper li{
+	margin-bottom: .4em ;
+
+}
+
+/* Bundles lists */
+#viewProviderWrapper dl{
+	margin: .2em .2em ;
+	padding: .2em .2em ;
+}
+
+#viewProviderWrapper dt{
+	margin: .2em .2em ;
+	padding: .2em .2em ;
+}
+
+#viewProviderWrapper dd{
+	margin: .2em .2em ;
+	padding: .2em .2em ;
+	padding-left: 2.5em ;
+}
+
+
+
+
+
+
+
+/*----------------------*/
+/* Manage Jurisdictions  page */
+/*----------------------*/
+.addJurisdiction{margin-left: 1em ; border: none ;}
+
+/*  Filter by option */
+#filterProv{
+	float:right ;
+	vertical-align: middle ;
+}
+
+/*----------------------*/
+/* Manage Messages page */
+/*----------------------*/
+.messagesSearch{margin-left: 1em ; border: none ;}
+
+/*----------------------*/
+/* Messages Edit page */
+/*----------------------*/
+
+/* Hide English Help Term URL creation widget  */
+#hideCreateHelpTermEng{
+	display:none;
+	background-color: #FFFFE1; 
+	border: 1px solid #ccc ;
+	padding: 4px ;
+}
+
+#hideCreateHelpTermFre{
+	display:none;
+	background-color: #FFFFE1; 
+	border: 1px solid #ccc ;
+	padding: 4px ;
+}
+
+/*----------------------*/
+/* Manage Provider Options */
+/*----------------------*/
+table.manageProviderOptionsTable{width:85% ;}
+
+/*----------------------*/
+/* Manage Users  */
+/*----------------------*/
+.addUser{margin-left: 1em ; border: none ;}
+
+
+
+
+/* 
+#localCalls{display:none ;}
+#Ldcalls{display:none ;}
+#unitOpt{display:none ;}
+*/
+
+
+
+/* -------------------------- */
+/* Global CSS  */
+/* -------------------------- */
+h3{
+	font-size:100% ;
+}
+
+/* Hide divs full of labels */
+div.labels{
+	position:absolute;
+	left:0px;
+	top:-500px;
+	width:1px;
+	height:1px;
+	overflow:hidden;
+}
+
+/* left hand nav bar */
+div.center h1, h3, h4, h5, h6 {
+	color: #000000;
+}
+
+h2.nav, h2.nav a:link, h2.nav a:visited {
+	background-color: #336699;
+	color: #ffffff;
+	text-decoration: none;
+}
+
+div.left li.menucontent, div.left div.menucontent, div.left a.menulink {
+	color: #000000;
+	background-color: #ffffff;
+}
+
+div.left li.menucontent, div.left div.menucontent {
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #336699;
+	border-left-width: 1px;
+	border-left-style: solid;
+	border-left-color: #6699cc;
+	border-right-width: 1px;
+	border-right-style: solid;
+	border-right-color: #6699cc;
+}
+
+div.left li.menucontent, div.left div.menucontent, div.left a.menulink {
+	color: #000000;
+	background-color: #ffffff;
+}
+
+/*  Benner Styles */
+div.banner {
+	color: #ffffff;
+	background-color: #669966;
+}
+
+div.banner {
+	color: #ffffff;
+	background-color: #336699;
+	background-image: none ;
+}
+
+/* Change bottom bar color */
+div.footer div.footerline {
+	background-color: #336699;
+}
+
+/* Hide site URL */
+.siteuri { visibility: hidden  ;}
+
+/* Make page full width */
+div.page{
+	width:100%;
+}
+
+div.core{
+	margin-left:5px ;
+	margin-right:5px ;
+}
+
+/* Hide bread crumbs */
+.breadcrumb { /* visibility: hidden ; */ }
+
+/* Form layout code */ 
+form div {
+	/* clear: left;  */
+	padding: .2em 0 0;
+	margin: 0.2em 0 0 ;
+	/* overflow:auto ; */
+}
+
+form div label {
+	clear: left ;
+	width: 20%;
+	float: left;
+	padding: .2em;
+	font-weight: normal;
+	display:block;
+	height:1% ;
+}
+
+form div input {
+	margin: .2em;
+}
+
+form div select {
+	margin: .2em;
+}
+
+/* two column grid */
+div.grid_row{
+	padding: .2em 0 0;
+	margin: 0.2em 0px 0px;
+	overflow:auto ;
+}
+
+div.grid_row div.cell_1{
+	clear: left;
+	float: left;
+	width: 20%;
+	padding: .2em;
+	display:block;
+	height:1% ; 
+}
+
+div.grid_row div.cell_2{
+	padding: .2em;
+	display:block;
+	height:100% ; 
+}
+
+
+/* Place line under all H2 not in forms but in center content area */
+div.center h2{
+	border-bottom: 1px solid #ccc ;
+	/* padding-bottom:4px  ; */
+	color:#fff ;
+	background: #174C7F ;
+	padding: .3em ;
+	
+}
+
+
+/* Main button bar used throughout the site  */
+#buttonBar{
+	padding:20px ;
+	margin-left:40px ;
+	margin-right:40px ;
+	margin-bottom:30px ;
+}
+/* Main icon class used throughout the admin site  */
+.icon{
+	margin:.3em .3em ;
+}
+
+/* Buttons  */
+.button, .addButton {
+    width:auto;
+    overflow:visible;
+	padding: .3em .6em ;
+	color: #000000;
+	font-weight: bold;
+}
+
+/* Main button bar used throughout the site  */
+.buttonBar{
+	margin-left:10px ;
+	margin-right:40px ;
+	margin-bottom:10px ;
+}
+
+/* tab button bar used to simulate tabs  */
+div.tabButtonBar{
+	margin:0;
+	padding:0 ;
+	border-bottom: 5px solid #336699 ;
+}
+
+div.tabArea{
+	margin: 0px ;
+	padding: 1em  ;
+	border: 1px solid #336699 ;
+}
+
+div.tabButtonBar input.button{
+	border:none ;
+	margin-bottom: 0px ;
+}
+
+.tabButton {
+    width:auto;
+    overflow:visible;
+	padding: .3em .6em ;
+	color: #363636 ;
+	font-weight:normal ;
+}
+
+.activeTabButton  {
+    width:auto;
+    overflow:visible;
+	padding: .3em .6em ;
+	background: #336699 ;
+	color: #fff;
+	font-weight: bold;
+}
+
+
+/* button bar used at the bottom of some form pages  */
+.bottomButtonBar{
+	margin-top:15px ;
+	border-top: 1px solid #ccc ;
+	margin-left:10px ;
+	margin-right:40px ;
+	margin-bottom:10px ;
+}
+
+/* single buttons in a button bar */
+.bottomButtonBar div.singleButton{
+	margin-top: .8em ;
+	margin-bottom: .8em ;
+}
+
+.bottomButtonBarTabPages{
+	margin-top:15px ;
+	margin-left:10px ;
+	margin-right:40px ;
+	margin-bottom:10px ;
+}
+
+.buttonSpacing{
+	margin-right:15px ;
+}
+
+.addButton {
+	margin-left: 13.4em;
+}
+
+/*  Left menu */
+div#leftSideMenu li a {
+	display: block;
+	text-decoration: none;
+}
+
+a.menulink:hover {
+	background-color:#e6e6e6 ;
+	text-decoration: none;
+}
+
+/* Hide all quick add boxes  */
+#quickAdd{
+	display:none;
+	background-color: #FFFFE1; 
+	border: 1px dashed #ccc ;
+	padding: 4px ;
+}
+
+/* Resuls table styles */
+table.border  {
+	color: #000000;
+	background-color: #ffffff;
+	/* border-top-width: 1px ; */
+	padding-top:8px ;
+	padding-bottom:15px ;
+}
+
+th.tableHeader {
+	color: #ffffff;    
+	background-color:  #336699 ; /*#EAEAEA; boder coour 999999*/
+	border: 1px solid #336699 ;
+	padding-top: .2em ;
+	padding-bottom: .2em ;
+	padding-left: .2em ;
+	text-align:center ;
+}
+
+table th label {
+	color: #ffffff;
+	background-color: #336699; /*#EAEAEA; boder coour 999999*/
+	border: 1px solid #336699 ;
+	padding-top: .2em ;
+	padding-bottom: .2em ;
+	padding-left: .2em ;
+	text-align:center ;
+}
+
+th.tableHeader a:link {
+	color: #ffffff;
+	background-color: #336699; /*#EAEAEA; boder coour 999999*/
+	text-decoration:none ;
+}
+
+th.tableHeader a:visited {
+	color: #ffffff;
+	background-color: #336699; /*#EAEAEA; boder coour 999999*/
+	text-decoration:none ;
+}
+
+th.tableHeader a:hover{
+	color: #ffffff;
+	background-color: #336699 ; /*#EAEAEA; boder coour 999999*/
+	text-decoration:none ;
+}
+
+td.subHeader {
+	color: #000000;
+	background-color: #eeeeee;
+	border: 1px solid #cccccc;
+}
+
+td.tableFooter {
+	border-top: 1px solid #999999;
+}
+
+.centerText {
+	text-align: center;
+}
+	
+tr.odd {
+	background-color: #eeeeee;
+}
+
+/*  Error div */
+div.errorMessage{
+	vertical-align:middle ;
+	padding:0.8em;
+	border: 1px dashed #FF0000 ;
+	background-color:#FFD7D7 ;
+	color:#000000 ;
+	width:90% ;
+}
+
+/*  Success div */
+div.successMessage{
+	vertical-align:middle ;
+	padding:0.8em;
+	border: 1px dashed #84FF84 ;
+	background-color: #E8FFE8 ;
+	color:#000000 ;
+	width:85% ;
+}
+
+/*  Icon for error/success messages */
+div.errorMessage .messageIcon, div.successMessage .messageIcon {
+	padding-left: .2em ;
+	padding-right: .2em ;
+}
+

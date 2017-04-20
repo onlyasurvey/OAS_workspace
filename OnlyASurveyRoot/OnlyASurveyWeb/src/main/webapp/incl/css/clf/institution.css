@@ -1,0 +1,538 @@
+/* CLF 2.0 TEMPLATE VERSION 1.0 | VERSION 1.0 DU GABARIT NSI 2.0 */
+
+/* GENERAL CSS BEGINS | DEBUT DU CSS GENERAL */
+
+h1 {
+   color: #333366;
+   }
+   
+hr.line {
+   height:1px;
+   }
+
+.mandatory {
+    font-size: 1em;
+    color: #FF0000;
+	font-style: normal;
+	vertical-align: bottom;
+	line-height: normal;
+	font-weight:bold;
+}
+
+li.errorMessages {
+    font-size: 1em;
+    color: #FF0000;
+	font-style: normal;
+	vertical-align: bottom;
+	line-height: normal;
+	font-weight:bold;
+}
+
+.changedData {
+	border-style: solid;
+	border-color: #CCCCCC;
+	border-width: 1px 1px 1px 1px;
+	background-color: #FFFFCC;
+	padding: 1px 4px 1px 4px; /* top, right, bottom, left */
+}
+
+.explanTextGray {
+	border-style: solid;
+	border-color: #EEEEEE;
+	border-width: 1px 1px 1px 1px;
+	background-color: #EEEEEE ;
+	text-align:left;
+	vertical-align:top;
+	padding: 1px 4px 1px 4px; /* top, right, bottom, left */
+}
+
+.note {
+    font-size: 1em;
+	font-style: normal;
+	font-weight: bold;
+	vertical-align: bottom;
+	line-height: normal;
+}
+
+table#comLogCountdown {
+	border: solid 1px #666666;
+	width: 98%;
+	background-color: #FFFFCC;
+	margin: 5px;
+	padding: 5px;
+	border-spacing: 5px;
+}
+
+table#boxBorderErrors {
+	border: solid 1px #CCCCCC;
+	background-color: #FFFFCC;
+	padding: 5px;
+	width: 100%;
+	margin: 5px;
+	padding: 5px;
+	border-spacing: 5px;
+}
+
+table#boxBorderFull {
+	border: solid 1px #666666;
+	width: 100%;
+	margin: 5px;
+	padding: 8px;
+	border-spacing: 8px;
+}
+
+table#boxBorder {
+	border: solid 1px #666666;
+	width: 98%;
+	margin: 5px;
+	padding: 8px;
+	border-spacing: 8px;
+}
+
+
+.boxBorderLabel {
+	width: 5%;
+/*	background-color: #EEEEEE ; */
+	text-align:left;
+	vertical-align:top;
+	padding-left:4px;
+}
+
+table#tombstone {
+	border: solid 1px #666666;
+	width: 100%;
+	margin: 5px;
+	padding: 5px;
+	border-spacing: 5px;
+}
+
+table#tombstone2col {
+	border: solid 1px #666666;
+	width: 98%;
+	margin: 5px;
+	padding: 5px;
+	border-spacing: 5px;
+}
+
+table#tombstone td {
+	padding: 4px;
+	}
+	
+td.tableTop {
+	vertical-align: top;
+	}
+	
+td.tableBottom {
+	vertical-align: bottom;
+	}
+
+td.tableRight { 
+	text-align: right;
+	}
+
+td.tableTopGray {
+	vertical-align: top;
+	background-color: #EEEEEE;
+	}
+	
+td.tableStatus {
+	width:20px;
+	text-align:center;	
+	}
+
+.labelTombstone {
+	width: 25%;
+	background-color: #EEEEEE ;
+	text-align:left;
+	vertical-align:top;
+}
+
+.labelForm {
+	width: 190px;
+	background-color: #EEEEEE ;
+	text-align:left;
+	vertical-align:top;
+	padding-left:4px;
+}
+
+.labelFormWide {
+	width: 33%;
+	background-color: #EEEEEE ;
+	text-align:left;
+	vertical-align:top;
+	padding-left:4px;
+}
+
+.contentTombstone {
+	text-align: left;
+	vertical-align: top;
+	}
+
+/* TAB FORM*/
+
+div.center .textPadding {
+	padding: 5px;
+	padding-bottom: 15px;
+}
+
+.contentswap {
+  margin: 15px 5px 5px 5px; 
+  display: block;
+  }	
+
+/*  TABS   NOTE: using invalid -Moz-Border-Radius attributes to create rounded corners, works in mozilla, but does impact use in other browsers. Perhaps address in future using DB's sliding doors technique for tabs */
+
+#nav-box {
+	border: 1px solid #ccc;
+	padding:  5px;
+	margin-top: 0px;
+	color: #000;
+	z-index: -1;
+	-Moz-Border-Radius-TopRight: 5px;
+	-Moz-Border-Radius-BottomRight: 5px;	
+	-Moz-Border-Radius-BottomLeft: 5px;	
+	}
+	
+div.center a.navbox, div.center a.navbox:visited, div.center a.navbox:link {
+    padding: 5px 5px 1px 5px ;
+	border: 1px solid #ccc;
+	background-color: #eee;
+	width: auto;
+	text-decoration: none;
+	color: #666;
+	-Moz-Border-Radius-TopLeft: 5px;
+	-Moz-Border-Radius-TopRight: 5px;
+	white-space: nowrap;
+	}
+	
+div.center a.navbox:hover 	{
+    color: #333;
+	background-color: #fff;
+	}
+	
+a.navbox-on {
+    padding: 5px 5px 1px 5px ;
+	border: 1px solid #ccc;
+	width: 120px;
+	text-decoration: none;
+	color: #666699;
+	-Moz-Border-Radius-TopLeft: 5px;
+	-Moz-Border-Radius-TopRight: 5px;
+    background-color: #fff;
+	border-bottom: 0px;
+	z-index: 1;
+	white-space: nowrap;
+	}	
+		
+a.navbox-on:hover {
+    background-color: white;
+	color: #777;
+	}
+
+a.navbox-on, a.navbox-on:visited {
+	color: #666699;
+	border-top: 2px solid #666699;
+	}		
+	
+#new-report-builder th {
+	text-align: left;
+	background-color: #DE8621;
+	border-top: 0px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	padding: 3px; 
+	font-size: 7pt;
+	font-family: Verdana;
+	vertical-align: bottom;
+	color: white; 
+	}
+  
+#new-report-builder td {
+	vertical-align: bottom;
+/*	border-right: 1px dotted #ccc;*/
+	padding: 4px;
+	font-family: verdana;
+	font-size: 8pt; 
+	}
+  
+#new-report-builder td.visible {
+	text-align: center;
+	}
+  
+#new-report-builder td.nested {
+	vertical-align: bottom;
+	border-right: 0px;
+	padding: 0 2px 0 0; 
+	}  
+  
+#new-report-builder tr {
+	border-bottom: 1px solid #ccc;
+	}
+ 
+#new-report-builder tr.alternating {
+	border-bottom: 1px solid #ccc;
+	background-color: #efefef;
+	} 
+ 
+.items-builder {
+	border: 1px solid #ccc;
+	-moz-border-radius-TopRight: 8px;
+	-moz-border-radius-BottomRight: 8px;
+	-moz-border-radius-BottomLeft: 8px;  
+	-Moz-Border-Radius-TopLeft: 0px;
+	padding: 0 2px 2px 2px; 
+	width: 750px; 
+	overflow: scroll; 
+	}
+
+
+/* FORM IDS AND CLASSES */
+
+/* =Add wrap to text areas */
+textarea { wrap="virtual" }
+
+/* =Form Content Div */
+#formContent { 
+    width: 100%; 
+	text-align: left; 
+	}
+   
+/* =Form header */
+th.formHeader {
+    background-color: #333366;
+    color: #FFFFFF;
+	border: #333366 1px solid;
+	font-size: 1em;
+	font-weight: bold;
+	font-style: normal;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	vertical-align: top;
+	line-height: normal;
+	text-align:left;
+   }
+   
+th.formHeaderSub {
+    background-color: #666699;
+    color: #FFFFFF;
+	border: #666699 1px solid;
+	font-size: 1em;
+	font-weight: bold;
+	font-style: normal;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	vertical-align: top;
+	line-height: normal;
+	text-align:left;
+   }
+   
+div.formHeader {
+    background-color: #333366;
+    color: #FFFFFF;
+    width: 756px;
+	border: #333366 1px solid;
+    padding: 4px 0px 4px 4px;
+	font-size: 1em;
+	font-weight: bold;
+	font-style: normal;
+	vertical-align: bottom;
+	line-height: normal;
+   }
+   
+div.formHeader2col {
+    background-color: #333366;
+    color: #FFFFFF;
+    width: 606px;
+	border: #333366 1px solid;
+    padding: 4px 0px 4px 4px;
+	font-size: 1em;
+	font-weight: bold;
+	font-style: normal;
+	vertical-align: bottom;
+	line-height: normal;
+   }
+   
+/* Form labels and input */
+
+form div label {
+	width: 200px;
+	float: left;
+	margin-right: .1em;
+	background-color: #EEEEEE ;
+	padding: .3em .3em ;
+	margin-top: 1px ;
+	margin-bottom: 1px;
+}
+
+form div.bunch {
+	width:100%;
+	height:100%;
+
+}
+
+form div.bunchRight {
+	border-left:200px;
+	float:left;
+	}
+
+form div label.bunchLeft {
+	float:left;
+	width:200px;
+	
+}
+
+label.noBkgnd {
+	width: 39%;
+	margin-right: 0em;
+	background-color: #FFFFFF ;
+	padding: 0em ;
+    text-align: left;
+}
+
+label.noBkgndSmall {
+	width: 15%;
+	margin-right: 0em;
+	background-color: #FFFFFF ;
+	padding: 0em ;
+	margin-top: 1px ;
+	margin-bottom: 1px;
+    text-align: right;
+}
+
+.sublabel {
+	float: left;
+	clear:both;
+	margin-right: 0em;
+	background-color:#FFFFFF ;
+	padding: 0em ;
+	margin-top: 1px ;
+	margin-bottom: 1px;
+    text-align: right;
+}
+
+.sublabelWide {
+	width: 60%;
+	float: left;
+	margin-right: .5em;
+	background-color:#FFFFFF ;
+    text-align: right;
+}
+
+form div input, select, textarea {
+    margin: 2px;
+	clear: right;
+	}
+	
+form div fieldset {
+	margin-top: 1px ;
+	margin-right: 0.2px;
+    padding: .5em;
+	width:auto;
+	}
+
+form div.radioButtonBar  {
+	float: right;
+	width: 72%;
+	}
+
+form label.radioButton  {
+	clear: both;
+	background-color: #FFFFFF;
+	width: 100%;
+	padding: .1em;
+	}
+
+/*form label static data*/
+.data {
+/*
+    width: 75%;
+	margin-top: .2em;
+	margin-bottom: 0em;
+	padding: .3em .3em .3em 0em;
+*/
+    width: auto;
+	clear: right;
+	padding: .3em .3em;
+	margin-top: 1px ;
+	margin-bottom: 1px;
+	vertical-align: top;
+	}
+
+/* CLEAR TAGS */
+.clear {
+	clear: both;
+	}
+
+.clearRight {
+	clear: right;
+	}
+
+.clearLeft {
+	clear: left;
+	}
+	
+/* BUTTON BAR  */
+
+#buttonBar {
+   clear: both;
+   padding-top: 1px;
+   }
+  
+#buttons {
+   background-color: #EEEEEE ;
+   border: 1px solid #000000 ; 
+   font-weight: 600;
+   } 
+
+div#buttonBar span.buttons {
+   float: right;
+   width: 15%;
+   text-align: right;
+   } 
+
+div#buttonBar span.buttonTextLeft {
+   float: left;
+   width: 60%;
+   text-align: left;
+   } 
+
+div#buttonBar span.buttonsLeft {
+   float: left;
+   width: 35%;
+   text-align: left;
+   } 
+
+div#buttonBar span.buttonsRight {
+   float: right;
+   text-align: right;
+   } 
+	 
+div#buttonBar span.buttonsRightNote {
+   float: right;
+   text-align: right;
+   padding-right: 25%;
+   } 
+   
+	 
+/* BUTTONS */
+
+div#buttonBar input {
+   background-color: #EEEEEE ;
+   border: 1px solid #000000 ; 
+   font-weight: 600;
+   padding:0 .25em 0 .25em;
+   width:auto;
+   overflow:visible;
+   }
+  
+input.buttonReg {
+   background-color: #EEEEEE ;
+   border: 1px solid #000000 ; 
+   font-weight: 600;
+   padding:0 .25em 0 .25em;
+   width:auto;
+   overflow:visible;
+   }
+  
+.center p {
+   width: 100%;
+   
+}	
+/* GENERAL CSS ENDS | FIN DU CSS GENERAL */

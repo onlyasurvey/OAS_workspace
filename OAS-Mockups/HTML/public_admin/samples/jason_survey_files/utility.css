@@ -1,0 +1,325 @@
+/* Utility CSS  */
+
+/* Utility Classes */
+.widthFull {
+	width: 98.5%;
+}
+.width95 {
+	width: 95%;
+}
+.width90 {
+	width: 90%;
+}
+.width85 {
+	width: 85%;
+}
+.width80 {
+	width: 80%;
+}
+.width75 {
+	width: 75%;
+}
+.width70 {
+	width: 70%;
+}
+.width65 {
+	width: 65%;
+}
+.width60 {
+	width: 60%;
+}
+.width55 {
+	width: 55%;
+}
+.width50 {
+	width: 50%;
+}
+.width45 {
+	width: 45%;
+}
+.width40 {
+	width: 40%;
+}
+.width35 {
+	width: 35%;
+}
+.width30 {
+	width: 30%;
+}
+.width25 {
+	width: 25%;
+}
+.width20 {
+	width: 20%;
+}
+.width15 {
+	width: 15%;
+}
+.width10 {
+	width: 10%;
+}
+.width5 {
+	width: 5%;
+}
+abbr, acronym, span.abbr {
+	cursor: help;
+}
+blockquote {
+	background-color: #CC9;
+	color: #000;
+	border: 1px solid #000;
+	font-style: italic;
+}
+/* end utility classes  */
+
+/* Aligment Utility classes */
+.alignRight {
+	text-align: right;
+}
+.alignCenter {
+	text-align: center;
+}
+.alignLeft {
+	text-align: left;
+}
+.alignTop {
+	vertical-align: top;
+}
+.alignBottom {
+	vertical-align: bottom;
+}
+.alignTopRight {
+	text-align: right;
+	vertical-align: top;
+}
+.alignTopCenter {
+	text-align: center;
+	vertical-align: top;
+}
+.alignTopLeft {
+	text-align: left;
+	vertical-align: top;
+}
+.alignBottomRight {
+	text-align: right;
+	vertical-align: bottom;
+}
+.alignBottomCenter {
+	text-align: center;
+	vertical-align: bottom;
+}
+.alignBottomLeft {
+	text-align: left;
+	vertical-align: bottom;
+}
+.floatRight {
+	float: right;
+}
+.floatLeft {
+	float: left;
+}
+.image-left { 
+	float: left;
+	vertical-align: text-top;
+}
+.image-right {
+	float: right;
+	vertical-align: text-top;
+}
+.indent1 {
+	padding-left: 18px;
+}
+.indent2 {
+	padding-left: 36px;
+}
+.indent3 {
+	padding-left: 54px;
+}
+.indent4 {
+	padding-left: 72px;
+}
+.indent5 {
+	padding-left: 90px;
+}
+/* End Aligment Utility classes */
+
+/* LIST UTILITY CSS BEGINS | DEBUT DU CSS D'UTILITE DE LISTE */
+ul.noBullet {
+	list-style-type: none;
+}
+ul.disc {
+	list-style-type: disc;
+}
+ul.square {
+	list-style-type: square;
+}
+ul.circle {
+	list-style-type: circle;
+}
+ol.lower-alpha {
+	list-style-type: lower-alpha;
+}
+ol.upper-alpha {
+	list-style-type: upper-alpha;
+}
+ol.lower-roman {
+	list-style-type: lower-roman;
+}
+ol.upper-roman {
+	list-style-type: upper-roman;
+}
+/* LIST UTILITY CSS ENDS | FIN DU CSS D'UTILITE DE LISTE */
+
+/* text utility classes */
+.noWrap {
+	white-space: nowrap;
+}
+.doubleLineSpace {
+	line-height: 24.0pt;
+}
+.uppercase {
+	text-transform: uppercase;
+}
+.lowercase {
+	text-transform: lowercase;
+}
+.black {
+	color: #000000;
+	background-color: transparent;
+}
+.white {
+	color: #FFFFFF;
+	background-color: transparent;
+}
+.red {
+	color: #FF0000;
+	background-color: transparent;
+}
+.blue {
+	color: #0000FF;
+	background-color: transparent;
+}
+.green {
+	color: #009933;
+	background-color: transparent;
+}
+.grey {
+	color: #999999;
+	background-color: transparent;
+}
+.deepyellow {
+	color: #FFCC33;
+	background-color: transparent;
+}
+.blackBG {
+	background-color: #000000;
+}
+.whiteBG {
+	background-color: #FFFFFF;
+}
+.redBG {
+	background-color: #FF0000;
+}
+.blueBG {
+	background-color: #0000FF;
+}
+.greenBG {
+	background-color: #009933;
+}
+.lightgreyBG {
+	background-color: #CCCCCC;
+}
+.deepyellowBG {
+	background-color: #FFCC33;
+}
+div.highlight, p.highlight {
+	border: 1px solid #030;
+	background-color: #9F9;
+	padding: 5px;
+}
+div.topPage, p.topPage {
+	float: right;
+	text-align: center;
+}
+/* end text utility classes */
+
+/* Font size classes */
+.fontSize200 {
+	font-size: 200%;
+}
+.fontSize195 {
+	font-size: 195%;
+}
+.fontSize190 {
+	font-size: 190%;
+}
+.fontSize185 {
+	font-size: 185%;
+}
+.fontSize180 {
+	font-size: 180%;
+}
+.fontSize175 {
+	font-size: 175%;
+}
+.fontSize170 {
+	font-size: 170%;
+}
+.fontSize165 {
+	font-size: 165%;
+}
+
+.fontSize155 {
+	font-size: 155%;
+}
+
+.fontSize145 {
+	font-size: 145%;
+}
+
+.fontSize135 {
+	font-size: 135%;
+}
+
+.fontSize125 {
+	font-size: 125%;
+}
+
+.fontSize115  {
+	font-size: 115%;
+}
+
+.fontSize105 {
+	font-size: 105%;
+}
+.fontSize100, .topPage, h1.headline, h2.headline, h3.headline, h4.headline, h5.headline, h6.headline {
+	font-size: 100%;
+}
+.fontSize95 {
+	font-size: 95%;
+}
+.fontSize90 {
+	font-size: 90%;
+}
+.mediumFont, .fontSize85 {
+	font-size: 85%;
+}
+.fontSize80 {
+	font-size: 80%;
+}
+.smallFont, .fontSize75 {
+	font-size: 75%;
+}
+.fontSize70 {
+	font-size: 70%;
+}
+/* General css ends  */
+
+/* test utility  */
+.doubleLineSpace {
+	line-height: 200%;
+}
+/* end test utility */
+
+
+

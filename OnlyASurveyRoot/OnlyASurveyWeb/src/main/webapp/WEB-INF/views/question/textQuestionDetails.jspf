@@ -1,0 +1,19 @@
+<%@ include file="/WEB-INF/views/includes.jspf"%>
+<%@ include file="requiredIndicatorInclude.jsp" %>
+<fieldset>
+<c:choose>
+	<c:when test="${!previewMode}"><c:set var="id" value="answer"/></c:when>
+	<c:when test="${previewMode}"><c:set var="id" value="preview${question.id}"/></c:when>
+</c:choose>
+
+	<h2><label for="${id}"><c:out value="${question.displayTitle}"/>${requiredIndicator}</label></h2>
+
+<%-- text box --%>
+	<c:if test="${question.numRows == 1}">
+	<form:input id="${id}" path="command.answer" size="${question.fieldDisplayLength}" maxlength="${question.maximumLength}" />
+	</c:if>
+<%-- text area --%>
+	<c:if test="${question.numRows != 1}">
+		<form:textarea id="${id}" path="command.answer" rows="${question.numRows}" cols="60" />
+	</c:if>
+</fieldset>

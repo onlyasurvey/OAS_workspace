@@ -1,0 +1,101 @@
+/* CLF 2.0 TEMPLATE VERSION 1.02 | VERSION 1.02 DU GABARIT NSI 2.0 */
+/* GENERAL CSS BEGINS | DEBUT DU CSS GENERAL */
+body {
+	background-color: #FFF;
+}
+div.colLayout {
+	background-color: #FFF;
+	height: 100%;
+}
+/* GENERAL CSS ENDS | FIN DU CSS GENERAL */
+
+/* FIP HEADER CSS BEGINS | DEBUT DU CSS DE L'EN-TETE PCIM */
+div.fip, div.cwm {
+	height: 20px;
+}
+div.cwm img {
+	padding-top: 0px;
+}
+/* FIP HEADER CSS ENDS | FIN DU CSS DE L'EN-TETE PCIM */
+
+/* INSTITUTIONAL BANNER CSS BEGINS | DEBUT DU CSS DE LA BANNIERE INSTITUTIONNELLE */
+div.banner {
+	color: #FFF;
+	background-color:#666666;
+}
+div.banner-eng, div.banner-lfcoa-eng {
+	background: url() #FFF no-repeat center center;
+}
+div.banner-fra, div.banner-lfcoa-fra {
+	background: url() #FFF no-repeat center center;
+}
+/* INSTITUTIONAL BANNER CSS ENDS | FIN DU CSS DE LA BANNIERE INSTITUTIONNELLE */
+
+/* GENERAL NAVIGATION CSS BEGINS | DEBUT DU CSS DE NAVIGATION GENERALE */
+h2.nav, h2.nav a:link, h2.nav a:visited {
+	background-color: #6699CC;
+	color: #FFF;
+	text-decoration: none;
+}
+h2.nav a:hover {
+	text-decoration: underline;
+}
+div.right li ul.nav {
+	border: 1px solid #CCC;
+}
+/* GENERAL NAVIGATION CSS ENDS | FIN DU CSS DE NAVIGATION GENERALE */
+
+/* SIDE MENU CSS BEGINS | DEBUT DU CSS DU MENU LATERAL */
+div.left li.menucontent, div.left div.menucontent {
+	border-bottom: 1px solid #6699CC;
+	border-left: 1px solid #6699CC;
+	border-right: 1px solid #6699CC;
+}
+div.left li.menucontent, div.left div.menucontent, div.left a.menulink {
+	color: #000;
+	background-color: #FFF;
+}
+div.right li.menucontent, div.right div.menucontent {
+	color: #000;
+	background-color: #FFF;
+}
+div.right a.menulink {
+	color: #000;
+	background-color: #FFF;
+}
+div.prodis {
+	background-color: #6699CC;
+}
+/* SIDE MENU CSS ENDS | FIN DU CSS DU MENU LATERAL */
+
+/* CONTENT CSS BEGINS | DEBUT DU CSS DU CONTENU */
+div.center h1, h2, h3, h4, h5, h6 {
+	color: #000;
+}
+div.center a:link {
+	color: #039;
+}
+div.center a:visited {
+	color: #663;
+}
+div.blackborder {
+	border: solid #CCC 1px;
+}
+div.blackborder:after {
+	content: ""; 
+	display: block; 
+	height: 0; 
+	clear: left;
+	visibility: hidden;
+}
+/* CONTENT CSS ENDS | FIN DU CSS DU CONTENU */
+
+/* FOOTER CSS BEGINS | DEBUT DU CSS DU PIED DE LA PAGE */
+div.footer div.footerline {
+	background-color: #6699CC;
+}
+div.footer a:link, div.footer a:visited, div.center div.footer a:link, div.center div.footer a:visited, div.center div.topPage a:link, div.center div.topPage a:visited, div.center p.topPage a:link, div.center p.topPage a:visited {
+	color: #039;
+	background-color: #FFF;
+}
+/* FOOTER CSS ENDS | FIN DU CSS DU PIED DE LA PAGE */

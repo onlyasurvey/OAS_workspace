@@ -1,0 +1,10 @@
+<%@ include file="/WEB-INF/views/includes.jspf"%>
+<title><c:out value="${response.survey.displayTitle}"/></title>
+<h1><c:out value="${response.survey.displayTitle}"/> (${percentComplete}%)</h1>
+<form action="<c:url value="/html/res/q/${response.id}.html?n=${param.n}" />" method="post">
+<div>
+<%--<input type='hidden' name='qId' value='${question.id}'/>--%>
+<input type='hidden' name='n' value='${param.n}'/>
+
+<%@ include file="/WEB-INF/views/formErrors.jsp"%>
+<%@ include file="questionImageDiv.jsp"%>

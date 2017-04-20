@@ -1,0 +1,7 @@
+<%@ include file="/WEB-INF/views/includes.jspf"%>
+<c:if test="${previewMode}">
+<p><oas:html value="${question.displayTitle}"/></p>
+</c:if>
+<div>
+<oas:html value="${command.pageContent.displayTitle}"/>
+</div>

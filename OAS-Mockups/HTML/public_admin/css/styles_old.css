@@ -1,0 +1,621 @@
+
+/*--------------------------------------------*/
+/* Manage Surveys page */
+/*--------------------------------------------*/
+form.newSurveyForm{
+    padding: .8em 0 .8em 0 ;
+}
+
+table.manageSurveysTable{
+	width: 100% ;
+}
+
+table.manageSurveysTable th{
+	 color: #fff ;
+	 background-color:#003399 ;
+}
+
+table.manageSurveysTable td{
+	 border-bottom: 1px solid #ccc ;
+}
+
+
+/* -------------------------- */
+/* New Survey  */
+/* -------------------------- */
+fieldset.radioButtons div input {
+	float:left   ;
+	width: 5%;
+}
+
+fieldset.radioButtons div label {
+	float:right  
+	width: 80%;
+	/* float: left; */
+	padding: .2em;
+	font-weight: normal;
+	display:block;
+	height:1% ;
+}
+
+fieldset.radioButtons div.otherOption{
+	margin-left: 2em ;
+}
+
+
+/* -------------------------- */
+/* Add question step 1  */
+/* -------------------------- */
+table.multipleSelect{
+	 width: 100% ;
+}
+
+table.multipleSelect th{
+	 color: #fff ;
+	 background-color:#003399 ;
+}
+
+table.multipleSelect td{
+	padding: .5em 0 0 .5em ;
+	border-bottom: 1px solid #ccc ;
+}
+
+
+/*--------------------------------------------*/
+/* Home page */
+/*--------------------------------------------*/
+
+/* sign up box on home page */
+#signupnow {
+	margin: 0 12px 24px 12px;
+	background: #fffeeb;
+	border-top: 1px solid #e5e4d3;
+	border-bottom: 1px solid #e5e4d3;
+	min-height: 86px;
+	padding-top: 24px;
+	height:1px ;
+}
+#signupnow h2 {
+	font-size: 2.4em;
+	color: #444;
+	text-align: center;
+	border-bottom:none ;
+}
+#signupnow h4 {
+	border-bottom:none ;
+	text-align: center;
+	color: #444;
+	padding-top: .2em ;
+}
+#signupnow-text {
+	width: 61%;
+	float: left;
+}
+#signupnow-button {
+	width: 226px;
+	height: 63px;
+	background: url(/images/signupbackground.gif) center center no-repeat;
+	float: left;
+	font-size: 2.4em;
+	text-align: center;
+}
+#signupnow-button a {
+	color: #fff;
+	width: 226px;
+	line-height: 60px;
+	text-shadow: #888 2px 2px 0px;
+	font-weight: bold;
+	letter-spacing: -1px;
+	text-decoration: none;
+}
+#signupnow-button a:hover {
+	text-decoration: underline;
+}
+#signupnow h2 {
+	margin-top: .2em;
+}
+#signupnow h4 {
+	margin-top: .5em;
+	font: 1.4em/1em Georgia,"Bitstream Vera Serif","Times New Roman",serif;
+	font-weight: bold;
+	font-style: italic;
+	text-align: center;
+}
+
+
+/* sign in box on home page */
+div.loginBox{
+  float:left ;
+  /* border: 1px solid #84B7FF ; */
+  padding: 5px ;
+  margin: 10px ;  
+  width: 200px ;
+}
+
+div.loginBox div.field label {
+	width: 100%;
+	padding: .2em;
+	font-weight: normal;
+	display:block;
+	height:1% ;
+}
+
+div.loginBox div.rememberPasswordLink, div.loginBox div.signInButton  {
+   	padding: 5px 0 5px 0;
+}
+
+div.loginBox div.recoverPasswordLink {
+	padding: 5px 0 5px 0;
+	width:100% ;
+}
+
+div.loginBox div.recoverPasswordLink a {
+  color: #000000 ;
+  text-decoration:normal ;
+  font-weight: normal ;
+}
+
+div.loginBox div.recoverPasswordLink a:hover {
+  color: #000000 ;
+  text-decoration:underline ;
+}
+
+
+/*--------------------------------------------*/
+/* Header  */
+/*--------------------------------------------*/
+/*link colours in header */
+div#hd a{
+	color:#003399 ;
+	font-size:77% ;
+}
+
+div#hd a:visited{
+	color:#000 ;
+}
+
+div#hd div#logo{
+  float:left;
+}
+
+div#hd div#message{
+  font-size:100% ;
+  padding:  4.5em 0 0 .6em ;
+  float:left;
+
+}
+
+div#hd div.headerBottomBar{
+  height: 10px ;
+  background-color:#003399 ;
+}
+
+div#navLinks{
+	text-align:right ;
+	padding: .6em .4em .4em .4em;
+}
+
+div#changeLang{
+	text-align:right ;
+	vertical-align:bottom ;
+	padding: 1em .4em .4em .4em;
+}
+
+/*--------------------------------------------*/
+/* Footer */
+/*--------------------------------------------*/
+div#ft{
+  padding: 5px 0 5px 0 ;
+  border-top: 10px solid #003399 ;
+}
+
+div#bottomNav{
+    float:right;
+	text-align:right; 
+}
+
+div#copyRightNotice{
+    float:left;
+    text-align:left; 
+}
+
+/*--------------------------------------------*/
+/* left side nav bar */
+/*--------------------------------------------*/
+div#nav { 
+	border-left: 1px solid #3041A0 ;
+	border-right: 1px solid #3041A0 ;
+	width: 100% ;
+}
+
+div#nav ul { 
+	margin:0; 
+	padding: 0px ; 
+	padding-top:5px; 
+	list-style-type:none; }
+	
+div#nav li{margin:0 5px ; 
+	   	 padding: .2em 0 .2em 10px ; 
+		 list-style-type:none;
+		 border-bottom: 1px solid #DADAD9 ;  
+}
+
+/*  clear bottom line in nav box */
+div#nav #login { border-bottom:none; } 
+div#nav #logout { border-bottom:none; } 
+
+div#nav li a{display:block ; text-decoration: none ; color: #582D82 ;} 	  
+div#nav li:hover{ background: #F1F5F8  /*url(images/li_bg.png) no-repeat 5px 50% */ ; } 
+                   
+div#nav{background: #fff}  
+div#nav a:hover{color: #000000}
+
+
+/* -------------------------- */
+/* Global CSS  */
+/* -------------------------- */
+
+/* Main body div */
+div#bd{
+	padding: .6em 0 .6em 0 ;
+}
+
+h2{
+	color:#fff ;
+	background-color:#003399 ;
+	padding: .4em 0 .4em .2em ;
+}
+
+.seperator{
+	border-bottom: 1px solid #003399 ;
+}
+
+
+.noBorder{
+	border:none ;
+}
+
+h3{
+	font-size:100% ;
+}
+
+/* Hide divs full of labels */
+div.labels{
+	position:absolute;
+	left:0px;
+	top:-500px;
+	width:1px;
+	height:1px;
+	overflow:hidden;
+}
+
+
+/* Form layout code */ 
+form div {
+	/* clear: left;  */
+	padding: .2em 0 0;
+	margin: 0.2em 0 0 ;
+	/* overflow:auto ; */
+}
+
+form div label2 {
+	clear: left ;
+	width: 100%;
+	/* float: left; */
+	padding: .2em;
+	font-weight: normal;
+	display:block;
+	height:1% ;
+}
+
+form div input2 {
+	margin: .2em;
+}
+
+form div select {
+	margin: .2em;
+}
+
+/* two column grid */
+div.grid_row{
+	padding: .2em 0 0;
+	margin: 0.2em 0px 0px;
+	overflow:auto ;
+}
+
+div.grid_row div.cell_1{
+	clear: left;
+	float: left;
+	width: 20%;
+	padding: .2em;
+	display:block;
+	height:1% ; 
+}
+
+div.grid_row div.cell_2{
+	padding: .2em;
+	display:block;
+	height:100% ; 
+}
+
+
+/* Main button bar used throughout the site  */
+#buttonBar{
+	padding:.6em;
+	margin: 1.5em .5em .6em .6em;
+}
+/* Main icon class used throughout the admin site  */
+.icon{
+	margin:.3em .3em ;
+}
+
+/* Buttons  */
+.button, .addButton {
+    width:auto;
+    overflow:visible;
+	padding: .3em .6em ;
+	color: #000000;
+	font-weight: bold;
+}
+
+
+.cancelButton {
+	border:none ;
+	background-color: #fff ;
+	background-
+	color:#003399 ;
+	font-weight: bold; 
+	text-decoration: underline ;
+}
+
+/* Main button bar used throughout the site  */
+.buttonBar{
+	margin-left:10px ;
+	margin-right:40px ;
+	margin-bottom:10px ;
+}
+
+/* tab button bar used to simulate tabs  */
+div.tabButtonBar{
+	margin:0;
+	padding:0 ;
+	border-bottom: 5px solid #336699 ;
+}
+
+div.tabArea{
+	margin: 0px ;
+	padding: 1em  ;
+	border: 1px solid #336699 ;
+}
+
+div.tabButtonBar input.button{
+	border:none ;
+	margin-bottom: 0px ;
+}
+
+.tabButton {
+    width:auto;
+    overflow:visible;
+	padding: .3em .6em ;
+	color: #363636 ;
+	font-weight:normal ;
+}
+
+.activeTabButton  {
+    width:auto;
+    overflow:visible;
+	padding: .3em .6em ;
+	background: #336699 ;
+	color: #fff;
+	font-weight: bold;
+}
+
+
+/* button bar used at the bottom of some form pages  */
+.bottomButtonBar{
+	margin-top:15px ;
+	border-top: 1px solid #ccc ;
+	margin-left:10px ;
+	margin-right:40px ;
+	margin-bottom:10px ;
+}
+
+/* single buttons in a button bar */
+.bottomButtonBar div.singleButton{
+	margin-top: .8em ;
+	margin-bottom: .8em ;
+}
+
+.bottomButtonBarTabPages{
+	margin-top:15px ;
+	margin-left:10px ;
+	margin-right:40px ;
+	margin-bottom:10px ;
+}
+
+.buttonSpacing{
+	margin-right:15px ;
+}
+
+
+
+
+/* Resuls table styles */
+table.border  {
+	color: #000000;
+	background-color: #ffffff;
+	/* border-top-width: 1px ; */
+	padding-top:8px ;
+	padding-bottom:15px ;
+}
+
+th.tableHeader {
+	color: #ffffff;    
+	background-color:  #336699 ; /*#EAEAEA; boder coour 999999*/
+	border: 1px solid #336699 ;
+	padding-top: .2em ;
+	padding-bottom: .2em ;
+	padding-left: .2em ;
+	text-align:center ;
+}
+
+table th label {
+	color: #ffffff;
+	background-color: #336699; /*#EAEAEA; boder coour 999999*/
+	border: 1px solid #336699 ;
+	padding-top: .2em ;
+	padding-bottom: .2em ;
+	padding-left: .2em ;
+	text-align:center ;
+}
+
+th.tableHeader a:link {
+	color: #ffffff;
+	background-color: #336699; /*#EAEAEA; boder coour 999999*/
+	text-decoration:none ;
+}
+
+th.tableHeader a:visited {
+	color: #ffffff;
+	background-color: #336699; /*#EAEAEA; boder coour 999999*/
+	text-decoration:none ;
+}
+
+th.tableHeader a:hover{
+	color: #ffffff;
+	background-color: #336699 ; /*#EAEAEA; boder coour 999999*/
+	text-decoration:none ;
+}
+
+td.subHeader {
+	color: #000000;
+	background-color: #eeeeee;
+	border: 1px solid #cccccc;
+}
+
+td.tableFooter {
+	border-top: 1px solid #999999;
+}
+
+.centerText {
+	text-align: center;
+}
+	
+tr.odd {
+	background-color: #eeeeee;
+}
+
+/*  Error div */
+div.errorMessage{
+	vertical-align:middle ;
+	padding:0.8em;
+	border: 1px dashed #FF0000 ;
+	background-color:#FFD7D7 ;
+	color:#000000 ;
+	width:90% ;
+}
+
+/*  Success div */
+div.successMessage{
+	vertical-align:middle ;
+	padding:0.8em;
+	border: 1px dashed #84FF84 ;
+	background-color: #E8FFE8 ;
+	color:#000000 ;
+	width:85% ;
+}
+
+/*  Icon for error/success messages */
+div.errorMessage .messageIcon, div.successMessage .messageIcon {
+	padding-left: .2em ;
+	padding-right: .2em ;
+}
+
+/* ------------------------------------- */
+/* Base styles */
+/* ------------------------------------- */
+
+/*
+Copyright (c) 2008, Yahoo! Inc. All rights reserved.
+Code licensed under the BSD License:
+http://developer.yahoo.net/yui/license.txt
+version: 2.5.2
+*/
+/* base.css, part of YUI's CSS Foundation */
+h1 {
+	/*18px via YUI Fonts CSS foundation*/
+	font-size:138.5%;  
+}
+h2 {
+	/*16px via YUI Fonts CSS foundation*/
+	font-size:123.1%; 
+}
+h3 {
+	/*14px via YUI Fonts CSS foundation*/
+	font-size:108%;  
+}
+h1,h2,h3 {
+	/* top & bottom margin based on font size */
+	margin:1em 0;
+}
+h1,h2,h3,h4,h5,h6,strong {
+	/*bringing boldness back to headers and the strong element*/
+	font-weight:bold; 
+}
+abbr,acronym {
+	/*indicating to users that more info is available */
+	border-bottom:1px dotted #000;
+	cursor:help;
+} 
+em {
+	/*bringing italics back to the em element*/
+	font-style:italic;
+}
+blockquote,ul,ol,dl {
+	/*giving blockquotes and lists room to breath*/
+	margin:1em;
+}
+ol,ul,dl {
+	/*bringing lists on to the page with breathing room */
+	margin-left:2em;
+}
+ol li {
+	/*giving OL's LIs generated numbers*/
+	list-style: decimal outside;	
+}
+ul li {
+	/*giving UL's LIs generated disc markers*/
+	list-style: disc outside;
+}
+dl dd {
+	/*giving UL's LIs generated numbers*/
+	margin-left:1em;
+}
+
+/*
+th,td {
+	borders and padding to make the table readable
+	border:1px solid #000;
+	padding:.5em;
+}*/
+
+th {
+	/*distinguishing table headers from data cells*/
+	font-weight:bold;
+	text-align:center;
+}
+caption {
+	/*coordinated margin to match cell's padding*/
+	margin-bottom:.5em;
+	/*centered so it doesn't blend in to other content*/
+	text-align:center;
+}
+p,fieldset,table,pre {
+	/*so things don't run into each other*/
+	margin-bottom:1em;
+}
+
+/* setting a consistent width, 160px; 
+   control of type=file still not possible 
+input[type=text],input[type=password],textarea{width:12.25em;*width:11.9em;}*/
+
