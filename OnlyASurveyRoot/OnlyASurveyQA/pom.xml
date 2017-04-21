@@ -17,9 +17,9 @@
 	<groupId>com.oas</groupId>
 	<artifactId>OnlyASurveyQA</artifactId>
 	<packaging>jar</packaging>
-	<name>OnlyASurvey QA</name>
+	<name>OnlyASurvey.com QA</name>
 	<version>1.0-SNAPSHOT</version>
-	<url></url>
+	<url>http://www.onlyasurvey.com</url>
 
 
 	<dependencies>

@@ -8,8 +8,8 @@
 	<artifactId>OnlyASurveyEAR</artifactId>
 	<packaging>ear</packaging>
 	<version>1.0-SNAPSHOT</version>
-	<name>OnlyASurvey Enterprise Archive</name>
-	<url></url>
+	<name>OnlyASurvey.com Enterprise Archive</name>
+	<url>http://www.onlyasurvey.com</url>
 	<description></description>
 
 	<parent>

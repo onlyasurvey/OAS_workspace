@@ -9,9 +9,9 @@
 	<groupId>com.oas</groupId>
 	<artifactId>OnlyASurveyWeb</artifactId>
 	<packaging>war</packaging>
-	<name>Only A Survey Web Archive</name>
+	<name>OnlyASurvey.com Web Archive</name>
 	<version>1.0-SNAPSHOT</version>
-	<url></url>
+	<url>http://www.onlyasurvey.com</url>
 	<build>
 		<plugins>
 			<plugin>

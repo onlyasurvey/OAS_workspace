@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0                       http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<artifactId>OnlyASurveyRoot</artifactId>
+	<groupId>com.oas</groupId>
+	<packaging>pom</packaging>
+	<version>1.0-SNAPSHOT</version>
+
+	<name>OnlyASurvey.com Root Project</name>
+	<url>http://www.onlyasurvey.com</url>
+
+	<properties>
+		<ear>OnlyASurveyEAR</ear>
+		<war>OnlyASurveyWeb</war>
+		<qa>OnlyASurveyQA</qa>
+		<model>OASModel</model>
+	</properties>
+
+	<scm>
+		<connection>scm:svn:https://secure2.svnrepository.com/s_xhallida/onlyasurvey/OnlyASurvey</connection>
+		<developerConnection>scm:svn:https://secure2.svnrepository.com/s_xhallida/onlyasurvey/OnlyASurvey</developerConnection>
+		<tag>HEAD</tag>
+		<url>http://www.onlyasurvey.com</url>
+	</scm>
+	<organization>
+		<name>Only A Survey, Inc.</name>
+		<url>http://www.onlyasurvey.com</url>
+	</organization>
+	<modules>
+		<module>${ear}</module>
+		<module>${war}</module>
+		<module>${qa}</module>
+		<module>${model}</module>
+	</modules>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<configuration>
+					<downloadSources>true</downloadSources>
+					<wtpversion>2.0</wtpversion>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
