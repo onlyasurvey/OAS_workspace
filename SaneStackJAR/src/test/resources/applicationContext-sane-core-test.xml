@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+      http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+      http://www.springframework.org/schema/aop 
+      http://www.springframework.org/schema/aop/spring-aop-2.0.xsd">
+
+
+	<!-- Configure logging. -->
+	<bean id="log4jInitialization"
+		class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+		<property name="targetClass" value="org.springframework.util.Log4jConfigurer" />
+		<property name="targetMethod" value="initLogging" />
+		<property name="arguments">
+			<list>
+				<!--
+					wrapped in CDATA so the formatter doesn't add newlines at the end,
+					which aren't trimmed in the log4j configurer.
+				-->
+				<value><![CDATA[src/test/resources/log4j.xml]]></value>
+			</list>
+		</property>
+	</bean>
+
+	<!--
+		
+		Identify this application to the Sane Stack
+		
+	-->
+	<bean id="saneContext" class="ca.inforealm.core.SaneContextImpl"
+		lazy-init="false" parent="abstractSaneContext">
+		<property name="applicationIdentifier" value="SaneTestCase" />
+		<property name="deferApplicationModelLoading" value="true" />
+	</bean>
+
+
+	<!--
+		<alias name="resourceStringService" alias="messageSource" />
+	-->
+	<bean id="messageSource"
+		class="ca.inforealm.core.service.impl.ResourceStringServiceImpl"
+		>
+		<property name="dataAccessObject">
+			<bean class="ca.inforealm.core.service.dao.ResourceStringServiceDAOImpl">
+				<property name="hibernateTemplate" ref="hibernateTemplate" />
+			</bean>
+		</property>
+		<property name="fallbackSource">
+			<bean
+				class="org.springframework.context.support.ResourceBundleMessageSource">
+				<property name="useCodeAsDefaultMessage" value="true" />
+				<property name="basename">
+					<value>content</value>
+				</property>
+			</bean>
+		</property>
+
+	</bean>
+
+
+	<!-- 
+		
+		SERVICE LAYER IMPLEMENTATIONS		
+		
+	-->
+
+	<bean id="annotationRoleBasedServiceSecurityTestSampleService"
+		class="ca.inforealm.core.security.AnnotationRoleBasedServiceSecurityTestSampleService"
+		>
+
+	</bean>
+
+	<!--
+
+		example: <bean id="preferenceService"
+		class="ca.inforealm.core.service.impl.PreferenceServiceImpl">
+		...
+		</bean>
+		
+	-->
+
+
+	<!-- 
+		
+		Application-specific Hibernate session factory
+		
+	-->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean"
+		parent="abstractSessionFactory">
+		<property name="annotatedClasses">
+			<list>
+				<value>ca.inforealm.core.model.Application
+				</value>
+				<value>ca.inforealm.core.model.Actor
+				</value>
+				<value>ca.inforealm.core.model.ActorGroup
+				</value>
+				<value>ca.inforealm.core.model.RoleDefinition
+				</value>
+				<value>ca.inforealm.core.model.PreferenceDefinition
+				</value>
+				<value>ca.inforealm.core.model.PreferenceValue
+				</value>
+				<value>ca.inforealm.core.model.ResourceString
+				</value>
+				<value>ca.inforealm.core.model.ActorRole
+				</value>
+				<value>ca.inforealm.core.model.UserAccount
+				</value>
+				<value>ca.inforealm.core.model.ConfigurationItem
+				</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.default_schema">work</prop>
+<!--
+				<prop key="hibernate.default_schema.new">sane</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+-->
+			</props>
+		</property>
+	</bean>
+
+	<!--
+		
+		Application-specific datasource
+		
+	-->
+
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		parent="abstractDataSource">
+		<property name="driverClassName" value="org.postgresql.Driver">
+		</property>
+		<property name="url" value="jdbc:postgresql://localhost/work">
+		</property>
+		<property name="username" value="work"></property>
+		<property name="password" value="work"></property>
+		<property name="defaultCatalog" value="work" />
+	</bean>
+
+</beans>

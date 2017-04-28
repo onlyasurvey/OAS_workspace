@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+	
+	Inforealm CORE configuration.
+	
+	@author xhalliday
+	
+-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:sec="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+		http://www.springframework.org/schema/aop 
+		http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
+		http://www.springframework.org/schema/tx
+		http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-2.5.xsd
+		http://www.springframework.org/schema/security
+        http://www.springframework.org/schema/security/spring-security-2.0.xsd"
+	default-autowire="byName">
+
+	<bean
+		class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" />
+
+
+	<bean id="standardSecurityAdvice"
+		class="ca.inforealm.core.security.aop.StandardSecurityAdvice" />
+	<!-- <bean id="fooAdvice"
+		class="ca.inforealm.core.security.aop.FooAdvice" /> -->
+	<aop:config>
+		<aop:advisor advice-ref="standardSecurityAdvice"
+			pointcut="this(ca.inforealm.core.service.AbstractServiceInterface)" />
+	</aop:config>
+	<!-- 
+		<bean id="methodDefinitionSourceAdvisor"
+		class="org.springframework.security.intercept.method.aopalliance.MethodDefinitionSourceAdvisor">
+		<constructor-arg></constructor-arg>
+		<constructor-arg>
+		<bean id="securedMethodDefinitionSource"
+		class="org.springframework.security.annotation.SecuredMethodDefinitionSource" />
+		</constructor-arg>
+		</bean> -->
+
+
+
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	<sec:global-method-security secured-annotations="enabled" />
+
+
+	<!-- 
+		
+		<aop:config>
+		<aop:advisor order="20" advice-ref="standardSecurityAdvice"
+		pointcut="this(ca.inforealm.core.service.AbstractServiceInterface)" />
+		
+		</aop:config>
+		<sec:global-method-security secured-annotations="enabled" /> -->
+	<sec:authentication-manager alias="_authenticationManager" />
+
+	<alias name="_authenticationManager" alias="authenticationManager" />
+	<bean id="authenticationProvider"
+		class="org.springframework.security.providers.dao.DaoAuthenticationProvider">
+		<property name="userDetailsService" ref="userDetailsService" />
+		<property name="passwordEncoder">
+			<bean
+				class="org.springframework.security.providers.encoding.Md5PasswordEncoder" />
+		</property>
+		<sec:custom-authentication-provider />
+	</bean>
+
+
+	<context:component-scan base-package="ca.inforealm.core" />
+
+
+
+	<!--
+		
+		Identify this application to the Sane Stack
+		
+		Applications must override as "saneContext" and specify the applicationIdentifier property. 
+		
+	-->
+	<bean id="abstractSaneContext" class="ca.inforealm.core.SaneContextImpl"
+		abstract="true">
+		<property name="hibernateTemplate" ref="hibernateTemplate" />
+		<property name="deferApplicationModelLoading" value="false" />
+
+	</bean>
+
+
+	<bean id="accessDecisionManager"
+		class="org.springframework.security.vote.AffirmativeBased">
+		<property name="decisionVoters">
+			<list>
+				<ref bean="roleVoter" />
+			</list>
+		</property>
+	</bean>
+	<bean id="roleVoter"
+		class="org.springframework.security.vote.RoleVoter" />
+
+	<!--
+		
+		Parent data source definition.  Applications must override this ias "dataSource" and specify connection details.
+		
+	-->
+	<bean id="abstractdataSource" abstract="true"
+		class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName"
+			value="org.postgresql.Driver">
+		</property>
+	</bean>
+
+
+	<!-- 
+		
+		A default-configuration Hibernate session factory for applications to derive from.		
+		
+	-->
+
+	<bean id="abstractsessionFactory" abstract="true" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.show_sql">false</prop>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.PostgreSQLDialect
+				</prop>
+			</props>
+		</property>
+	</bean>
+
+
+	<!-- 
+		
+		Service layer implementation parent class.	
+		
+	-->
+
+	<bean id="abstractServiceImpl" abstract="true">
+		<property name="dataAccessObject" ref="dataAccessObject" />
+<!--		<property name="saneContext" ref="saneContext" />-->
+	</bean>
+
+
+	<!-- 
+		
+		Core service layer implementations.		
+		
+	-->
+
+	<bean id="userDetailsService" 
+		abstract="false"
+		class="ca.inforealm.core.security.UserDetailsServiceImpl">
+		<property name="dataAccessObject">
+			<bean
+				class="ca.inforealm.core.security.dao.UserDetailsDAOImpl">
+				<property name="hibernateTemplate"
+					ref="hibernateTemplate" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="preferenceService"
+		class="ca.inforealm.core.service.impl.PreferenceServiceImpl"
+		>
+	</bean>
+
+	<bean id="roleService"
+		class="ca.inforealm.core.service.impl.RoleServiceImpl"
+		>
+		<property name="dataAccessObject">
+			<bean
+				class="ca.inforealm.core.service.dao.RoleServiceDAOImpl">
+				<property name="hibernateTemplate"
+					ref="hibernateTemplate" />
+			</bean>
+		</property>
+	</bean>
+
+
+
+
+
+	<!--
+		
+		Connected Hibernate template for application use.
+		
+	-->
+	<bean id="hibernateTemplate"
+		class="org.springframework.orm.hibernate3.HibernateTemplate">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+
+	<!--
+		
+		Connected Hibernate transaction manager for application use.
+		
+	-->
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<!--
+		
+		General Data Access Object implementation.  Useful standalone or as a parent class.
+		
+	-->
+	<bean id="dataAccessObject"
+		class="ca.inforealm.core.persistence.impl.DataAccessObjectImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate" />
+	</bean>
+
+
+	<!--
+		
+		Configuration auto-mapping
+		
+
+	<bean id="configurationMappingEventHandler"
+		class="ca.inforealm.core.support.config.ConfigurationMappingEventHandler" />
+	<bean
+		class="ca.inforealm.core.support.config.ConfigurationMappingPostProcessor">
+		<property name="eventHandler"
+			ref="configurationMappingEventHandler" />
+	</bean>
+	-->
+</beans>

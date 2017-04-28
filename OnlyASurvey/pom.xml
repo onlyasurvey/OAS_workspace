@@ -18,6 +18,12 @@
 		<model>OASModel</model>
 	</properties>
 
+	<scm>
+		<connection>scm:svn:https://secure2.svnrepository.com/s_xhallida/onlyasurvey/OnlyASurvey</connection>
+		<developerConnection>scm:svn:https://secure2.svnrepository.com/s_xhallida/onlyasurvey/OnlyASurvey</developerConnection>
+		<tag>HEAD</tag>
+		<url>http://www.onlyasurvey.com</url>
+	</scm>
 	<organization>
 		<name>Only A Survey, Inc.</name>
 		<url>http://www.onlyasurvey.com</url>

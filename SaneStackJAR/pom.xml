@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<!--
+		<parent> <artifactId>SaneStackRoot</artifactId>
+		<groupId>ca.inforealm.core</groupId> <version>0.1</version> </parent>
+	-->
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>ca.inforealm.core</groupId>
+	<artifactId>SaneStackJAR</artifactId>
+	<packaging>jar</packaging>
+	<name>SaneStack Core Java Archive</name>
+	<version>0.1</version>
+	<url>http://www.inforealm.ca</url>
+
+	<properties>
+		<springVersion>2.5.6</springVersion>
+	</properties>
+
+	<build>
+		<resources>
+        <resource>
+            <filtering>true</filtering>
+            <directory>src/test/resources</directory>
+            <includes>
+                <include>**/*.properties</include>
+            </includes>
+            <excludes>
+                <exclude>**/*local.properties</exclude>
+            </excludes>
+        </resource>
+        <resource>
+            <directory>src/main/resources</directory>
+            <includes>
+                <include>**/*.properties</include>
+                <include>**/*.xml</include>
+            </includes>
+        </resource>
+    </resources>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<version>1.6</version>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<version>2.3</version>
+				<configuration>
+					<downloadSources>true</downloadSources>
+
+					<buildcommands>
+
+						<buildcommand>
+							org.eclipse.jdt.core.javabuilder
+						</buildcommand>
+						<buildcommand>
+							com.genuitec.eclipse.springframework.springbuilder
+						</buildcommand>
+					</buildcommands>
+					<projectnatures>
+						<projectnature>
+							org.eclipse.jdt.core.javanature
+						</projectnature>
+						<projectnature>
+							com.genuitec.eclipse.springframework.springnature
+						</projectnature>
+						<projectnature>
+							com.genuitec.eclipse.maven.maven2Nature
+						</projectnature>
+					</projectnatures>
+					<additionalConfig>
+
+						<file>
+							<name>.mymetadata</name>
+							<content>
+								&lt;?xml version="1.0"
+								encoding="UTF-8"?> &lt;project-module
+								type="Java" name="SaneStackCoreJAR"
+								j2ee-spec="6.0"
+								archive="SaneStackCore.jar">
+								&lt;/project-module>
+							</content>
+						</file>
+						<file>
+							<name>.springBeans</name>
+							<content><![CDATA[
+<?xml version="1.0" encoding="UTF-8"?>
+<beansProjectDescription>
+	<configExtensions>
+		<configExtension>xml</configExtension>
+	</configExtensions>
+	<configs>
+		<config>src/main/resources/applicationContext-sane.xml</config>
+	</configs>
+	<configSets>
+	</configSets>
+</beansProjectDescription>
+            	]]></content>
+						</file>
+					</additionalConfig>
+					<classpathContainers>
+						<classpathContainer>
+							org.eclipse.jdt.launching.JRE_CONTAINER
+						</classpathContainer>
+						<classpathContainer>
+							file:src/main/resources
+						</classpathContainer>
+					</classpathContainers>
+
+				</configuration>
+
+			</plugin>
+		</plugins>
+		
+	</build>
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.4</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.easymock</groupId>
+			<artifactId>easymock</artifactId>
+			<version>2.2</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring</artifactId>
+			<version>${springVersion}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aop</artifactId>
+			<version>${springVersion}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>${springVersion}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${springVersion}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${springVersion}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${springVersion}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-core</artifactId>
+			<version>2.0.4</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-core-tiger</artifactId>
+			<version>2.0.4</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate</artifactId>
+			<version>3.2.6.ga</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-annotations</artifactId>
+			<version>3.2.1.ga</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>3.2.1.ga</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-dbcp</groupId>
+			<artifactId>commons-dbcp</artifactId>
+			<version>1.2.1</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>8.2-504.jdbc4</version>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.9</version>
+		</dependency>
+		<dependency>
+			<groupId>quartz</groupId>
+			<artifactId>quartz</artifactId>
+			<version>1.5.2</version>
+		</dependency>
+		<!-- AOP -->
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjrt</artifactId>
+			<version>1.6.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>1.6.0</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>2.3</version>
+			<optional>false</optional>
+		</dependency>
+	</dependencies>
+</project>
