@@ -1,0 +1,27 @@
+<%--
+  - Description: Footer.
+  - Author(s):   Hugh Willson
+  --%>
+
+<%@ include file="../config/includes.jspf" %>
+
+<div class="footer">
+  <div class="footerline"></div>    
+  <div class="foot1">
+    <f:message key="jsp.footer.modified"/><f:message 
+        key="jsp.global.separator"/> 
+    <span class="date">
+      2008-06-17
+    </span>
+  </div>
+  <div class="foot2">
+    <a href="#tphp" title="<f:message key="jsp.footer.top.return"/>"><img 
+        class="uparrow" src="<c:url value="/images/clf/tphp.gif"/>" 
+        width="19" height="12" alt="" /><br/><f:message key="jsp.footer.top"/></a>
+  </div>
+  <div class="foot3">
+    <a href="<c:url value="/do/general/notices"/>">
+      <f:message key="jsp.footer.notice"/>
+    </a>
+  </div>
+</div>

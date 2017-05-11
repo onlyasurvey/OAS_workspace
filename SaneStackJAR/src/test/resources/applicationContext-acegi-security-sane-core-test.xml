@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+      http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+      http://www.springframework.org/schema/aop 
+      http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
+      http://www.springframework.org/schema/tx 
+      http://www.springframework.org/schema/tx/spring-tx-2.0.xsd">
+
+	<bean id="filterChainProxy"
+		class="org.springframework.security.util.FilterChainProxy">
+		<property name="filterInvocationDefinitionSource">
+			<value>
+				PATTERN_TYPE_APACHE_ANT
+				/**.css=#NONE#
+				/login.html=httpSessionContextIntegrationFilter,authenticationProcessingFilter,exceptionTranslationFilter
+				/do/**=httpSessionContextIntegrationFilter,authenticationProcessingFilter,exceptionTranslationFilter,filterSecurityInterceptor
+				/admin/**=httpSessionContextIntegrationFilter,authenticationProcessingFilter,exceptionTranslationFilter,filterSecurityInterceptor
+				/dwr/**=httpSessionContextIntegrationFilter,authenticationProcessingFilter,exceptionTranslationFilter,filterSecurityInterceptor
+			</value>
+		</property>
+	</bean>
+
+	<!-- Security enforcement filter. -->
+	<bean id="filterSecurityInterceptor"
+		class="org.springframework.security.intercept.web.FilterSecurityInterceptor">
+		<property name="authenticationManager"
+			ref="authenticationManager" />
+		<property name="accessDecisionManager"
+			ref="accessDecisionManager" />
+		<property name="objectDefinitionSource">
+			<value>
+				CONVERT_URL_TO_LOWERCASE_BEFORE_COMPARISON
+				PATTERN_TYPE_APACHE_ANT
+				/**=ROLE_USER
+			</value>
+		</property>
+	</bean>
+
+
+	<!-- Populates security context using information from the HttpSession. -->
+	<bean id="httpSessionContextIntegrationFilter"
+		class="org.springframework.security.context.HttpSessionContextIntegrationFilter" />
+
+	<!-- Login page. -->
+	<bean id="authenticationProcessingFilterEntryPoint"
+		class="org.springframework.security.ui.webapp.AuthenticationProcessingFilterEntryPoint">
+		<property name="loginFormUrl">
+			<value>/login.html</value>
+		</property>
+		<property name="forceHttps">
+			<value>false</value>
+		</property>
+	</bean>
+
+
+	<!-- Accepts the user's principal and credentials and attempts to authenticate the user. -->
+	<bean id="authenticationProcessingFilter"
+		class="org.springframework.security.ui.webapp.AuthenticationProcessingFilter">
+		<property name="exceptionMappings">
+			<value>
+				org.springframework.security.LockedException=/accountLocked.html
+				org.springframework.security.DisabledException=/accountDisabled.html
+			</value>
+		</property>
+		<property name="authenticationManager"
+			ref="authenticationManager" />
+		<property name="authenticationFailureUrl">
+			<value>/login.html?failed=true</value>
+		</property>
+		<property name="defaultTargetUrl" value="/action/home.html" />
+		<property name="filterProcessesUrl"
+			value="/action/j_acegi_security_check" />
+	</bean>
+
+
+	
+
+	<!-- Access Denied Handler. -->
+	<bean id="accessDeniedHandler"
+		class="org.springframework.security.ui.AccessDeniedHandlerImpl">
+		<property name="errorPage" value="/accessDenied.html" />
+	</bean>
+
+	<!-- Handles authentication exceptions. -->
+	<bean id="exceptionTranslationFilter"
+		class="org.springframework.security.ui.ExceptionTranslationFilter">
+		<property name="authenticationEntryPoint"
+			ref="authenticationProcessingFilterEntryPoint" />
+		<property name="accessDeniedHandler" ref="accessDeniedHandler" />
+	</bean>
+
+
+
+
+
+</beans>

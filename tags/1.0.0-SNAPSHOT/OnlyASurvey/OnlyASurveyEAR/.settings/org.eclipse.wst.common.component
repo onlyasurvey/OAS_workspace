@@ -1,0 +1,13 @@
+<project-modules id="moduleCoreId" project-version="2.0">
+  <wb-module deploy-name="OnlyASurveyEAR">
+    <wb-resource deploy-path="/" source-path="src/main/application"/>
+    <dependent-module archiveName="OnlyASurveyWeb.war" deploy-path="/" handle="module:/resource/OnlyASurveyWeb/OnlyASurveyWeb">
+      <dependent-object>WebModule_5581355</dependent-object>
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="ResponseWAR.war" deploy-path="/" handle="module:/resource/ResponseWAR/ResponseWAR">
+      <dependent-object>WebModule_21209219</dependent-object>
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+  </wb-module>
+</project-modules>

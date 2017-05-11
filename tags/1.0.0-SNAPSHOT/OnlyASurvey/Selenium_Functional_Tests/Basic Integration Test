@@ -1,0 +1,1002 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://127.0.0.1/" />
+<title>Basic Integration Test</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">Basic Integration Test</td></tr>
+</thead><tbody>
+<tr>
+	<td>store</td>
+	<td>javascript{new Date().getTime()}</td>
+	<td>timestamp</td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>/oas/html/lgn.html</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Sign Up</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>firstname</td>
+	<td>Test</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>lastname</td>
+	<td>User</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>telephone</td>
+	<td>613-555-1212</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>email0</td>
+	<td>test@signup.com${timestamp}</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>email1</td>
+	<td>test@signup.com${timestamp}</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>government</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>username</td>
+	<td>testsignupcom${timestamp}</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>password0</td>
+	<td>testtest</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>password1</td>
+	<td>testtest</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value='Sign Up ']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Please provide your organization's name.</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>organization</td>
+	<td>Organization</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>password0</td>
+	<td>testtest</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>password1</td>
+	<td>testtest</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value='Sign Up ']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Dashboard</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Create New Survey</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>lang-1001</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>_save</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//input[@title='Edit Title']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>mapeng</td>
+	<td>New Survey - English</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>mapfra</td>
+	<td>New Survey - French</td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>For Each Language</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>_save</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>New Survey - English</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='yui-main']/div/div[2]/form[3]/div/input[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>mapeng</td>
+	<td>Welcome to our survey. English</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>mapfra</td>
+	<td>Welcome to our survey. French</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//input[@value='Save']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Welcome to our survey. English</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='yui-main']/div/div[2]/form[4]/div/input[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>mapeng</td>
+	<td>Thank you for taking the time to respond. English</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>mapfra</td>
+	<td>Thank you for taking the time to respond. French</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//input[@value='Save']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Thank you for taking the time to respond. English</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Questions</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Click the Add New Question button to start adding questions to your survey.</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//input[@value='Add Question']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>2</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>meng</td>
+	<td>Test</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>_save</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Please enter a title in each language to continue.</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>mfra</td>
+	<td>Test</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>_save</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//img[@alt='Edit question 1']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>meng</td>
+	<td>Test Text English</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>mfra</td>
+	<td>Test Text French</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>required</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>_save</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Test Text English</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//input[@value='Add Question']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>3</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>meng</td>
+	<td>Open Ended</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>mfra</td>
+	<td>Open Ended</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>_save</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//img[@alt='Edit question 2']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>meng</td>
+	<td>Open Ended English</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>mfra</td>
+	<td>Open Ended French</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>_save</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Open Ended English</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//input[@value='Add Question']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>4</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>meng</td>
+	<td>Radio</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>mfra</td>
+	<td>Radio</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>choiceList0.mapeng</td>
+	<td>Option1</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>choiceList0.mapfra</td>
+	<td>Option1</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>choiceList1.mapeng</td>
+	<td>Option2</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>choiceList1.mapfra</td>
+	<td>Option2</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>choiceList2.mapeng</td>
+	<td>Option3</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>_save</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Please enter a title in each language to continue.</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>choiceList2.mapfra</td>
+	<td>Option3</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>_saveAndEditChoices</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>_a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>mapeng</td>
+	<td>Option 4</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>mapfra</td>
+	<td>Option 4</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>_save</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//img[@alt='Edit option 1']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>mapeng</td>
+	<td>Option1 English</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>mapfra</td>
+	<td>Option1 French</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>_save</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Option1 English</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Option 4</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>_am</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>choiceList0.mapeng</td>
+	<td>Option5</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>choiceList1.mapeng</td>
+	<td>Option6</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>choiceList1.mapfra</td>
+	<td>Option6</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>_am</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Please enter a title in each language to continue.</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>choiceList0.mapfra</td>
+	<td>Option5</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>_am</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Option5</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Option6</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//input[@value='Finished Editing Options']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//input[@value='Add Question']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>5</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>meng</td>
+	<td>Check</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>mfra</td>
+	<td>Check</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>choiceList0.mapeng</td>
+	<td>ABC</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>choiceList0.mapfra</td>
+	<td>DEF</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>_save</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Check</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>choiceIdList7</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>choiceIdList7</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>ABC</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//input[@value='Add Question']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>6</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>meng</td>
+	<td>Test</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>mfra</td>
+	<td>Test</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>choiceList0.mapeng</td>
+	<td>A</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>choiceList0.mapfra</td>
+	<td>A</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>choiceList1.mapeng</td>
+	<td>B</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>choiceList1.mapfra</td>
+	<td>B</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>choiceList2.mapeng</td>
+	<td>D</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>choiceList2.mapeng</td>
+	<td>C</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>choiceList2.mapfra</td>
+	<td>C</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>_save</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>choiceIdList103268</td>
+	<td>label=B</td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Test</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//input[@value='Add Question']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>7</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>meng</td>
+	<td>Rating</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>mfra</td>
+	<td>Rating</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>maximum</td>
+	<td>11</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>_save</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Rating</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>q103272v11</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>q103272v11</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>q103272v11</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>q103272v11</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>11</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//input[@value='Add Question']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>20</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>meng</td>
+	<td>Constant Sum</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>mfra</td>
+	<td>Constant Sum</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>choiceList0.mapeng</td>
+	<td>Better</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>choiceList0.mapfra</td>
+	<td>Faster</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>choiceList0.mapfra</td>
+	<td>Better</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>choiceList1.mapeng</td>
+	<td>Faster</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>choiceList1.mapfra</td>
+	<td>Faster</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>choiceList2.mapeng</td>
+	<td>Cheaper</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>choiceList2.mapfra</td>
+	<td>Cheaper</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>required</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>_save</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Constant Sum</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Cheaper</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//img[@alt='Copy question 7']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//img[@alt='Edit question 8']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>meng</td>
+	<td>Constant Sum 2</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>mfra</td>
+	<td>Constant Sum 2</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>required</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>_save</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Look &amp; Feel</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//input[@value='Magic Template Integration™ (BETA)']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>mapeng</td>
+	<td>http://www.tpsgc-pwgsc.gc.ca/apropos-about/prps-bt-eng.html</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>mapfra</td>
+	<td>http://www.tpsgc-pwgsc.gc.ca/apropos-about/prps-bt-fra.html</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>_save</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Preview Look and Feel</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>PWGSC Services</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//input[@value='Finished']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Preferences</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Survey Languages</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Respondents</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Response Count: 0</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=General</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//input[@value='Publish']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Survey Published!</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//input[@value='Return to the Survey']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=exact:http://127.0.0.1/oas/html/db/rpt/103254.html</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>New Survey - English - Reports</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Back to Dashboard</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//img[@alt='Edit New Survey - English']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=exact:http://127.0.0.1/oas/html/srvy/resp/103254.html</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//input[@value='Start Survey']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>answer</td>
+	<td>Test</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>fwd</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>fwd</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>fwd</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>bck</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>choiceIdListNone103259</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>fwd</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>choiceIdList1</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>fwd</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>choiceIdList103268</td>
+	<td>label=B</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>fwd</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>q103272v11</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>fwd</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>sumByChoiceId103274</td>
+	<td>55</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>fwd</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>sumByChoiceId103275</td>
+	<td>45</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>fwd</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>choiceIdList1</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>fwd</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Questions</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+</body>
+</html>

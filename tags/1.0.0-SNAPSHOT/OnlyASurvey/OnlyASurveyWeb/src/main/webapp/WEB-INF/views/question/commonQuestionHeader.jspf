@@ -1,0 +1,9 @@
+<%@ include file="/WEB-INF/views/includes.jspf"%>
+<title><c:out value="${response.survey.displayTitle}"/></title>
+<h1><c:out value="${response.survey.displayTitle}"/> (${percentComplete}%)</h1>
+<form action="<oas:url value="/html/res/q/${response.id}.html?qId=${question.id}" />" method="post">
+<div>
+<input type='hidden' name='qId' value='${question.id}'/>
+
+<%@ include file="/WEB-INF/views/formErrors.jsp"%>
+

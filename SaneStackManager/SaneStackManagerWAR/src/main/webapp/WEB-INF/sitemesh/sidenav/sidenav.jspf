@@ -1,0 +1,59 @@
+<%--
+  - Description: Side navigation.
+  - Author(s):   Hugh Willson, Andrew Pitt, Houda Hamdane
+  --%>
+
+<%@ include file="../config/includes.jspf" %>
+
+<%-- Set the username into a jstl accessible variable. --%>
+<c:set var="userNm"><authz:authentication operation="username"/></c:set>
+
+<h1 class="navaid">
+  <a name="il" id="il">
+    <f:message key="jsp.sidenav.instLinks"/>
+  </a>
+</h1>
+
+<ul class="nav">
+  <li>
+    <ul class="nav">          
+		<h2 class="nav"><f:message key="jsp.sidenav.menu"/></h2>
+          
+      	  <!-- NOT LOGGED IN -->
+          <c:if test="${empty userNm}">
+          <!--  Logged out navigation:  -->
+          <li class="menucontent">
+        	<a class="menulink" href="<c:url value="/app/login.html" />" 
+           		title="<f:message key="jsp.sidenav.login"/>">
+          			<f:message key="jsp.sidenav.login"/>
+        	</a>
+      	  </li>  
+        </c:if>        
+
+
+        <!-- LOGGED IN AS A RECOGNIZED ROLE-->
+        <authz:authorize ifAnyGranted="ROLE_USER, ROLE_APPLICATION_ADMIN, ROLE_SUPERUSER">
+          <li class="menucontent">
+        	<a class="menulink" href="<c:url value="/app/main.html" />" 
+           		title="<f:message key="jsp.sidenav.home"/>">
+          			<f:message key="jsp.sidenav.home"/>
+        	</a>
+      	  </li>
+          <c:if test="${!empty userNm}">
+          <!--  Logged out navigation:  -->
+          <li class="menucontent">
+        	<a class="menulink" href="<c:url value="/app/logout.html" />" 
+           		title="<f:message key="jsp.sidenav.logout"/>">
+          			<f:message key="jsp.sidenav.logout"/>
+        	</a>
+      	  </li>  
+        </c:if>        
+      </authz:authorize>
+      
+      <!-- LOGGED IN AS APP-ADMIN of the SANE STACK MANAGER (not incl. other apps) -->
+      <authz:authorize ifAnyGranted="ROLE_APPLICATION_ADMIN">
+        	<h2 class="nav">Admin</h2>
+      </authz:authorize>        
+    </ul>
+  </li>
+</ul>

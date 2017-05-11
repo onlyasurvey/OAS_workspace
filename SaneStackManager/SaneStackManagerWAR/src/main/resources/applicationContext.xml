@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+		http://www.springframework.org/schema/aop 
+		http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+		http://www.springframework.org/schema/tx 
+		http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+		http://www.directwebremoting.org/schema/spring-dwr
+		http://www.directwebremoting.org/schema/spring-dwr-2.0.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-2.5.xsd"
+	default-dependency-check="none" default-lazy-init="false">
+
+	<!-- Configure logging. 
+		<bean id="log4jInitialization"
+		class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+		<property name="targetClass"
+		value="org.springframework.util.Log4jConfigurer" />
+		<property name="targetMethod" value="initLogging" />
+		<property name="arguments">
+		<list>
+		!- 				<value>src/main/resources/log4j.xml</value> -
+		<value>classpath:/log4j.xml</value>
+		</list>
+		</property>
+		</bean>
+	-->
+
+	<!--
+		
+		Import standard context definition files.
+		
+	-->
+	<import resource="applicationContext-services.xml" />
+
+
+	<!--
+		
+		Identify this application to the Sane Stack
+		
+	-->
+	
+	<bean id="saneContext" class="ca.inforealm.core.SaneContext"
+		parent="abstractSaneContext">
+		<property name="applicationIdentifier" value="SADMAN" />
+		<property name="autoRegistration" value="true" />
+	</bean>
+	<!-- 
+		<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename">
+		<value>content</value>
+		</property>
+		</bean>
+	-->
+
+
+	<!-- 
+		
+		Application-specific Hibernate session factory
+		
+	-->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean"
+		parent="abstractSessionFactory">
+		<property name="annotatedClasses">
+			<list>
+				<value>ca.inforealm.core.model.Application</value>
+				<value>ca.inforealm.core.model.Actor</value>
+				<value>ca.inforealm.core.model.ActorGroup</value>
+				<value>ca.inforealm.core.model.RoleDefinition</value>
+				<value>ca.inforealm.core.model.PreferenceDefinition</value>
+				<value>ca.inforealm.core.model.PreferenceValue</value>
+				<value>ca.inforealm.core.model.ActorRole</value>
+				<value>ca.inforealm.core.model.UserAccount</value>
+				<value>ca.inforealm.core.model.ResourceString</value>
+				<value>ca.inforealm.core.model.ConfigurationItem</value>
+			</list>
+		</property>
+	</bean>
+
+	<!--
+		
+		Application-specific datasource
+		
+	-->
+
+	<bean id="dataSource"
+		class="org.apache.commons.dbcp.BasicDataSource"
+		parent="abstractDataSource">
+		<property name="driverClassName"
+			value="org.postgresql.Driver">
+		</property>
+		<property name="url" value="jdbc:postgresql://localhost/work">
+		</property>
+		<property name="username" value="work"></property>
+		<property name="password" value="work"></property>
+		<property name="defaultCatalog" value="work" />
+	</bean>
+
+</beans>

@@ -1,0 +1,38 @@
+<!-- OAS02 -->
+	<div id="ft">
+		<div id="bottomNav">
+		<a href="<oas:url value='/html/cms/abt.html'/>"><fmt:message key="aboutUs"/></a>
+		| <a href="http://www.itsonlyasurvey.com/"><fmt:message key="blog"/></a>
+		| <a href="<oas:url value='/html/con/frm.html'/>"><fmt:message key="contactUs"/></a>
+		| <a href="<oas:url value='/html/cms/priv.html'/>"><fmt:message key="privacyPolicy"/></a>
+		| <a href="<oas:url value='/html/cms/tac.html'/>"><fmt:message key="termsAndConditions"/></a>
+		</div>
+		<div id="copyRightNotice"><fmt:message key="copyrightLine"/></div>
+	</div>
+</div>
+
+<%-- ClickTale Bottom part --%>
+<div id="ClickTaleDiv" style="display: none;"></div>
+<script src="http://s.clicktale.net/WRb.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+if(typeof ClickTale=='function') {
+	var sessionId = ";jsessionid=<%=pageContext.getSession().getId()%>";
+	var url = ""+window.location;
+	var queryString = "";
+	if(url.indexOf("?") != -1) {
+		var arr = url.split("?");
+		url = arr[0];
+		queryString = "?"+ arr[1];
+	}
+
+	ClickTaleFetchFrom = url + sessionId + queryString;
+	
+	ClickTale(20904,1);
+}
+</script>
+<!-- ClickTale end of Bottom part -->
+
+</body> 
+
+<%@page import="org.springframework.util.StringUtils"%></html>

@@ -1,0 +1,8 @@
+<p>
+<input name='bck' type='submit' value='<fmt:message key="question.navigation.back" />'/>
+<input name='fwd' type='submit' value='<fmt:message key="question.navigation.forward" />'/>
+<%--<c:if test="${question.displayOrder != 1}">
+</c:if> --%>
+</p>
+</div>
+</form>

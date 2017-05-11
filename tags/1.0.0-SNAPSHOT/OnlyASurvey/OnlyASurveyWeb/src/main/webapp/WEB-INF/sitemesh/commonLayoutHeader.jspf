@@ -1,0 +1,100 @@
+<!DOCTYPE 
+    html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<%@ include file="/WEB-INF/views/includes.jspf"%>
+<%@ include file="config/includes.jspf"%>
+<c:set var="defaultTitle"><fmt:message key='jsp.default.decoratorTitle' /></c:set>
+	<head>
+		<title><decorator:title default="${defaultTitle}" /></title>
+		<link rel="stylesheet"
+			href="<oas:url value="/incl/css/reset-fonts-grids.css"/>"
+			type="text/css" />
+		<link rel="stylesheet" href="<oas:url value="/incl/css/styles.css"/>"
+			type="text/css" />
+		<link rel="stylesheet" href="<oas:url value="/incl/css/utility.css"/>"
+			type="text/css" />
+		
+		<decorator:head />
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-5613908-4");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+<%-- ClickTale Top part --%>
+<script type="text/javascript">
+var WRInitTime=(new Date()).getTime();
+</script>
+<!-- ClickTale end of Top part -->
+
+
+<%--
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-5613908-2");
+pageTracker._trackPageview();
+</script>
+--%>
+	</head>
+<body> 
+<div id="doc" class="yui-t7"> 
+	<div id="hd">       
+		<div class="yui-gc"> 
+			<div class="yui-u first"> 
+				<sec:authorize ifNotGranted="ROLE_USER">
+				<div id="logo"><a href="<oas:url value='/html/oas.html'/>"><img src="<oas:url value='/incl/images/oas_logo.gif'/>" alt="<fmt:message key='siteLogo.alt'/>" title="<fmt:message key='siteLogo.alt'/>" /></a></div>
+				</sec:authorize>
+				<sec:authorize ifAllGranted="ROLE_USER">
+				<div id="logo"><a href="<oas:url value='/html/db/db.html'/>"><img src="<oas:url value='/incl/images/oas_logo.gif'/>" alt="<fmt:message key='siteLogo.altLoggedIn'/>" title="<fmt:message key='siteLogo.altLoggedIn'/>" /></a></div>
+				</sec:authorize>
+				<div id="message"><fmt:message key="siteTagline"/></div>
+			</div>
+			<div class="yui-u">
+				<div id="navLinks">
+					<sec:authorize ifAllGranted="ROLE_USER">
+					<sec:authentication property="principal.username"></sec:authentication> |
+					</sec:authorize> 
+					<sec:authorize ifAllGranted="ROLE_USER"> 
+					<a href="<oas:url value='/html/db/db.html'/>"><fmt:message key="dashboard"/></a>
+					</sec:authorize>
+					
+					<sec:authorize ifNotGranted="ROLE_USER"> 
+					<a href="<oas:url value='/html/lgn.html'/>"><fmt:message key="signIn"/></a>
+					| <a href="<oas:url value='/html/sgnup.html'/>"><fmt:message key="signUp"/></a>  
+					</sec:authorize>
+					
+					<sec:authorize ifAllGranted="ROLE_USER"> 
+					| <a href="<oas:url value='/j_oas_lgt'/>"><fmt:message key="signOut"/></a>
+					<%--
+					<br/>
+					<a href="#"><fmt:message key="myAccount"/></a>
+					| <a href='<oas:url value="/html/db/prefs.html"/>'><fmt:message key='preferences'/></a>
+					--%>
+					</sec:authorize>
+					
+					<%-- Enterprise section --%>
+					<sec:authorize ifAllGranted="ROLE_ENTERPRISE_ADMIN"> 
+					<br/><a href="<oas:url value='/html/ent/db/db.html'/>"><spring:message code="enterpriseLink"/></a>
+					</sec:authorize>
+				</div>
+				<div id="changeLang">
+					<c:set var="queryParams"><%=request.getQueryString() %></c:set>
+					<c:set var="languageUrlRedirectSource">/html<%=request.getPathInfo() %><% if(request.getQueryString() != null) { %>?${queryParams}<% } %></c:set>
+					<c:set var="languageUrlRedirect"><string:encodeUrl>${languageUrlRedirectSource}</string:encodeUrl></c:set>
+					<a href='<c:url value="/html/eng.html?url=${languageUrlRedirect}"/>'><fmt:message key='english'/></a>
+					| <a href='<c:url value="/html/fra.html?url=${languageUrlRedirect}"/>'><fmt:message key='french'/></a>
+				</div>
+			</div>
+		</div>
+		<div class="headerBottomBar"> &nbsp; </div> 
+	</div>
+<!-- OAS01 -->

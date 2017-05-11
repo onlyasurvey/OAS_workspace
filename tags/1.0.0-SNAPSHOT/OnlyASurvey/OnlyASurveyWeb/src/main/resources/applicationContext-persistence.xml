@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+		http://www.springframework.org/schema/aop 
+		http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+		http://www.springframework.org/schema/tx 
+		http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+		http://www.directwebremoting.org/schema/spring-dwr
+		http://www.directwebremoting.org/schema/spring-dwr-2.0.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-2.5.xsd"
+	default-dependency-check="none" default-lazy-init="false">
+
+
+
+	<!-- 
+		
+		Application-specific Hibernate session factory
+		
+	-->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean"
+		parent="abstractSessionFactory">
+		<property name="annotatedClasses">
+			<list>
+				<value>ca.inforealm.core.model.Application</value>
+				<value>ca.inforealm.core.model.Actor</value>
+				<value>ca.inforealm.core.model.ActorGroup</value>
+				<value>ca.inforealm.core.model.RoleDefinition</value>
+				<value>ca.inforealm.core.model.PreferenceDefinition</value>
+				<value>ca.inforealm.core.model.PreferenceValue</value>
+				<value>ca.inforealm.core.model.ActorRole</value>
+				<value>ca.inforealm.core.model.UserAccount</value>
+				<value>ca.inforealm.core.model.ResourceString</value>
+				<value>ca.inforealm.core.model.ConfigurationItem</value>
+
+				<value>com.oas.model.BaseObject</value>
+				<value>com.oas.model.ContactUsMessage</value>
+				<value>com.oas.model.ObjectName</value>
+				<value>com.oas.model.ObjectResource</value>
+				<value>com.oas.model.AccountOwner</value>
+				<value>com.oas.model.Survey</value>
+				<value>com.oas.model.Response</value>
+				<value>com.oas.model.SupportedLanguage</value>
+				<value>com.oas.model.SurveyLanguage</value>
+				<value>com.oas.model.Invitation</value>
+
+				<value>com.oas.model.Choice</value>
+				<value>com.oas.model.Question</value>
+				<value>com.oas.model.question.TextQuestion</value>
+				<value>com.oas.model.question.BooleanQuestion</value>
+				<value>com.oas.model.question.ChoiceQuestion</value>
+				<value>com.oas.model.question.ScaleQuestion</value>
+				
+				<value>com.oas.model.question.rules.EntryRule</value>
+				<value>com.oas.model.question.rules.ExitRule</value>
+				
+				<value>com.oas.model.Answer</value>
+				<value>com.oas.model.answer.TextAnswer</value>
+				<value>com.oas.model.answer.BooleanAnswer</value>
+				<value>com.oas.model.answer.ChoiceAnswer</value>
+				<value>com.oas.model.answer.ScaleAnswer</value>
+
+				<value>com.oas.model.templating.SurveyLogo</value>
+				<value>com.oas.model.templating.Template</value>
+
+				<value>com.oas.model.report.SurveySummary</value>
+				<value>com.oas.model.report.ResponsesPerDay</value>
+				<value>com.oas.model.report.ResponsesPerMonth</value>
+				<value>com.oas.model.report.ResponsesPerLanguage</value>
+
+				<value>com.oas.model.report.calendar.breakdown.ChoiceDailyBreakdown</value>
+				<value>com.oas.model.report.calendar.breakdown.ScaleDailyBreakdown</value>
+				<value>com.oas.model.report.calendar.breakdown.TextDailyBreakdown</value>
+				<value>com.oas.model.report.calendar.value.TextDailyValue</value>
+
+				<value>com.oas.model.report.calendar.breakdown.ChoiceMonthlyBreakdown</value>
+				<value>com.oas.model.report.calendar.breakdown.ScaleMonthlyBreakdown</value>
+				<value>com.oas.model.report.calendar.breakdown.TextMonthlyBreakdown</value>
+				<value>com.oas.model.report.calendar.value.TextMonthlyValue</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<!--
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</prop> 
+				<prop key="hibernate.cache.use_second_level_cache">true</prop> 
+				<prop key="hibernate.cache.provider_configuration_file_resource_path"></prop> 
+				<prop key="hibernate.cache.provider_class">net.sf.ehcache.hibernate.EhCacheProvider</prop> 
+				<prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>
+				-->
+			</props>
+		</property>
+	</bean>
+
+</beans>

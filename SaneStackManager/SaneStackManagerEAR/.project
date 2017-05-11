@@ -1,0 +1,25 @@
+<projectDescription>
+  <name>SaneStackManagerEAR</name>
+  <comment/>
+  <projects>
+    <project>SaneStackManagerWAR</project>
+  </projects>
+  <buildSpec>
+    <buildCommand>
+      <name>com.genuitec.eclipse.j2eedt.core.J2EEProjectValidator</name>
+    </buildCommand>
+    <buildCommand>
+      <name>com.genuitec.eclipse.j2eedt.core.DeploymentDescriptorValidator</name>
+    </buildCommand>
+    <buildCommand>
+      <name>org.eclipse.wst.validation.validationbuilder</name>
+    </buildCommand>
+    <buildCommand>
+      <name>com.genuitec.eclipse.ast.deploy.core.DeploymentBuilder</name>
+    </buildCommand>
+  </buildSpec>
+  <natures>
+    <nature>com.genuitec.eclipse.ast.deploy.core.deploymentnature</nature>
+    <nature>com.genuitec.eclipse.j2eedt.core.earnature</nature>
+  </natures>
+</projectDescription>

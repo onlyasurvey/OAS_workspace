@@ -1,0 +1,20 @@
+<%--
+  - Description: Head meta data.
+  - Author(s):   Juergen Hoeller, Hugh Willson
+  --%>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<link rel="schema.dc" href="http://purl.org/dc/elements/1.1/" />
+<link rel="schema.dcterms" href="http://purl.org/dc/terms/" />
+
+<meta name="dc.description" content="<f:message key="jsp.head.meta.dc.description"/>"/>
+<meta name="description" content="<f:message key="jsp.head.meta.description"/>"/>
+<meta name="keywords" content="<f:message key="jsp.head.meta.keywords"/>"/>
+<meta name="dc.creator" content="<f:message key="jsp.head.meta.dc.creator"/>"/>
+<meta name="dc.title" content="<f:message key="jsp.head.meta.dc.title"/>"/>
+<meta name="dcterms.issued" scheme="W3CDTF" content="<f:message key="jsp.head.meta.dcterms.issued"/>"/>
+<meta name="dcterms.modifed" scheme="W3CDTF" content="<f:message key="jsp.head.meta.dcterms.modified"/>"/>
+<meta name="dc.subject" scheme="Insert the scheme name | Insérer le nom du schéma" content="<f:message key="jsp.head.meta.dc.subject"/>"/>
+<meta name="dc.language" scheme="ISO639-2/T" content="<f:message key="jsp.head.meta.dc.language"/>"/>
+

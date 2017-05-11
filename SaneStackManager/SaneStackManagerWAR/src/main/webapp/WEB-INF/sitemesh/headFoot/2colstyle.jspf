@@ -1,0 +1,7 @@
+<%--
+  - Description: Stylesheets.
+  - Author(s):   Juergen Hoeller, Hugh Willson, Andrew Pitt
+  --%>
+
+<%@ include file="style.jspf" %>
+<link href="<c:url value="/css/clf/2col.css"/>" media="screen, print" rel="stylesheet" type="text/css" />

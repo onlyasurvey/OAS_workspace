@@ -1,0 +1,92 @@
+<%@ include file="/WEB-INF/views/includes.jspf"%>
+<%@ include file="requiredIndicatorInclude.jsp" %>
+<%-- TODO: handle isRequired --%>
+<%-- TODO: handle maxOccurs --%>
+
+<%-- required since we're not using the full form: tagset --%>
+<fieldset class="multipleChoice">
+<input type="hidden" name="_choiceIdList" value="on" />
+	<c:choose>
+		<c:when test="${question.summingQuestion}">
+			<%@include file="constantSumQuestionDetails.jsp" %>
+		</c:when>
+		<c:when test='${question.style == "select"}'>
+		<%-- SELECT LIST --%>
+			<legend><label for='choiceIdList${question.id}'><c:out value="${question.displayTitle}" />${requiredIndicator}</label></legend>
+			<div>
+			<form:select id='choiceIdList${question.id}' path="command.choiceIdList" itemLabel="displayTitle" itemValue="id" multiple="false">
+			<c:forEach items="${question.choices}" var="choice"> 
+				<c:set var="choiceLabel"><c:out value="${choice.displayTitle}"/></c:set>
+				<form:option value="${choice.id}" label="${choiceLabel}"/>
+			</c:forEach>
+			<c:if test="${question.allowOtherText}">
+				<c:set var="otherLabel"><fmt:message key='question.other' /></c:set>
+				<form:option value="-1" label="${otherLabel}" />
+			</c:if>
+			</form:select>
+			</div>
+		</c:when>
+		<c:otherwise>
+		<%-- RADIO and CHECKBOX --%>
+			<legend><c:out value="${question.displayTitle}" />${requiredIndicator}</legend>
+			<c:forEach items="${question.choices}" var="item">
+				<c:set var="itemTitle"><c:out value="${item.displayTitle}" /></c:set>
+				<div>
+					<c:if test="${question.unlimited}">
+						<form:checkbox path="command.choiceIdList" label=" ${itemTitle}"
+							value="${item.id}" cssClass="radio" />
+					</c:if>
+					<c:if test="${!question.unlimited}">
+						<form:radiobutton path="command.choiceIdList" label=" ${itemTitle}"
+							value="${item.id}" cssClass="radio" />
+					</c:if>
+				</div>
+			</c:forEach>
+			
+			<c:if test="${question.unlimited}">
+				<c:if test="${question.allowOtherText}">
+					<div class="radio">
+						<c:set var="otherLabel">
+							<fmt:message key='question.other' />
+						</c:set>
+						<form:checkbox path="command.choiceIdList" label="${otherLabel}"
+							value="-1" cssClass="radio" id='choiceIdListOther' />
+		
+					</div>
+				</c:if>
+			</c:if>
+		
+			<c:if test="${!question.unlimited}">
+				<%-- Allows "None" option?  Show it as a radio button. --%>
+				<c:if test="${!question.required}">
+					<div class='radio'>
+						<c:set var="noneLabel">
+						<fmt:message key='question.noneOfTheAbove' /></c:set>
+						<form:radiobutton path="command.choiceIdList" label=" ${noneLabel}"
+							value="-2" cssClass="radio" id='choiceIdListNone${question.id}' />
+					</div>
+				</c:if>
+				<%-- Allows "Other" text option?  Show it as a radio button. --%>
+				<c:if test="${question.allowOtherText}">
+					<div class="radio">
+						<c:set var="otherLabel"> <fmt:message key='question.other' /></c:set>
+						<form:radiobutton path="command.choiceIdList" label=" ${otherLabel}"
+							value="-1" cssClass="radio" id='choiceIdListOther${question.id}' />
+					</div>
+				</c:if>
+			</c:if>
+			
+		</c:otherwise>
+	</c:choose>
+
+
+	<c:if test="${question.allowOtherText}">
+		<div class="otherOption">
+			<label for='choiceIdListOtherText${question.id}'>
+				<fmt:message key='question.ifOtherPleaseSpecify' />
+			</label>
+			<form:input id='choiceIdListOtherText${question.id}' path="command.otherText" size="35" />
+		</div>
+	</c:if>
+
+</fieldset>
