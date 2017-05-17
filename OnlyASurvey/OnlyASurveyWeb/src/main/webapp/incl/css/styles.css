@@ -10,6 +10,10 @@ table.manageSurveysTable{
 	width: 100% ;
 }
 
+table.enterpriseDashboardSummary {
+	width: 100% ;
+}
+
 table.manageSurveysTable th{
 	 color: #fff ;
 	 background-color:#003399 ;
@@ -603,6 +607,12 @@ div#nav a:hover{color: #000000 ;}
 /* -------------------------- */
 /* question styles  */
 /* -------------------------- */
+/* used for all questions which contain an image */
+div.questionWithImage{
+	padding: .5em 0 .5em 0; 
+	margin: .5em 0 .5em 0; 
+}
+
 fieldset.essayQuestion label{
 	width:100% ;
 }
@@ -1105,8 +1115,8 @@ fieldset.twoColumnLayout div {
 	padding: .2em 0 0;
 	margin: 0.2em 0 0 ;
 	overflow:auto ; 
-	height:1% ;
 }
+
 
 fieldset.twoColumnLayout div label {
 	clear: left ;
@@ -1192,6 +1202,31 @@ a.iconLink:visited{
 	color:#999999 ;
 }
 
+/* links made to look like buttons */
+a.linkButton{
+    width:auto;
+	padding: .3em .6em ;
+	color: #000 ;
+	text-decoration:none ;
+	font-weight:bold ;
+	border: 1px outset #ccc ;
+	background: #ccc;
+	font-weight:normal ;
+}
+
+a.linkButton:visted{
+    width:auto;
+	padding: .3em .6em ;
+	color: #363636 ;
+	background: #ccc;
+	font-weight:bold ;
+}
+
+a.linkButton:hover{
+	color: #000 ;
+	border: 1px inset #363636 ;
+
+}
 
 
 .cancelButton {
@@ -1340,7 +1375,14 @@ div.tabLinkBar a.activeTabButton:visted  {
 	margin-right:15px ;
 }
 
-
+.bottomButtonBarLined{
+	margin-top:15px ;
+	border-top: 1px solid #ccc  ;
+	margin-left:0px ;
+	margin-right:0px ;
+	margin-bottom:10px ;
+	padding: 15px 0 0 0;
+}
 
 
 /* Resuls table styles */
