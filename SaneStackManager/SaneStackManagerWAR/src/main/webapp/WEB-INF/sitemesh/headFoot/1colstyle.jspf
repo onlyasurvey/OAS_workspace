@@ -1,0 +1,6 @@
+<%--
+  - Description: Stylesheets.
+  - Author(s):   Juergen Hoeller, Hugh Willson, Andrew Pitt
+  --%>
+
+<%@ include file="/content/headFoot/style.jspf" %>

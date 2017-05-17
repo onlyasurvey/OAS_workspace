@@ -1,0 +1,13 @@
+<%--
+  - Description: Stylesheets.
+  - Author(s):   Juergen Hoeller, Hugh Willson, Andrew Pitt
+  --%>
+
+<%@ include file="../config/includes.jspf" %>
+
+<link href="<c:url value="/css/clf/base.css"/>" media="screen, print" rel="stylesheet" type="text/css" />
+<style type="text/css" media="all">@import url(<c:url value="/css/clf/base2.css"/>);</style>
+<link href="<c:url value="/css/clf/base-institution.css"/>" media="screen, print" rel="stylesheet" type="text/css" />
+<link href="<c:url value="/css/clf/institution.css"/>" media="screen, print" rel="stylesheet" type="text/css" />
+<link href="<c:url value="/css/clf/pf-if.css"/>" rel="stylesheet" type="text/css" />
+<link href="<c:url value="/css/calendar.css"/>" rel="stylesheet" type="text/css"/>

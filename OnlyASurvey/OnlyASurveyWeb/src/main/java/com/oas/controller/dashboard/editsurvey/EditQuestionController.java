@@ -23,7 +23,6 @@ import ca.inforealm.core.security.annotation.ValidUser;
 
 import com.oas.command.model.ChoiceCommand;
 import com.oas.command.model.CreateQuestionCommand;
-import com.oas.command.model.NameObjectCommand;
 import com.oas.controller.dashboard.AbstractQuestionManagementController;
 import com.oas.model.Choice;
 import com.oas.model.ObjectName;
@@ -33,7 +32,6 @@ import com.oas.model.Survey;
 import com.oas.model.question.ChoiceQuestion;
 import com.oas.model.question.PageQuestion;
 import com.oas.model.question.ScaleQuestion;
-import com.oas.model.question.ScaleQuestionLabel;
 import com.oas.model.question.TextQuestion;
 import com.oas.security.SecurityAssertions;
 import com.oas.util.Constants;
@@ -146,13 +144,8 @@ public class EditQuestionController extends AbstractQuestionManagementController
 		// initialize the command and add it to the model
 		CreateQuestionCommand command = initializeBasicCommand(model);
 
-		ServletRequestDataBinder binder = new ServletRequestDataBinder(command);
-		binder.setIgnoreInvalidFields(true);
-		binder.bind(request);
+		ServletRequestDataBinder binder = bindAndValidate(request, command);
 		BindException errors = new BindException(binder.getBindingResult());
-		// BindException errors = new BindException(bindAndValidate(request,
-		// command).getBindingResult());
-		getValidator().validate(command, errors);
 
 		//
 		model.put("errors", errors);
@@ -203,8 +196,6 @@ public class EditQuestionController extends AbstractQuestionManagementController
 		Question question = (Question) model.get("question");
 		Assert.notNull(question);
 
-		List<SupportedLanguage> supportedLanguages = survey.getSupportedLanguages();
-
 		// set names
 		for (ObjectName name : question.getObjectNames()) {
 			command.getMap().put(name.getLanguage().getIso3Lang(), name.getValue());
@@ -234,35 +225,6 @@ public class EditQuestionController extends AbstractQuestionManagementController
 			ScaleQuestion subject = (ScaleQuestion) question;
 			command.setMinimum(subject.getMinimum());
 			command.setMaximum(subject.getMaximum());
-			command.setLabelsOnly(subject.isLabelsOnly());
-			Map<ScaleQuestionLabel, String> allLabels = subject.getLabels();
-
-			long useMax = subject.getMaximum();
-			for (ScaleQuestionLabel label : allLabels.keySet()) {
-				if (label.getScaleValue() > useMax) {
-					useMax = label.getScaleValue();
-				}
-			}
-
-			// initialize label list
-			for (Long i = subject.getMinimum(); i <= useMax; i++) {
-				NameObjectCommand noc = new NameObjectCommand(supportedLanguages);
-				command.setLabel(i.intValue(), noc);
-			}
-
-			// overwrite blank values with any existing values
-			for (ScaleQuestionLabel label : allLabels.keySet()) {
-				NameObjectCommand noc = command.getLabelList().get(label.getScaleValue());
-				if (noc != null) {
-					noc.addName(label.getLanguage().getIso3Lang(), allLabels.get(label));
-					command.setLabel(label.getScaleValue(), noc);
-				} else {
-					// this can occur because the label list is initialized only
-					// to command.getMaximum(), but there may be further data
-					// that was created previously, i.e., labels exist past the
-					// index specified by maximum.
-				}
-			}
 		}
 
 		if (question.isPageQuestion()) {

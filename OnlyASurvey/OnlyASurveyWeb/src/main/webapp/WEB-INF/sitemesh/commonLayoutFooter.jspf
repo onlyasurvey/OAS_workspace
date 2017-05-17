@@ -1,5 +1,3 @@
-<%@ include file="/WEB-INF/views/includes.jspf"%>
-<%@page import="org.springframework.util.StringUtils"%>
 <!-- OAS02 -->
 	<div id="ft">
 		<div id="bottomNav">
@@ -36,9 +34,7 @@
 	</script>
 	<!-- ClickTale end of Bottom part -->
 	</c:if>
-	<c:set var="deployDate"><%=System.getenv("DEPLOY_DATE")%></c:set>
-	<c:if test='${deployDate ne "null"}'>
-	<!-- Deploy Date: ${deployDate} -->
-	</c:if>
+
 </body> 
-</html>
+
+<%@page import="org.springframework.util.StringUtils"%></html>

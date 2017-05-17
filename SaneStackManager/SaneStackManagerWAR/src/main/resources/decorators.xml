@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<decorators defaultdir="/WEB-INF/sitemesh">
+	<excludes>
+		<pattern>/*.css</pattern>
+	</excludes>
+	<decorator name="2col" page="twoColumnLayout.jsp">
+		<pattern>/*</pattern>
+	</decorator>
+	<decorator name="noDecoration" page="noDecoration.jsp" />
+	<decorator name="1col" page="oneColumnLayout.jsp" />
+	<decorator name="3col" page="threeColumnLayout.jsp" />
+</decorators>

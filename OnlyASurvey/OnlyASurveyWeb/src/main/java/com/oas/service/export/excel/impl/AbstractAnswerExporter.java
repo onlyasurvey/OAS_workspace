@@ -37,9 +37,9 @@ public abstract class AbstractAnswerExporter extends AbstractServiceImpl impleme
 	 *            {@link HSSFSheet}
 	 * @return {@link HSSFRow}
 	 */
-	// protected HSSFRow getResponseIdCell(HSSFSheet sheet) {
-	// return sheet.getRow(0);
-	// }
+	protected HSSFRow getResponseIdRow(HSSFSheet sheet) {
+		return sheet.getRow(0);
+	}
 
 	/**
 	 * Returns the {@link HSSFRow} that represents the line where start dates
@@ -49,9 +49,9 @@ public abstract class AbstractAnswerExporter extends AbstractServiceImpl impleme
 	 *            {@link HSSFSheet}
 	 * @return {@link HSSFRow}
 	 */
-	// protected HSSFRow getStartDateRow(HSSFSheet sheet) {
-	// return sheet.getRow(1);
-	// }
+	protected HSSFRow getStartDateRow(HSSFSheet sheet) {
+		return sheet.getRow(1);
+	}
 
 	/**
 	 * Returns the {@link HSSFRow} that represents the line where close dates
@@ -61,9 +61,9 @@ public abstract class AbstractAnswerExporter extends AbstractServiceImpl impleme
 	 *            {@link HSSFSheet}
 	 * @return {@link HSSFRow}
 	 */
-	// protected HSSFRow getEndDateRow(HSSFSheet sheet) {
-	// return sheet.getRow(2);
-	// }
+	protected HSSFRow getEndDateRow(HSSFSheet sheet) {
+		return sheet.getRow(2);
+	}
 
 	/**
 	 * Set date criterion, if applicable.
@@ -108,57 +108,46 @@ public abstract class AbstractAnswerExporter extends AbstractServiceImpl impleme
 	}
 
 	/**
-	 * Get the row index for a responseId, either returning an existing index or
-	 * creating a row and return it's new index.
+	 * Get the cell index for a responseId, either returning an existing index
+	 * or creating a cell and return it's new index.
 	 * 
-	 * @return Integer
+	 * @param idRow
+	 * @param responseToCellMap
+	 * @param responseId
+	 * @return
 	 */
-	protected Integer getOrCreateRowIndex(HSSFSheet sheet, Map<Long, Integer> responseToRowMap, AbstractRawRow data) {
-		return getOrCreateRowIndex(sheet, responseToRowMap, data, 1);
-	}
+	protected Integer getOrCreateCellIndex(HSSFRow idRow, HSSFRow startDateRow, HSSFRow endDateRow,
+			Map<Long, Integer> responseToCellMap, AbstractRawRow data) {
 
-	/**
-	 * Get the row index for a responseId, either returning an existing index or
-	 * creating a row and return it's new index.
-	 * 
-	 * @return Integer
-	 */
-	protected Integer getOrCreateRowIndex(HSSFSheet sheet, Map<Long, Integer> responseToRowMap, AbstractRawRow data, int numLines) {
-
-		Assert.notNull(responseToRowMap);
+		Assert.notNull(idRow);
+		Assert.notNull(responseToCellMap);
 		Long responseId = data.getId().getResponseId();
 		Assert.notNull(responseId);
 
 		// determine or add cell for the responseId
-		Integer rowIndex = responseToRowMap.get(responseId);
-		if (rowIndex == null) {
+		Integer cellIndex = responseToCellMap.get(responseId);
+		if (cellIndex == null) {
 
 			// add a new cell for this response
-			// int lastIndex = idCell.getLastCellNum();
-			int lastIndex = sheet.getLastRowNum();
+			int lastIndex = idRow.getLastCellNum();
 			int newIndex;
-			if (lastIndex == 0) {
-				// no rows, or zero is the last one - we always start at 1
+			if (lastIndex == -1) {
+				// skip the 0th cell
 				newIndex = 1;
-				if (sheet.getPhysicalNumberOfRows() == 0) {
-					log.error("Sheet has zero physical rows: unexpected, but silently ignoring");
-				}
 			} else {
-				newIndex = lastIndex + 1;
+				newIndex = lastIndex;
 			}
 
-			rowIndex = Integer.valueOf(newIndex);
-			responseToRowMap.put(responseId, rowIndex);
+			cellIndex = Integer.valueOf(newIndex);
+			responseToCellMap.put(responseId, cellIndex);
 
 			//
-			HSSFRow idRow = sheet.createRow(rowIndex);
-			idRow.setHeightInPoints((1 * sheet.getDefaultRowHeightInPoints()));
-			addResponseIdHeaderCell(idRow, responseId);
+			addResponseIdHeaderCell(idRow, responseId, cellIndex);
 			//
-			addDateCells(idRow, data);
+			addDateCells(startDateRow, endDateRow, cellIndex, data);
 		}
 
-		return rowIndex;
+		return cellIndex;
 	}
 
 	/**
@@ -168,12 +157,12 @@ public abstract class AbstractAnswerExporter extends AbstractServiceImpl impleme
 	 * @param responseId
 	 * @param cellIndex
 	 */
-	private void addResponseIdHeaderCell(HSSFRow row, Long responseId) {
+	private void addResponseIdHeaderCell(HSSFRow row, Long responseId, int cellIndex) {
 		//
 		HSSFRichTextString text = new HSSFRichTextString(responseId.toString());
 		text.applyFont(HSSFFont.BOLDWEIGHT_BOLD);
 
-		HSSFCell cell = row.createCell(0);
+		HSSFCell cell = row.createCell(cellIndex);
 		cell.setCellType(HSSFCell.CELL_TYPE_NUMERIC);
 		cell.setCellValue(text);
 	}
@@ -191,9 +180,9 @@ public abstract class AbstractAnswerExporter extends AbstractServiceImpl impleme
 	 * @param data
 	 *            {@link AbstractRawRow} data for the cell
 	 */
-	private void addDateCells(HSSFRow row, AbstractRawRow data) {
-		HSSFCell startCell = row.createCell(1);
-		HSSFCell endCell = row.createCell(2);
+	private void addDateCells(HSSFRow startDateRow, HSSFRow endDateRow, int cellIndex, AbstractRawRow data) {
+		HSSFCell startCell = startDateRow.createCell(cellIndex);
+		HSSFCell endCell = endDateRow.createCell(cellIndex);
 
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm", getCurrentLocale());
 

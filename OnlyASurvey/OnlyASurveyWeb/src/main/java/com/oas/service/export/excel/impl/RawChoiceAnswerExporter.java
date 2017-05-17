@@ -9,7 +9,6 @@ import org.apache.poi.hssf.usermodel.HSSFRichTextString;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ss.usermodel.CellStyle;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
@@ -44,26 +43,23 @@ public class RawChoiceAnswerExporter extends AbstractAnswerExporter {
 		SecurityAssertions.assertOwnership(survey);
 
 		HSSFSheet sheet = workbook.getSheetAt(0);
+		HSSFRow responseIdRow = getResponseIdRow(sheet);
+		HSSFRow startDateRow = getStartDateRow(sheet);
+		HSSFRow endDateRow = getEndDateRow(sheet);
 
 		//
 		List<RawChoiceRow> list = getRawAnswerRows(RawChoiceRow.class, survey, startDate, endDate);
-
-		// to enable newlines you need set a cell styles with wrap=true
-		CellStyle cs = sheet.getWorkbook().createCellStyle();
-		cs.setWrapText(true);
 
 		for (RawChoiceRow item : list) {
 			//
 			RawChoiceRowId id = item.getId();
 			Long questionId = id.getQuestionId();
 
-			// default 3 lines since multiple choice usually contains at least
-			// this
-			Integer rowIndex = getOrCreateRowIndex(sheet, responseToCellMap, item, 3);
-			Assert.notNull(rowIndex, "no row index for item");
+			Integer cellIndex = getOrCreateCellIndex(responseIdRow, startDateRow, endDateRow, responseToCellMap, item);
+			Assert.notNull(cellIndex);
 
-			Integer cellIndex = questionToRowMap.get(questionId);
-			Assert.notNull(cellIndex, "no cell index for question #" + questionId);
+			Integer rowIndex = questionToRowMap.get(questionId);
+			Assert.notNull(rowIndex, "no row index for question #" + questionId);
 
 			HSSFRow row = sheet.getRow(rowIndex);
 			Assert.notNull(row, "no row found at row index");
@@ -71,14 +67,9 @@ public class RawChoiceAnswerExporter extends AbstractAnswerExporter {
 			// get or create a new cell for this value
 			HSSFCell cell = getOrCreateValueCell(row, cellIndex, HSSFCell.CELL_TYPE_STRING);
 
-			// to enable newlines you need set a cell styles with wrap=true
-			cell.setCellStyle(cs);
-
 			//
-			HSSFRichTextString valueText = getValueCellText(item, cell);
-			cell.setCellValue(valueText);
+			cell.setCellValue(getValueCellText(item, cell));
 		}
-
 	}
 
 	/**

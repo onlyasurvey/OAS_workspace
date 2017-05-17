@@ -40,7 +40,9 @@ public class RawScaleAnswerExporter extends AbstractAnswerExporter {
 		SecurityAssertions.assertOwnership(survey);
 
 		HSSFSheet sheet = workbook.getSheetAt(0);
-		// HSSFRow responseIdRow = getResponseIdRow(sheet);
+		HSSFRow responseIdRow = getResponseIdRow(sheet);
+		HSSFRow startDateRow = getStartDateRow(sheet);
+		HSSFRow endDateRow = getEndDateRow(sheet);
 
 		List<RawScaleRow> list = getRawAnswerRows(RawScaleRow.class, survey, startDate, endDate);
 
@@ -49,11 +51,11 @@ public class RawScaleAnswerExporter extends AbstractAnswerExporter {
 			RawGenericRowId id = item.getId();
 			Long questionId = id.getQuestionId();
 
-			Integer rowIndex = getOrCreateRowIndex(sheet, responseToCellMap, item);
-			Assert.notNull(rowIndex, "no row index for item");
+			Integer cellIndex = getOrCreateCellIndex(responseIdRow, startDateRow, endDateRow, responseToCellMap, item);
+			Assert.notNull(cellIndex);
 
-			Integer cellIndex = questionToRowMap.get(questionId);
-			Assert.notNull(cellIndex, "no cell index for question #" + questionId);
+			Integer rowIndex = questionToRowMap.get(questionId);
+			Assert.notNull(rowIndex, "no row index for question #" + questionId);
 
 			HSSFRow row = sheet.getRow(rowIndex);
 			Assert.notNull(row, "no row found at row index");
@@ -62,7 +64,19 @@ public class RawScaleAnswerExporter extends AbstractAnswerExporter {
 			HSSFCell cell = getOrCreateValueCell(row, cellIndex, HSSFCell.CELL_TYPE_NUMERIC);
 
 			//
-			cell.setCellValue(new HSSFRichTextString(item.getAnswerValue().toString()));
+			cell.setCellValue(getValueCellText(item, cell));
 		}
 	}
+
+	/**
+	 * Get the {@link HSSFRichTextString} to put into the cell as content.
+	 * 
+	 * @param item
+	 * @param cell
+	 * @return {@link HSSFRichTextString}
+	 */
+	private HSSFRichTextString getValueCellText(RawScaleRow item, HSSFCell cell) {
+		return new HSSFRichTextString(item.getAnswerValue().toString());
+	}
+
 }

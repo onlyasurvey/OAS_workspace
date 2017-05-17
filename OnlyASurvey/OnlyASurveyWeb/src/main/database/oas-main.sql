@@ -114,7 +114,7 @@ CREATE TABLE oas.survey
 	published			BOOLEAN NOT NULL,
 	paid_for			BOOLEAN NOT NULL,
 	template_option		VARCHAR(16) NOT NULL,
-	optin_percentage	SMALLINT DEFAULT 25,
+	optin_percentage	SMALLINT DEFAULT 50,
 	global_password		VARCHAR(32)
 );
 
@@ -359,27 +359,11 @@ CREATE TABLE oas.scale_question
 (
 	id					BIGINT NOT NULL PRIMARY KEY REFERENCES oas.question(id) ON DELETE CASCADE,
 	minimum				INT NOT NULL,
-	maximum				INT NOT NULL,
-	labels_only			BOOLEAN NOT NULL DEFAULT FALSE,
+	maximum				INT NOT NULL
 --	default_value		INT
 );
 
 CREATE INDEX oas_idx_scale_question_min_max ON oas.scale_question( minimum, maximum );
-
-CREATE TABLE oas.scale_question_label
-(
-	scale_question_id	BIGINT NOT NULL REFERENCES oas.scale_question ON DELETE CASCADE,
-	language_id			BIGINT NOT NULL REFERENCES oas.supported_language ON DELETE CASCADE,
-	scale_value			INT NOT NULL,
-	label_value			VARCHAR(32768),
-	
-	PRIMARY KEY ( scale_question_id, language_id, scale_value )
-);
-CREATE INDEX oas_idx_scale_question_label_index ON oas.scale_question_label( scale_question_id );
-CREATE INDEX oas_idx_scale_question_label_index2 ON oas.scale_question_label( scale_question_id, language_id );
-
-
--- ==========================================================================
 
 CREATE TABLE oas.answer
 (

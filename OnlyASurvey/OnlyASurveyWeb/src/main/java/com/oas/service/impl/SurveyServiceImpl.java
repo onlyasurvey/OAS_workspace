@@ -14,7 +14,6 @@ import java.util.Map;
 import javax.imageio.ImageIO;
 
 import org.apache.commons.codec.binary.Base64;
-import org.apache.commons.lang.IncompleteArgumentException;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
@@ -58,7 +57,6 @@ import com.oas.model.question.BooleanQuestion;
 import com.oas.model.question.ChoiceQuestion;
 import com.oas.model.question.PageQuestion;
 import com.oas.model.question.ScaleQuestion;
-import com.oas.model.question.ScaleQuestionLabel;
 import com.oas.model.question.TextQuestion;
 import com.oas.model.templating.SurveyLogo;
 import com.oas.model.templating.Template;
@@ -956,12 +954,6 @@ public class SurveyServiceImpl extends AbstractServiceImpl implements SurveyServ
 
 			target.setMinimum(source.getMinimum());
 			target.setMaximum(source.getMaximum());
-			target.setLabelsOnly(source.isLabelsOnly());
-
-			// clone labels
-			for (ScaleQuestionLabel key : source.getLabels().keySet()) {
-				target.addLabel(new ScaleQuestionLabel(key.getLanguage(), key.getScaleValue()), source.getLabels().get(key));
-			}
 
 		} else if (question.isBooleanQuestion()) {
 
@@ -1046,18 +1038,12 @@ public class SurveyServiceImpl extends AbstractServiceImpl implements SurveyServ
 			// if this is a choice question, add the choices from the command
 			ChoiceQuestion choiceQuestion = (ChoiceQuestion) retval;
 			addChoicesFromCommandForNewQuestion(choiceQuestion, command);
+
 		}
 
 		return retval;
 	}
 
-	/**
-	 * Copy the choices from a {@link CreateQuestionCommand} into persistent
-	 * values in a {@link ChoiceQuestion}.
-	 * 
-	 * @param choiceQuestion
-	 * @param command
-	 */
 	private void addChoicesFromCommandForNewQuestion(ChoiceQuestion choiceQuestion, CreateQuestionCommand command) {
 		//
 		Map<String, SupportedLanguage> languageMap = supportedLanguageService.getSupportedLanguageMap();
@@ -1143,10 +1129,6 @@ public class SurveyServiceImpl extends AbstractServiceImpl implements SurveyServ
 			// enforce minimum=1 constant
 			subject.setMinimum(1L);
 			subject.setMaximum(command.getMaximum());
-			subject.setLabelsOnly(command.isLabelsOnly());
-
-			// process label values
-			updateScaleLabelsFromCommand(subject, command);
 		}
 
 		if (retval.isPageQuestion()) {
@@ -1195,6 +1177,12 @@ public class SurveyServiceImpl extends AbstractServiceImpl implements SurveyServ
 
 			String value = names.get(language);
 
+			// must be a survey language; front-end must never allow user to
+			// send an invalid value here, so this is invalid state
+			// DELETE ME: this can happen when a user disables a language
+			// Assert.state(surveyLanguages.contains(supportedLanguage),
+			// "not a survey language");
+
 			// set the name
 			retval.setObjectName(supportedLanguage, value);
 		}
@@ -1224,51 +1212,6 @@ public class SurveyServiceImpl extends AbstractServiceImpl implements SurveyServ
 
 		//
 		return retval;
-	}
-
-	/**
-	 * Adds/updates {@link ScaleQuestionLabel}s for a {@link ScaleQuestion} from
-	 * the form values in the {@link CreateQuestionCommand}.
-	 * 
-	 * @param subject
-	 * @param command
-	 */
-	private void updateScaleLabelsFromCommand(ScaleQuestion subject, CreateQuestionCommand command) {
-
-		Assert.notNull(subject);
-		Assert.notNull(command);
-
-		// clear the existing map
-		subject.getLabels().clear();
-
-		for (Integer scale : command.getLabelList().keySet()) {
-			// trim off labels that are no longer needed since the maximum was
-			// reduced
-			if (scale > command.getMaximum()) {
-				continue;
-			}
-
-			NameObjectCommand noc = command.getLabelList().get(scale);
-			for (String iso3 : noc.getMap().keySet()) {
-				SupportedLanguage supportedLanguage = supportedLanguageService.getSupportedLanguageMap().get(iso3);
-				if (supportedLanguage != null) {
-
-					//
-					String userText = noc.getMap().get(iso3);
-
-					//
-					if (StringUtils.hasText(userText)) {
-						ScaleQuestionLabel newLabelKey = new ScaleQuestionLabel(supportedLanguage, scale);
-						subject.addLabel(newLabelKey, userText);
-					}
-
-				} else {
-					String message = "user attempted to add scale label for unknown language: " + iso3;
-					log.error(message);
-					throw new IncompleteArgumentException(message);
-				}
-			}
-		}
 	}
 
 	private void moveQuestion(Survey survey, Question question, DIRECTION direction) {

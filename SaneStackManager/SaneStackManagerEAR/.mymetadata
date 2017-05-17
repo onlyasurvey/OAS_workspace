@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<enterprise-project
+    version="0.1"
+    name="SaneStackManagerEAR"
+    j2ee-spec="6.0"
+    archive="SaneStackManagerEAR.ear">
+  <project-modules>
+    <project-module
+      type="WEB"
+      name="SaneStackManagerWAR"
+      context-root="/SaneStack"
+      j2ee-spec="6.0"
+      archive="SaneStackManagerWAR.war">
+      <attributes>
+        <attribute name="webrootdir" value="src/main/webapp" />
+      </attributes>
+    </project-module>
+  </project-modules>
+</enterprise-project>

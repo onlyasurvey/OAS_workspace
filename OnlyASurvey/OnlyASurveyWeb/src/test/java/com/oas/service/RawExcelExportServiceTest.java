@@ -29,8 +29,6 @@ public class RawExcelExportServiceTest extends AbstractOASBaseTest {
 	private Date firstDate;
 	private Date lastDate;
 
-	private int numResponses;
-
 	@Before
 	public void setupData() {
 		// this month
@@ -53,8 +51,6 @@ public class RawExcelExportServiceTest extends AbstractOASBaseTest {
 		testData = scenarioDataUtil.createMonthlyReportTestSurvey(createAndSetSecureUserWithRoleUser(), //
 				cal1, cal2, cal3, cal4);
 		flushAndClear();
-
-		numResponses = ((Long) unique(find("select count(r) from Response r where r.survey = ?", testData))).intValue();
 
 		//
 		firstDate = cal1.getTime();
@@ -115,21 +111,24 @@ public class RawExcelExportServiceTest extends AbstractOASBaseTest {
 		// raw exports use 1 sheet
 		HSSFSheet sheet = workbook.getSheetAt(0);
 
-		int expectedRows = numResponses + 1; // to account for header orw
+		int numQuestions = survey.getQuestions().size();
+		int expectedRows = numQuestions + 3; // to account for headers - ID,
+		// start date, end date
 
 		assertEquals("unexpected # rows", expectedRows, sheet.getPhysicalNumberOfRows());
+		// Assert.
 
-		// questions should be enumerated in the first row
-		// first 3 cells are id, start, end
-		int cellNum = 3;
+		// questions should be enumerated in the first cell of all rows after
+		// the first 3 (header) rows
+		int rowNum = 3;
 		for (Question question : survey.getQuestions()) {
 
-			HSSFRow row = sheet.getRow(0);
+			HSSFRow row = sheet.getRow(rowNum);
 
-			HSSFCell cell = row.getCell(cellNum);
+			HSSFCell cell = row.getCell(0);
 			assertEquals("unexpected cell content", question.getDisplayTitle(), cell.getRichStringCellValue().getString());
 
-			cellNum++;
+			rowNum++;
 		}
 	}
 

@@ -1,6 +1,6 @@
-DROP SCHEMA work CASCADE;
-CREATE SCHEMA work;
-SET search_path = work;
+DROP SCHEMA IF EXISTS sane CASCADE;
+CREATE SCHEMA sane;
+SET search_path = sane;
 
 CREATE TABLE application
 (

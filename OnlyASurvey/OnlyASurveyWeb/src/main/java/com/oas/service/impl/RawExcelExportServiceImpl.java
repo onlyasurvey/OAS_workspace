@@ -58,7 +58,7 @@ public class RawExcelExportServiceImpl extends AbstractServiceImpl implements Ra
 
 		// maps Response IDs to their cell index; the first time a response is
 		// added to the workbook it's id is added to the end
-		Map<Long, Integer> responseToRowMap = new HashMap<Long, Integer>();
+		Map<Long, Integer> responseToCellMap = new HashMap<Long, Integer>();
 
 		// maps Question IDs to their row index
 		Map<Long, Integer> questionToRowMap = new HashMap<Long, Integer>();
@@ -72,7 +72,7 @@ public class RawExcelExportServiceImpl extends AbstractServiceImpl implements Ra
 		for (RawExcelExporter exporter : rawAnswerExporterList) {
 
 			// delegate
-			exporter.exportRawData(survey, startDate, endDate, retval, responseToRowMap, questionToRowMap);
+			exporter.exportRawData(survey, startDate, endDate, retval, responseToCellMap, questionToRowMap);
 		}
 
 		//
@@ -83,31 +83,28 @@ public class RawExcelExportServiceImpl extends AbstractServiceImpl implements Ra
 
 		Locale locale = getCurrentLocale();
 
-		HSSFSheet sheet = workbook.createSheet("1");
-
 		// excel works in 1/256th of a character width
-		sheet.setColumnWidth(0, 20 * 256);
-		sheet.setColumnWidth(1, 20 * 256);
-		sheet.setColumnWidth(2, 20 * 256);
+		int cell0width = 256 * 25;
+
+		HSSFSheet sheet = workbook.createSheet("1");
+		sheet.setColumnWidth(0, cell0width);
 
 		// response ID
-		HSSFRow row0 = sheet.createRow(0);
-		row0.createCell(0).setCellValue(
+		sheet.createRow(0).createCell(0).setCellValue(
 				new HSSFRichTextString(messageSource.getMessage("report.rawExcel.rowHeader.responseId", null, locale)));
 
 		// date created
-		row0.createCell(1).setCellValue(
+		sheet.createRow(1).createCell(0).setCellValue(
 				new HSSFRichTextString(messageSource.getMessage("report.rawExcel.rowHeader.created", null, locale)));
 
 		// date closed
-		row0.createCell(2).setCellValue(
+		sheet.createRow(2).createCell(0).setCellValue(
 				new HSSFRichTextString(messageSource.getMessage("report.rawExcel.rowHeader.completed", null, locale)));
-
 	}
 
 	/**
-	 * Add {@link Question}s from the Survey to the workbook, one per cell in
-	 * the first row.
+	 * Add {@link Question}s from the Survey to the workbook, one per row in the
+	 * first cell.
 	 * 
 	 * @param survey
 	 * @param workbook
@@ -118,38 +115,32 @@ public class RawExcelExportServiceImpl extends AbstractServiceImpl implements Ra
 		Assert.notNull(workbook);
 		Assert.notNull(questionToRowMap);
 
-		// start at 0th row, 4th cell, one for the response ID, two for
-		// start/close dates
-		int cellNum = 3;
+		// start at 4th row, one for the response ID, two for start/close dates
+		int rowNum = 3;
 		HSSFSheet sheet = workbook.getSheetAt(0);
-		HSSFRow row0 = sheet.getRow(0);
 		Assert.notNull(sheet, "no first sheet");
 
 		for (Question question : survey.getQuestions()) {
-			// HSSFRow row = sheet.getRow(cellNum);
-			// if (row == null) {
-			// // lazily create: this should typically be the case
-			// row = sheet.createRow(cellNum);
-			// }
+			HSSFRow row = sheet.getRow(rowNum);
+			if (row == null) {
+				// lazily create: this should typically be the case
+				row = sheet.createRow(rowNum);
+			}
 
 			String textContent = question.getDisplayTitle();
 			if (!StringUtils.hasText(textContent)) {
-				textContent = "#" + cellNum;
+				textContent = "#" + rowNum;
 			}
 			HSSFRichTextString text = new HSSFRichTextString(textContent);
 			text.applyFont(HSSFFont.BOLDWEIGHT_BOLD);
-			sheet.setColumnWidth(cellNum, 40 * 256);
-			HSSFCell cell = row0.getCell(cellNum);
-			if (cell == null) {
-				// lazily create: this should typically be the case
-				cell = row0.createCell(cellNum);
-			}
+
+			HSSFCell cell = row.createCell(0);
 			cell.setCellType(HSSFCell.CELL_TYPE_STRING);
 			cell.setCellValue(text);
 
-			questionToRowMap.put(question.getId(), cellNum);
+			questionToRowMap.put(question.getId(), rowNum);
 
-			cellNum++;
+			rowNum++;
 		}
 
 	}

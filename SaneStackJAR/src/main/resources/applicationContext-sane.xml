@@ -30,9 +30,9 @@
 
 
 	<bean id="standardSecurityAdvice"
-		class="ca.inforealm.core.security.aop.StandardSecurityAdvice" />
-	<!-- <bean id="fooAdvice"
-		class="ca.inforealm.core.security.aop.FooAdvice" /> -->
+		class="ca.inforealm.core.security.aop.StandardSecurityAdvice" ><!-- <bean id="fooAdvice"
+		class="ca.inforealm.core.security.aop.FooAdvice" /> --></bean>
+	
 	<aop:config>
 		<aop:advisor advice-ref="standardSecurityAdvice"
 			pointcut="this(ca.inforealm.core.service.AbstractServiceInterface)" />
@@ -92,6 +92,16 @@
 		<property name="deferApplicationModelLoading" value="false" />
 
 	</bean>
+	<!--
+		
+		Identify this application to the Sane Stack
+		
+	-->
+	<bean id="saneContext" class="ca.inforealm.core.SaneContextImpl"
+		lazy-init="false" parent="abstractSaneContext">
+		<property name="applicationIdentifier" value="OnlineSurvey" />
+		<property name="deferApplicationModelLoading" value="true" />
+	</bean>
 
 
 	<bean id="accessDecisionManager"
@@ -103,19 +113,31 @@
 		</property>
 	</bean>
 	<bean id="roleVoter"
-		class="org.springframework.security.vote.RoleVoter" />
+		class="org.springframework.security.vote.RoleVoter" ></bean>
 
 	<!--
 		
 		Parent data source definition.  Applications must override this ias "dataSource" and specify connection details.
 		
 	-->
-	<bean id="abstractdataSource" abstract="true"
+		<bean id="abstractDataSource" abstract="true"
 		class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName"
 			value="org.postgresql.Driver">
 		</property>
 	</bean>
+	
+	<!-- 
+		Defined data source for application as per above bean comment
+	 -->
+	<bean id="dataSource"
+	class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="org.postgresql.Driver" />
+		<property name="url" value="jdbc:postgresql://localhost:5432/SaneStack" />
+		<property name="username" value="sanestack"/>
+		<property name="password" value="bluesky" />
+		</bean>
+		
 
 
 	<!-- 
@@ -123,8 +145,8 @@
 		A default-configuration Hibernate session factory for applications to derive from.		
 		
 	-->
-
-	<bean id="abstractsessionFactory" abstract="true" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+	<bean id="abstractSessionFactory" abstract="true"
+		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="hibernateProperties">
 			<props>
@@ -217,7 +239,7 @@
 	-->
 	<bean id="dataAccessObject"
 		class="ca.inforealm.core.persistence.impl.DataAccessObjectImpl">
-		<property name="hibernateTemplate" ref="hibernateTemplate" />
+		<property name="hibernateTemplate" ref="hibernateTemplate" ></property>
 	</bean>
 
 

@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee 
+    http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+
+	<display-name>Sane Stack Manager</display-name>
+	<description></description>
+
+
+	<!--
+		- Key of the system property that should specify the root directory of this
+		- web app. Applied by WebAppRootListener or Log4jConfigListener.
+	-->
+	<context-param>
+		<param-name>webAppRootKey</param-name>
+		<param-value>saneStackManagerServlet.root</param-value>
+	</context-param>
+
+	<!--
+		- Location of the Log4J config file, for initialization and refresh checks.
+		- Applied by Log4jConfigListener.
+	-->
+
+	<context-param>
+		<param-name>log4jConfigLocation</param-name>
+		<param-value>/WEB-INF/classes/log4j.xml</param-value>
+	</context-param>
+
+
+
+	<filter>
+		<filter-name>OpenSessionInView</filter-name>
+		<filter-class>
+			org.springframework.orm.hibernate3.support.OpenSessionInViewFilter
+		</filter-class>
+		<init-param>
+			<param-name>singleSession</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>OpenSessionInView</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<filter>
+		<filter-name>Acegi Authentification</filter-name>
+		<filter-class>
+			org.springframework.security.util.FilterToBeanProxy
+		</filter-class>
+		<init-param>
+			<param-name>targetClass</param-name>
+			<param-value>
+				org.springframework.security.util.FilterChainProxy
+			</param-value>
+		</init-param>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>Acegi Authentification</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+
+	<filter>
+		<filter-name>sitemesh</filter-name>
+		<filter-class>
+			com.opensymphony.module.sitemesh.filter.PageFilter
+		</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>sitemesh</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+
+			classpath:/applicationContext.xml
+			classpath:/applicationContext-sane.xml
+			classpath:/applicationContext-services.xml
+			classpath:/applicationContext-security.xml
+			classpath:/saneStackManagerServlet-servlet.xml
+		</param-value>
+	</context-param>
+
+	<!-- 
+		<listener>
+		<listener-class>
+		org.springframework.web.context.request.RequestContextListener
+		</listener-class>
+		</listener>
+	-->
+	<!--
+		- Configures Log4J for this web app.
+		- As this context specifies a context-param "log4jConfigLocation", its file 
+		- path is used to load the Log4J configuration, including periodic refresh 
+		- checks.
+		-
+		- Would fall back to default Log4J initialization (non-refreshing) if no 
+		- special context-params are given.
+		-
+		- Exports a "web app root key", i.e. a system property that specifies the 
+		- root directory of this web app, for usage in log file paths.
+		- This web app specifies "petclinic.root" (see log4j.properties file).
+	-->
+	<!-- Leave the listener commented-out if using JBoss -->
+
+	<!-- 
+		<listener>
+		<listener-class>
+		org.springframework.web.util.Log4jConfigListener
+		</listener-class>
+		</listener>
+	-->
+
+	<!--
+		- Loads the root application context of this web app at startup,
+		- by default from "/WEB-INF/applicationContext.xml".
+		- Note that you need to fall back to Spring's ContextLoaderServlet for
+		- J2EE servers that do not follow the Servlet 2.4 initialization order.
+		-
+		- Use WebApplicationContextUtils.getWebApplicationContext(servletContext)
+		- to access it anywhere in the web application, outside of the framework.
+		-
+		- The root context is the parent of all servlet-specific contexts.
+		- This means that its beans are automatically available in these child 
+		- contexts, both for getBean(name) calls and (external) bean references.
+	-->
+	<listener>
+		<listener-class>
+			org.springframework.web.context.ContextLoaderListener
+		</listener-class>
+	</listener>
+
+	<!--
+		- Servlet that dispatches request to registered handlers (Controller 
+		- implementations). Has its own application context, by default defined in 
+		- "{servlet-name}-servlet.xml", i.e. "lrrs-servlet.xml".
+		-
+		- A web app can contain any number of such servlets.
+		- Note that this web app has a shared root application context, serving as 
+		- parent of all DispatcherServlet contexts.
+	-->
+	<servlet>
+		<servlet-name>saneStackManagerServlet</servlet-name>
+		<servlet-class>
+			org.springframework.web.servlet.DispatcherServlet
+		</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>
+				/WEB-INF/classes/saneStackManagerServlet-servlet.xml
+			</param-value>
+		</init-param>
+
+		<!-- 
+			<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>
+			/WEB-INF/classes/applicationContext.xml
+			/WEB-INF/classes/applicationContext-sane.xml
+			/WEB-INF/classes/applicationContext-services.xml
+			/WEB-INF/classes/applicationContext-acegi-security.xml
+			/WEB-INF/classes/saneStackManager-servlet.xml
+			</param-value>
+			</init-param>
+		-->
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+	<!-- 
+		<servlet>
+		<servlet-name>dwrServlet</servlet-name>
+		<servlet-class>
+		org.directwebremoting.spring.DwrSpringServlet
+		</servlet-class>
+		<init-param>
+		<param-name>debug</param-name>
+		<param-value>true</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+		</servlet>
+	-->
+
+	<servlet-mapping>
+		<servlet-name>saneStackManagerServlet</servlet-name>
+		<url-pattern>/app/*</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>saneStackManagerServlet</servlet-name>
+		<url-pattern>/app/dwr/*</url-pattern>
+	</servlet-mapping>
+
+
+
+	<session-config>
+		<session-timeout>60</session-timeout>
+	</session-config>
+
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+</web-app>
+

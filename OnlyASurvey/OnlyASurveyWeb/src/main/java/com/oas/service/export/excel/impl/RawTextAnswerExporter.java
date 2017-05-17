@@ -32,7 +32,7 @@ public class RawTextAnswerExporter extends AbstractAnswerExporter {
 	@Override
 	@ValidUser
 	public void exportRawData(Survey survey, Date startDate, Date endDate, HSSFWorkbook workbook,
-			Map<Long, Integer> responseToRowMap, Map<Long, Integer> questionToRowMap) {
+			Map<Long, Integer> responseToCellMap, Map<Long, Integer> questionToRowMap) {
 
 		//
 		Assert.notNull(survey, "null survey");
@@ -40,6 +40,9 @@ public class RawTextAnswerExporter extends AbstractAnswerExporter {
 		SecurityAssertions.assertOwnership(survey);
 
 		HSSFSheet sheet = workbook.getSheetAt(0);
+		HSSFRow responseIdRow = getResponseIdRow(sheet);
+		HSSFRow startDateRow = getStartDateRow(sheet);
+		HSSFRow endDateRow = getEndDateRow(sheet);
 
 		List<RawTextRow> list = getRawAnswerRows(RawTextRow.class, survey, startDate, endDate);
 
@@ -48,14 +51,14 @@ public class RawTextAnswerExporter extends AbstractAnswerExporter {
 			RawGenericRowId id = item.getId();
 			Long questionId = id.getQuestionId();
 
-			Integer rowIndex = getOrCreateRowIndex(sheet, responseToRowMap, item);
-			Assert.notNull(rowIndex, "no row index for item");
+			Integer cellIndex = getOrCreateCellIndex(responseIdRow, startDateRow, endDateRow, responseToCellMap, item);
+			Assert.notNull(cellIndex);
 
-			Integer cellIndex = questionToRowMap.get(questionId);
-			Assert.notNull(cellIndex, "no cell index for question #" + questionId);
+			Integer rowIndex = questionToRowMap.get(questionId);
+			Assert.notNull(rowIndex, "no row index for question #" + questionId);
 
-			// HSSFRow row = sheet.getRow(rowIndex + 1);
 			HSSFRow row = sheet.getRow(rowIndex);
+			Assert.notNull(row, "no row found at row index");
 
 			// create a new cell for this value
 			// get or create a new cell for this value
@@ -64,4 +67,5 @@ public class RawTextAnswerExporter extends AbstractAnswerExporter {
 			cell.setCellValue(new HSSFRichTextString(item.getAnswerValue()));
 		}
 	}
+
 }

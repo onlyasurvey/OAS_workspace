@@ -13,7 +13,7 @@
 		<c:when test='${question.style == "select"}'>
 		<%-- SELECT LIST --%>
 
-			<h3><label for='choiceIdList${question.id}'><c:out value="${question.displayTitle}" />${requiredIndicator}</label></h3>
+			<legend><label for='choiceIdList${question.id}'><c:out value="${question.displayTitle}" />${requiredIndicator}</label></legend>
 			<div>
 			<form:select id='choiceIdList${question.id}' path="command.choiceIdList" itemLabel="displayTitle" itemValue="id" multiple="false">
 			<c:forEach items="${choiceList}" var="choice"> 
@@ -34,7 +34,7 @@
 		<c:otherwise>
 		<%-- RADIO and CHECKBOX --%>
 
-			<h2><c:out value="${question.displayTitle}" />${requiredIndicator}</h2>
+			<legend><c:out value="${question.displayTitle}" />${requiredIndicator}</legend>
 			<c:forEach items="${choiceList}" var="item">
 				<c:set var="itemTitle"><c:out value="${item.displayTitle}" /></c:set>
 				<div>

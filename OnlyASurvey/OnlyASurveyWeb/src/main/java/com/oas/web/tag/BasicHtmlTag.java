@@ -3,6 +3,8 @@ package com.oas.web.tag;
 import java.io.IOException;
 import java.io.Reader;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.JspWriter;
@@ -69,17 +71,17 @@ public class BasicHtmlTag extends BodyTagSupport {
 	/** Non-space body needed? */
 	private boolean needBody;
 
-	// /** List of blessed tags - i.e., those that do not get escaped. */
-	// private List<String> blessedTags;
-	//
-	// /** List of blessed entities - i.e., those that do not get escaped. */
-	// private List<String> blessedEntities;
-	//
-	// /** How long is the longest blessed tag? Used for read-aheads. */
-	// private int longestBlessedTag = -1;
-	//
-	// /** How long is the longest blessed entity? Used for read-aheads. */
-	// private int longestBlessedEntity = -1;
+	/** List of blessed tags - i.e., those that do not get escaped. */
+	private List<String> blessedTags;
+
+	/** List of blessed entities - i.e., those that do not get escaped. */
+	private List<String> blessedEntities;
+
+	/** How long is the longest blessed tag? Used for read-aheads. */
+	private int longestBlessedTag = -1;
+
+	/** How long is the longest blessed entity? Used for read-aheads. */
+	private int longestBlessedEntity = -1;
 
 	// *********************************************************************
 	// 'Private' state (implementation details)
@@ -92,81 +94,81 @@ public class BasicHtmlTag extends BodyTagSupport {
 
 	/** Default constructor. */
 	public BasicHtmlTag() {
-		// initialiseBlessedTagList();
-		// initialiseBlessedEntityList();
+		initialiseBlessedTagList();
+		initialiseBlessedEntityList();
 	}
 
 	/**
 	 * Initialize the list of blessed tags.
 	 */
-	// private void initialiseBlessedTagList() {
-	//
-	// // http://redmine.itsonlyasurvey.com/issues/show/72
-	// blessedTags = new ArrayList<String>();
-	//
-	// addBlessedTagPair("div");
-	// addBlessedTagPair("p");
-	// addBlessedTagPair("strong");
-	// addBlessedTagPair("em");
-	// addBlessedTagPair("ul");
-	// addBlessedTagPair("ol");
-	// addBlessedTagPair("dl");
-	// addBlessedTagPair("dd");
-	// addBlessedTagPair("li");
-	// addBlessedTagPair("dt");
-	//
-	// // list.add("<a>");
-	// // list.add("</a>");
-	//
-	// addBlessedLiteralTag("<br/>");
-	// addBlessedLiteralTag("<br />");
-	//
-	// addBlessedLiteralTag("<span style=\"text-decoration: italic;\">");
-	// addBlessedLiteralTag("<span style=\"font-weight: normal;\">");
-	// addBlessedLiteralTag("<span style=\"font-weight: bold;\">");
-	// addBlessedLiteralTag("<span style=\"text-decoration: line-through;\">");
-	// addBlessedLiteralTag("<span style=\"text-decoration: underline;\">");
-	// addBlessedLiteralTag("<span style=\"text-decoration: none;\">");
-	// addBlessedLiteralTag("</span>");
-	//
-	// // set the longest tag length for tags
-	// for (String tag : blessedTags) {
-	// if (tag.length() > longestBlessedTag) {
-	// longestBlessedTag = tag.length();
-	// }
-	// }
-	// }
+	private void initialiseBlessedTagList() {
+
+		// http://redmine.itsonlyasurvey.com/issues/show/72
+		blessedTags = new ArrayList<String>();
+
+		addBlessedTagPair("div");
+		addBlessedTagPair("p");
+		addBlessedTagPair("strong");
+		addBlessedTagPair("em");
+		addBlessedTagPair("ul");
+		addBlessedTagPair("ol");
+		addBlessedTagPair("dl");
+		addBlessedTagPair("dd");
+		addBlessedTagPair("li");
+		addBlessedTagPair("dt");
+
+		// list.add("<a>");
+		// list.add("</a>");
+
+		addBlessedLiteralTag("<br/>");
+		addBlessedLiteralTag("<br />");
+
+		addBlessedLiteralTag("<span style=\"text-decoration: italic;\">");
+		addBlessedLiteralTag("<span style=\"font-weight: normal;\">");
+		addBlessedLiteralTag("<span style=\"font-weight: bold;\">");
+		addBlessedLiteralTag("<span style=\"text-decoration: line-through;\">");
+		addBlessedLiteralTag("<span style=\"text-decoration: underline;\">");
+		addBlessedLiteralTag("<span style=\"text-decoration: none;\">");
+		addBlessedLiteralTag("</span>");
+
+		// set the longest tag length for tags
+		for (String tag : blessedTags) {
+			if (tag.length() > longestBlessedTag) {
+				longestBlessedTag = tag.length();
+			}
+		}
+	}
 
 	/**
 	 * Initialize the list of blessed entities.
 	 */
-	// private void initialiseBlessedEntityList() {
-	//
-	// // http://redmine.itsonlyasurvey.com/issues/show/72
-	// blessedEntities = new ArrayList<String>();
-	//
-	// addBlessedEntity("&nbsp;");
-	//
-	// // set the longest tag length for entities
-	// for (String entity : blessedEntities) {
-	// if (entity.length() > longestBlessedEntity) {
-	// longestBlessedEntity = entity.length();
-	// }
-	// }
-	// }
-	//
-	// private void addBlessedLiteralTag(String tagName) {
-	// blessedTags.add(tagName);
-	// }
-	//
-	// private void addBlessedTagPair(String tagName) {
-	// blessedTags.add("<" + tagName + ">");
-	// blessedTags.add("</" + tagName + ">");
-	// }
-	//
-	// private void addBlessedEntity(String entity) {
-	// blessedEntities.add(entity);
-	// }
+	private void initialiseBlessedEntityList() {
+
+		// http://redmine.itsonlyasurvey.com/issues/show/72
+		blessedEntities = new ArrayList<String>();
+
+		addBlessedEntity("&nbsp;");
+
+		// set the longest tag length for entities
+		for (String entity : blessedEntities) {
+			if (entity.length() > longestBlessedEntity) {
+				longestBlessedEntity = entity.length();
+			}
+		}
+	}
+
+	private void addBlessedLiteralTag(String tagName) {
+		blessedTags.add(tagName);
+	}
+
+	private void addBlessedTagPair(String tagName) {
+		blessedTags.add("<" + tagName + ">");
+		blessedTags.add("</" + tagName + ">");
+	}
+
+	private void addBlessedEntity(String entity) {
+		blessedEntities.add(entity);
+	}
 
 	// evaluates expression and chains to parent
 	@Override

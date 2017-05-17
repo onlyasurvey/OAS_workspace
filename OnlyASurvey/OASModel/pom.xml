@@ -41,6 +41,11 @@
 			<artifactId>spring-core</artifactId>
 			<version>2.5.6</version>
 		</dependency>
+		<dependency>
+			<groupId>ca.inforealm.core</groupId>
+			<artifactId>SaneStackJAR</artifactId>
+			<version>0.1</version>
+		</dependency>
 
 		<!-- For reporting. -->
 		<dependency>
@@ -49,21 +54,6 @@
 			<version>3.2-FINAL</version>
 		</dependency>
 
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-annotations</artifactId>
-			<version>3.2.1.ga</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-context</artifactId>
-			<version>2.5.6</version>
-		</dependency>
-		<dependency>
-			<groupId>ca.inforealm.core</groupId>
-			<artifactId>SaneStackJAR</artifactId>
-			<version>0.1</version>
-		</dependency>
 	</dependencies>
 
 </project>

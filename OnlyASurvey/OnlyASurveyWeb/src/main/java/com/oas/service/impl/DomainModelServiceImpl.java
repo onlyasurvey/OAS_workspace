@@ -324,7 +324,7 @@ public class DomainModelServiceImpl extends AbstractServiceImpl implements Domai
 		for (String languageCode : command.getMap().keySet()) {
 
 			// the language code
-			Assert.hasText(languageCode);
+			Assert.notNull(languageCode);
 			SupportedLanguage language = supportedLanguageService.findByCode(languageCode);
 
 			// new value
@@ -332,7 +332,7 @@ public class DomainModelServiceImpl extends AbstractServiceImpl implements Domai
 
 			ObjectResource target = null;
 			for (ObjectResource resource : subject.getObjectResources()) {
-				if (key.equals(resource.getKey()) && language.getId().equals(resource.getSupportedLanguage().getId())) {
+				if (key.equals(resource.getKey()) && resource.getSupportedLanguage().getId().equals(language.getId())) {
 					target = resource;
 					break;
 				}

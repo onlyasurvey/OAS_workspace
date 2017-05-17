@@ -1,0 +1,16 @@
+<%--
+  - Description: Breadcrumb.
+  - Author(s):   Hugh Willson
+  --%>
+
+<%@ include file="../config/includes.jspf" %>
+
+<p class="breadcrumb">
+  <a href="#">Level&nbsp;0</a> 
+  &gt; 
+  <a href="#">Level&nbsp;1</a> 
+  &gt; 
+  <a href="#">Level&nbsp;2</a> 
+  &gt; 
+  <a href="#">Level&nbsp;3</a>
+</p>

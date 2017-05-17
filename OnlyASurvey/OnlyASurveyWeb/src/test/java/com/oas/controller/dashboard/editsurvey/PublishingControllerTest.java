@@ -38,27 +38,18 @@ public class PublishingControllerTest extends AbstractOASBaseTest {
 	private DomainModelService domainModelService;
 
 	@Test
-	public void showTab_Success() {
+	public void testShowTab_Success() {
 		Survey survey = scenarioDataUtil.createTypicalScenario1(createAndSetSecureUserWithRoleUser(), true);
 		MockHttpServletRequest request = new MockHttpServletRequest("GET", "/prefix/" + survey.getId() + ".html");
 
 		ModelAndView mav = controller.showTab(request);
-		assertModelHasAttribute(mav, "survey");
-		assertModelHasAttribute(mav, "publicUrl");
-		assertModelHasAttribute(mav, "optInScriptUrl");
-		assertModelHasAttribute(mav, "optInCSSUrl");
-		assertModelHasAttribute(mav, "pausedMessage");
-		assertModelHasAttribute(mav, "closedMessage");
-		assertModelHasAttribute(mav, "responseCount");
-		assertModelHasAttribute(mav, "totalRespondents");
-		assertModelHasAttribute(mav, "totalInvitesSent");
-		assertModelHasAttribute(mav, "totalResponses");
+
 		assertModelHasSurvey(mav, survey);
 		assertHasViewName(mav, "/dashboard/manage/publishTab/publishTab");
 	}
 
 	@Test
-	public void security_FailWrongUser() {
+	public void testSecurity_FailWrongUser() {
 		// current user
 		createAndSetSecureUserWithRoleUser();
 
@@ -90,7 +81,7 @@ public class PublishingControllerTest extends AbstractOASBaseTest {
 	}
 
 	@Test
-	public void paymentCheck_IsPaidFor() {
+	public void testPaymentCheck_IsPaidFor() {
 		// valid data
 		Survey survey = scenarioDataUtil.createTypicalScenario1(createAndSetSecureUserWithRoleUser(), true);
 
@@ -114,7 +105,7 @@ public class PublishingControllerTest extends AbstractOASBaseTest {
 	}
 
 	// TODO the controller current auto-pays as part of publishing
-	// @Test public void paymentCheck_NotPaidFor() {
+	// @Test public void testPaymentCheck_NotPaidFor() {
 	// // valid data
 	// Survey survey =
 	// scenarioDataUtil.createTypicalScenario1(createAndSetSecureUserWithRoleUser(),
@@ -144,7 +135,7 @@ public class PublishingControllerTest extends AbstractOASBaseTest {
 	// }
 
 	@Test
-	public void surveyTitleNotInAllLanguages() {
+	public void testSurveyTitleNotInAllLanguages() {
 		// valid test data
 		Survey survey = scenarioDataUtil.createTypicalScenario1(createAndSetSecureUserWithRoleUser());
 		survey.setPaidFor(true);
@@ -174,7 +165,7 @@ public class PublishingControllerTest extends AbstractOASBaseTest {
 	}
 
 	@Test
-	public void messagesMissing() {
+	public void testMessagesMissing() {
 
 		final String[] keys = new String[] { "welcomeMessage", "thanksMessage", "pausedMessage", "closedMessage" };
 
@@ -214,7 +205,7 @@ public class PublishingControllerTest extends AbstractOASBaseTest {
 	}
 
 	@Test
-	public void questionHasNoChoices() {
+	public void testQuestionHasNoChoices() {
 		// valid data
 		Survey survey = scenarioDataUtil.createTypicalScenario1(createAndSetSecureUserWithRoleUser(), false);
 		surveyService.setSurveyLanguages(survey, new IdListCommand(new Long[] {
@@ -246,7 +237,7 @@ public class PublishingControllerTest extends AbstractOASBaseTest {
 	}
 
 	@Test
-	public void choiceMissingLanguageText() {
+	public void testChoiceMissingLanguageText() {
 		// valid data
 		Survey survey = scenarioDataUtil.createTypicalScenario1(createAndSetSecureUserWithRoleUser(), false);
 		surveyService.setSurveyLanguages(survey, new IdListCommand(new Long[] {
@@ -289,7 +280,7 @@ public class PublishingControllerTest extends AbstractOASBaseTest {
 	 */
 
 	@Test
-	public void publish_BasicValidatorCheck() {
+	public void testPublish_BasicValidatorCheck() {
 		// valid data
 		Survey survey = new Survey(createAndSetSecureUserWithRoleUser());
 		surveyService.setSurveyLanguages(survey, new IdListCommand(new Long[] { supportedLanguageService.findByCode("fra")
@@ -326,7 +317,7 @@ public class PublishingControllerTest extends AbstractOASBaseTest {
 	}
 
 	@Test
-	public void doDraftSubmit_Success_NoResponseData() {
+	public void testDoDraftSubmit_Success_NoResponseData() {
 		// when createTypicalScenario1 is called with persist=false, no
 		// responses are created; otherwise some are
 		Survey survey = scenarioDataUtil.createTypicalScenario1(createAndSetSecureUserWithRoleUser(), false);
@@ -348,7 +339,7 @@ public class PublishingControllerTest extends AbstractOASBaseTest {
 	}
 
 	@Test
-	public void doDraftSubmit_Success_WithResponseData_AndConfirmationFlag() {
+	public void testDoDraftSubmit_Success_WithResponseData_AndConfirmationFlag() {
 		Survey survey = scenarioDataUtil.createTypicalScenario1(createAndSetSecureUserWithRoleUser(), false);
 		survey.setPublished(true);
 		// scenarioDataUtil.createResponseData(survey, 1000);
@@ -371,7 +362,7 @@ public class PublishingControllerTest extends AbstractOASBaseTest {
 	}
 
 	@Test
-	public void doDraftSubmit_Success_WithResponseData_AndCancelFlag() {
+	public void testDoDraftSubmit_Success_WithResponseData_AndCancelFlag() {
 		Survey survey = scenarioDataUtil.createTypicalScenario1(createAndSetSecureUserWithRoleUser(), false);
 		survey.setPublished(true);
 		persist(survey);
@@ -393,7 +384,7 @@ public class PublishingControllerTest extends AbstractOASBaseTest {
 	}
 
 	@Test
-	public void doDraftSubmit_Success_ShowConfirmationWhenResponseDataExists() {
+	public void testDoDraftSubmit_Success_ShowConfirmationWhenResponseDataExists() {
 		Survey survey = scenarioDataUtil.createTypicalScenario1(createAndSetSecureUserWithRoleUser(), false);
 		survey.setPublished(true);
 		persist(survey);
@@ -413,7 +404,7 @@ public class PublishingControllerTest extends AbstractOASBaseTest {
 	}
 
 	@Test
-	public void doSuccessView() {
+	public void testDoSuccessView() {
 		// valid data
 		Survey survey = scenarioDataUtil.createTypicalScenario1(createAndSetSecureUserWithRoleUser(), true);
 
@@ -424,7 +415,7 @@ public class PublishingControllerTest extends AbstractOASBaseTest {
 	}
 
 	@Test
-	public void determineSurveyUrl_Success() {
+	public void testDetermineSurveyUrl_Success() {
 		// persist to get an ID, since there is no way to set an ID in the model
 		Survey survey = scenarioDataUtil.createTypicalScenario1(createTestUser(), true);
 		MockHttpServletRequest request = new MockHttpServletRequest();

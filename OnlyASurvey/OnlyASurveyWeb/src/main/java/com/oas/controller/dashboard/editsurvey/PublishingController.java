@@ -75,7 +75,6 @@ public class PublishingController extends AbstractOASController {
 
 		// URL for the opt-in lightbox
 		model.put("optInScriptUrl", determineOptInScriptUrl(request, survey));
-		model.put("optInCSSUrl", determineOptInCSSUrl(request, survey));
 
 		// strings
 		model.put("pausedMessage", domainModelService.findObjectText(survey, "pausedMessage"));
@@ -212,7 +211,7 @@ public class PublishingController extends AbstractOASController {
 	}
 
 	/**
-	 * Determine the Survey's Opt-In Lightbox Script URL.
+	 * Determine the Survey's Opt-In Lightbox Script URL,
 	 * 
 	 * TODO move this to a service, make it configurable in the backend
 	 * 
@@ -222,20 +221,6 @@ public class PublishingController extends AbstractOASController {
 	 */
 	protected String determineOptInScriptUrl(HttpServletRequest request, Survey survey) {
 		String retval = determineAbsoluteUrlPrefix(request) + "/html/srvy/wsi/lb/" + survey.getId() + ".js";
-		return retval;
-	}
-
-	/**
-	 * Determine the Survey's Opt-In Lightbox CSS URL.
-	 * 
-	 * TODO move this to a service, make it configurable in the backend
-	 * 
-	 * @param request
-	 * @param survey
-	 * @return
-	 */
-	protected String determineOptInCSSUrl(HttpServletRequest request, Survey survey) {
-		String retval = determineAbsoluteUrlPrefix(request) + "/html/srvy/wsi/lb/" + survey.getId() + ".css";
 		return retval;
 	}
 

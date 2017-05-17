@@ -13,7 +13,6 @@
 
 <h1>${pageTitle}</h1>
 <p><fmt:message key="createQuestion.step1.stepIntro" /></p>
-<c:set var="createMode" value="true" scope="request"/>
 <%@ include file="/WEB-INF/views/formErrors.jsp"%>
 <spring:bind path="command">
 	<form:form action="${survey.id}.html?${command.typeCode}=" method="post">
@@ -72,9 +71,6 @@
 				<input value="<fmt:message key='save'/>" name="_save" type="submit" class="button" />
 				<c:if test="${command.radioType || command.checkboxType || command.selectType || command.constantSumType}">
 					<input value="<fmt:message key='saveAndAddMoreChoices'/>" name="_saveAndEditChoices" type="submit" class="button" />			
-				</c:if>
-				<c:if test="${command.scaleType}">
-					<input value="<fmt:message key='saveAndEditLabels'/>" name="_saveAndEdit" type="submit" class="button" />			
 				</c:if>
 				<input value="<fmt:message key='cancel'/>" name="_cancel" type="submit" class="button" />
 			</div>

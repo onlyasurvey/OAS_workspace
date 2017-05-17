@@ -407,7 +407,7 @@ abstract public class AbstractOASBaseTest extends AbstractBaseTest {
 		ModelMap model = mav.getModelMap();
 		assertNotNull("expected a model", model);
 
-		assertNotNull("attribute not found in model: " + key, model.get(key));
+		assertNotNull("attribute not found in model", model.get(key));
 	}
 
 	protected void assertModelHasSurvey(ModelAndView mav, Survey survey) {

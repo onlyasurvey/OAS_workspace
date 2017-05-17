@@ -33,7 +33,7 @@ public class PopUpController extends AbstractOASController {
 	// ======================================================================
 
 	/**
-	 * Send opt-in pop-up JavaScript.
+	 * Send a Survey Logo image to the user.
 	 * 
 	 * @param request
 	 *            {@link HttpServletRequest}
@@ -80,19 +80,7 @@ public class PopUpController extends AbstractOASController {
 		model.put("expireDays", expireDays);
 
 		response.setContentType("text/javascript");
-		return new ModelAndView("/survey/siteIntegration/optIn-popUpJS.js", model);
-	}
-
-	/**
-	 * Send opt-in pop-up CSS.
-	 * 
-	 * @param request
-	 *            {@link HttpServletRequest}
-	 */
-	@RequestMapping(value = "/srvy/wsi/lb/*.css")
-	public String sendLightboxCSS() {
-
-		return "/survey/siteIntegration/optIn-popUpJS.css";
+		return new ModelAndView("/survey/siteIntegration/optIn-popUpJS", model);
 	}
 
 	/**

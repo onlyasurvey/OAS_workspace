@@ -2,7 +2,6 @@ package com.oas.command.model;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -13,6 +12,7 @@ import com.oas.model.util.QuestionTypeCode;
  * TODO get rid of numRows' default value
  * 
  * @author xhalliday
+ * 
  */
 public class CreateQuestionCommand extends NameObjectCommand {
 
@@ -31,14 +31,7 @@ public class CreateQuestionCommand extends NameObjectCommand {
 	private boolean showBack;
 	private boolean showForward;
 
-	/** For scale questions, show labels only and hide the numeric values. */
-	private boolean labelsOnly;
-
-	/** List of choices. */
 	private List<ChoiceCommand> choiceList = new ArrayList<ChoiceCommand>(10);
-
-	/** Labels associated with some numeric key. */
-	private final Map<Integer, NameObjectCommand> labelList = new HashMap<Integer, NameObjectCommand>();
 
 	// ======================================================================
 
@@ -296,46 +289,6 @@ public class CreateQuestionCommand extends NameObjectCommand {
 	 */
 	public void setPageContent(ObjectTextCommand pageContent) {
 		this.pageContent = pageContent;
-	}
-
-	/**
-	 * Accessor.
-	 * 
-	 * @return the labelList
-	 */
-	public Map<Integer, NameObjectCommand> getLabelList() {
-		return labelList;
-	}
-
-	/**
-	 * Add a label.
-	 * 
-	 * @param index
-	 *            Numeric index
-	 * @param command
-	 *            {@link NameObjectCommand}
-	 */
-	public void setLabel(Integer index, NameObjectCommand command) {
-		getLabelList().put(index, command);
-	}
-
-	/**
-	 * Accessor.
-	 * 
-	 * @return the labelsOnly
-	 */
-	public boolean isLabelsOnly() {
-		return labelsOnly;
-	}
-
-	/**
-	 * Accessor.
-	 * 
-	 * @param labelsOnly
-	 *            the labelsOnly to set
-	 */
-	public void setLabelsOnly(boolean labelsOnly) {
-		this.labelsOnly = labelsOnly;
 	}
 
 }

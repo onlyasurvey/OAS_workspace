@@ -4,7 +4,7 @@
 <fieldset class="twoColumnLayout">
 <input type="hidden" name="_choiceIdList" value="on" />
 
-	<h2><c:out value="${question.displayTitle}" />${requiredIndicator}</h2>
+	<legend><c:out value="${question.displayTitle}" />${requiredIndicator}</legend>
 	<c:forEach items="${choiceList}" var="item">
 		<c:set var="itemTitle"><c:out value="${item.displayTitle}" /></c:set>
 		<div>

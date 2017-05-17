@@ -85,7 +85,6 @@
 </fieldset>
 
 
-
 <%-- 
 
 	WEB-SITE INTEGRATION
@@ -96,11 +95,11 @@
 <h2><spring:message code="publishTab.siteIntegration.header" /></h2>
 <p><spring:message code="publishTab.siteIntegration.intro" /></p>
 <p><spring:message code="siteIntegrationEditor.lightbox.entropyNotice" /></p>
-<p><spring:message code="publishTab.siteIntegration.scriptUrl.instructions" arguments="${optInScriptUrl},${optInCSSUrl}" /></p>
+<p><spring:message code="publishTab.siteIntegration.scriptUrl.instructions" arguments="${optInScriptUrl}" /></p>
+
 <p><strong><spring:message code='siteIntegrationEditor.lightbox.likelihood.input' /> ${survey.optinPercentage}% </strong><spring:message code='siteIntegrationEditor.lightbox.likelihood.input.note' /></p>
 <form action="<c:url value='/html/db/mgt/pb/wsi/optin/${survey.id}.html'/>" method='get'>
-	<input class='button' type='submit' value='<spring:message code="publishTab.siteIntegration.visitorOptIn" />'
-		title='publishTab.siteIntegration.visitorOptIn.title' />
+	<input class='button' type='submit' value='<spring:message code="publishTab.siteIntegration.visitorOptIn" />' title='publishTab.siteIntegration.visitorOptIn.title' />
 </form>
 
 

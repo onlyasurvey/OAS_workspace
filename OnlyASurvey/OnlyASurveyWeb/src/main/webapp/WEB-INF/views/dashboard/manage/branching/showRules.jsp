@@ -18,25 +18,25 @@
 <table class="branchingRules" width="100%" border="0">
 <tr class="tableHeading">
 	<th scope="col"><spring:message code='branching.header.ruleType'/></th>
-	<th scope="col"><spring:message code='branching.header.otherObject'/></th>
 	<th scope="col"><spring:message code='branching.header.action'/></th>
+	<th scope="col"><spring:message code='branching.header.otherObject'/></th>
 	<th scope="col">&nbsp;</th>
 </tr>
 <c:forEach items="${entryRules}" var="rule" varStatus="i">
 <tr>
 	<td>${rule.ruleType}</td>
 	<td>
-		<c:choose>
-		<c:when test="${rule.otherObject.questionType}">
-		<a href="<c:url value='/html/db/mgt/qbr/${rule.otherObject.id}.html'/>"><c:out value='${rule.otherObject.displayTitle}'/></a>
-		</c:when>
-		<c:when test="${rule.otherObject.choiceType}">
-		<a href="<c:url value='/html/db/mgt/qbr/${rule.otherObject.question.id}.html'/>"><c:out value='${rule.otherObject.question.displayTitle}'/></a>
-		<br/>
-		&rarr;
-		<c:out value='${rule.otherObject.displayTitle}'/>
-		</c:when>
-		</c:choose>
+	<c:choose>
+	<c:when test="${rule.otherObject.questionType}">
+	<a href="<c:url value='/html/db/mgt/qbr/${rule.otherObject.id}.html'/>"><c:out value='${rule.otherObject.displayTitle}'/></a>
+	</c:when>
+	<c:when test="${rule.otherObject.choiceType}">
+	<a href="<c:url value='/html/db/mgt/qbr/${rule.otherObject.question.id}.html'/>"><c:out value='${rule.otherObject.question.displayTitle}'/></a>
+	<br/>
+	&rarr;
+	<c:out value='${rule.otherObject.displayTitle}'/>
+	</c:when>
+	</c:choose>
 	</td>
 	<td>${rule.action}</td>
 	<td><a href='<c:url value="/html/db/mgt/qbr/rm/${question.id}.html?_en=${rule.id}"/>'

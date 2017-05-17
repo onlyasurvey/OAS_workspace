@@ -30,7 +30,6 @@
 		<c:set var="publishTabUrl"><c:url value='/html/db/mgt/pb/${survey.id}.html'/></c:set>
 		<p><spring:message code='notice.published.cannotChangeQuestions' arguments="${publishTabUrl}"/></p>
 		</c:if>
-		<div class=" OAS_survey">
 		<table width='100%' class="listOfQuestions" border="0">
 		<tr> 
 			<th style="width:5%;" ><spring:message code='option'/></th>
@@ -164,7 +163,7 @@
 		</tr>
 		</c:forEach>
 		</table>
-		</div>
+
 		<c:if test="${empty(survey.questions)}">
 		<p><spring:message code='manageSurveyPage.questions.addQuestionHint'/></p>
 		</c:if>

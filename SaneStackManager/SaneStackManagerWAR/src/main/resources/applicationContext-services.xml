@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:dwr="http://www.directwebremoting.org/schema/spring-dwr"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+      http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+      http://www.springframework.org/schema/aop 
+      http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
+      http://www.springframework.org/schema/tx 
+      http://www.springframework.org/schema/tx/spring-tx-2.0.xsd
+      http://www.directwebremoting.org/schema/spring-dwr
+      http://www.directwebremoting.org/schema/spring-dwr-2.0.xsd">
+
+	<!-- 
+		
+		SERVICE LAYER IMPLEMENTATIONS		
+		
+	-->
+
+
+	<bean id="applicationManagementService"
+		parent="abstractServiceImpl"
+		class="ca.inforealm.coreman.service.impl.ApplicationManagementServiceImpl"/>
+	
+
+	<bean id="roleManagementService"
+		class="ca.inforealm.coreman.service.impl.RoleManagementServiceImpl"
+		parent="abstractServiceImpl"/>
+
+	<bean id="actorQueryService"
+		class="ca.inforealm.coreman.service.impl.ActorQueryServiceImpl"
+		parent="abstractServiceImpl"/>
+
+	<bean id="configurationManagementService"
+		class="ca.inforealm.coreman.service.impl.ConfigurationManagementServiceImpl"
+		parent="abstractServiceImpl">
+		<property name="applicationManagementService"
+			ref="applicationManagementService" />
+	</bean>
+
+
+
+
+	<!--
+		
+		example:
+		
+		<bean id="preferenceService"
+		class="ca.inforealm.core.service.impl.PreferenceServiceImpl"
+		parent="abstractServiceImpl">
+		</bean>
+	-->
+
+</beans>

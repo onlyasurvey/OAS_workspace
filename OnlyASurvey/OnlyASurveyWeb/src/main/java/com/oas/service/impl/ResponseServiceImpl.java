@@ -354,51 +354,26 @@ public class ResponseServiceImpl extends AbstractServiceImpl implements Response
 
 		Assert.isTrue(index >= 0, "negative index not valid");
 
+		// List<ResponseQuestionHistory> history =
+		// response.getQuestionHistory();
 		List<ResponseQuestionHistory> history = getQuestionHistory(response);
 		int length = history.size();
 
-		Assert.isTrue(length > index, "requested to truncate to position out of range");
-
-		// check if it's a request to truncate to the existing last question
-		// ie, length = 4 and index = 3, means truncate to 4th item of 4
-		if (length == (index + 1)) {
-			return;
-		}
-
-		// ====================================
-		// <DELETE if it's >= 2011>
-		// This is the code that existed when #157
-		// (http://redmine.itsonlyasurvey.com/redmine/issues/show/157)
-		// was reported and fixed. It's kept here for paranoia.
+		Assert.isTrue(length >= index, "requested to truncate to position out of range");
 
 		// where size=2 and index=0
 		// (size-1) - index
 		// (2-1) - 0 = 1
 
-		// where size=4 and index=2
-		// (size-1) - index
-		// (4-1)= 3 - 2 = 1
-
 		// where size=10 and index=4
 		// (size-1) - index
 		// (10 - 1) - 4 = 5
 		// for(i=5; i < 10; i++) {
-		// int reverseIndex = (length - 1) - index;
-		//
-		// BEFORE the for() loop:
+		int reverseIndex = (length - 1) - index;
+
 		// index is zero-based
 		// truncate(..., 4) with 10 existing (size 10, maxIndex = 9)
 		// for(i = 4 .. 9)
-		//
-		// </DELETE if it's >= 2011>
-		// ====================================
-
-		// where size=4 and index=2
-		// rI = 2+1 = 3
-		// meaning, delete at index #3, which is item #4
-		int reverseIndex = index + 1;
-
-		// for(i = 1 .. 4)
 		for (int i = reverseIndex; i < length; i++) {
 			// remove(10-1)
 			delete(history.get(i));

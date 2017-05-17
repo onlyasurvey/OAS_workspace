@@ -1,0 +1,110 @@
+<%--
+  - Description: Header.
+  - Author(s):   Juergen Hoeller, Hugh Willson, Andrew Pitt
+  --%>
+
+<%@ include file="../config/includes.jspf" %>
+<c:set var="lang">
+  <f:message key="jsp.head.meta.dc.language"/>        
+</c:set>
+
+<script type="text/javascript" src="<c:url value="/scripts/functions.js"/>"></script>
+<script type="text/javascript" src="<c:url value="/scripts/calendar.js"/>"></script>
+<c:if test="${lang eq 'eng'}">
+  <script type="text/javascript" src="<c:url value="/scripts/calendar-en.js"/>"></script>
+</c:if>
+<c:if test="${lang eq 'fra'}">
+  <script type="text/javascript" src="<c:url value="/scripts/calendar-fr.js"/>"></script>
+</c:if>
+<script type="text/javascript" src="<c:url value="/scripts/calendar-setup.js"/>"></script>
+
+<div class="fip">
+  <a name="tphp" id="tphp">
+    <img src="<c:url value="/images/clf/sig-${lang}.gif"/>" width="372" height="20" alt="<f:message key="jsp.header.gov"/>" />
+  </a>
+</div>
+<div class="cwm">
+  <img src="<c:url value="/images/clf/wmms.gif"/>" width="83" height="20" alt="<f:message key="jsp.header.symbol"/>" />
+</div>
+<div class="banner">
+  <img src="<c:url value="/images/clf/lffl.gif"/>" class="lf" height="65" width="65" alt="" /> 
+  <p class="main">
+    <f:message key="jsp.header.title"/>
+  </p>
+  <p id="siteuri">strategis.ic.gc.ca/app/secure/ec/lrrs</p>
+</div>
+<div class="navaid">
+  <a href="#cont"><f:message key="jsp.header.skip.content"/></a>
+  <a href="#il"><f:message key="jsp.header.skip.links"/></a>
+</div>
+<div class="fp">
+  <h1 class="navaid"><f:message key="jsp.header.links"/></h1>
+  <ul class="commonbar">
+    <li class="fiptexta">
+      <div>
+        <c:set var="toggle">
+          <f:message key="jsp.header.lang.toggle"/>
+        </c:set>
+        <c:set var="currentURL">
+          ${pageContext.request.servletPath}${pageContext.request.pathInfo}
+        </c:set>
+        <c:set var="flowKey" value=""/>
+        <c:set var="separator" value=""/>
+        <c:if test="${!empty flowExecutionKey}">
+          <c:set var="flowKey" value="_flxKy="/>          
+          <c:set var="separator" value="&"/>
+        </c:if>
+        <%-- For the Public Summary FYI: "clFlKy" is the "calling flow key" --%>
+        <c:if test="${!empty clFlKy}">
+          <c:set var="flowKey" value="_flxKy="/>          
+          <c:set var="separator" value="&"/>
+          <c:set var="flowExecutionKey" value="${clFlKy}"/>
+		  <c:if test="${!empty registration}" >
+            <c:set var="regId">&regDec=<c:out value="${registration.id}" /></c:set>
+		  </c:if>
+        </c:if>
+        <a href="<c:url value="${currentURL}?${flowKey}${flowExecutionKey}${separator}language=${toggle}${regId}"/>"
+            lang="<f:message key="jsp.header.lang.acronym"/>" 
+            xml:lang="<f:message key="jsp.header.lang.acronym"/>" 
+            title="<f:message key="jsp.header.lang.version"/>">
+          <f:message key="jsp.header.lang"/>
+        </a>        
+      </div>
+    </li>
+    <li class="fiptext">
+      <div>
+        <a href="<c:url value="/do/login"/>" title="<f:message key="jsp.header.home.main"/>">
+          <f:message key="jsp.header.home"/>
+        </a>
+      </div>
+    </li>
+    <li class="fiptextc">
+      <div>
+        <a href="<c:url value="/do/general/contactUs"/>" title="<f:message key="jsp.header.contact.inst"/>">
+          <f:message key="jsp.header.contact"/>
+        </a>
+      </div>
+    </li>
+    <li class="fiptext">
+      <div>
+        <a href="<c:url value="/do/general/help"/>" title="<f:message key="jsp.header.help.info"/>">
+          <f:message key="jsp.header.help"/>
+        </a>
+      </div>
+    </li>
+    <li class="fiptext">
+      <div>
+        <a href="<c:url value="/do/general/search"/>" title="<f:message key="jsp.header.search.inst"/>">
+          <f:message key="jsp.header.search"/>
+        </a>
+      </div>
+    </li>
+    <li class="fiptextb">
+      <div>
+        <a href="http://www.canada.gc.ca/main_e.html" title="<f:message key="jsp.header.canada"/>">
+          canada.gc.ca
+        </a>
+      </div>
+    </li>
+  </ul>
+</div>

@@ -85,7 +85,7 @@ fieldset.radioButtons div input {
 }
 
 fieldset.radioButtons div label {
-	float: right width :   80%;
+	float: right width :               80%;
 	/* float: left; */
 	padding: .2em;
 	font-weight: normal;
@@ -187,7 +187,8 @@ table.branchingRules td.pagination {
 div.OAS_survey h2 {
 	font-weight: normal;
 	background: none;
-	border: none;
+	border: none ;
+
 }
 
 div.OAS_survey h3 {
@@ -338,12 +339,8 @@ table.multipleSelect fieldset legend {
 
 /*  ratio question talbes */
 table.ratioTable {
-	margin-top: .2em;
+	margin-top:.2em ;
 	width: 90%;
-}
-
-table.ratioTable tr td.ratioTableHeader {
-	vertical-align: bottom;
 }
 
 table.ratioTable td {
@@ -356,6 +353,7 @@ table.ratioTable td label span.topRQ {
 	display: block;
 	text-align: center;
 	padding-bottom: .6em;
+
 }
 
 table.ratioTable td label span.topRQ p {

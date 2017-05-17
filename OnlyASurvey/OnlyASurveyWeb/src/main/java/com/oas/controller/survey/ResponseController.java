@@ -334,11 +334,6 @@ public class ResponseController extends AbstractPublicFacingResponseController {
 			return returnClosedResponseMessage(response);
 		}
 
-		// determine if the response should be Not Found, eg., deleted
-		if (!isFound(response)) {
-			return new ModelAndView("/response/notFound");
-		}
-
 		Survey survey = (Survey) model.get("survey");
 		Assert.notNull(survey);
 		Question question = (Question) model.get("question");
@@ -348,6 +343,11 @@ public class ResponseController extends AbstractPublicFacingResponseController {
 
 		@SuppressWarnings("unchecked")
 		List<ResponseQuestionHistory> questionHistory = (List<ResponseQuestionHistory>) model.get("questionHistory");
+
+		// determine if the response should be Not Found, eg., deleted
+		if (!isFound(response)) {
+			return new ModelAndView("/response/notFound");
+		}
 
 		// determine if it's paused
 		if (surveyService.isPaused(survey)) {

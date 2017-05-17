@@ -6,7 +6,7 @@
 	<c:when test="${previewMode}"><c:set var="id" value="preview${question.id}"/></c:when>
 </c:choose>
 
-	<h2><label for="${id}"><c:out value="${question.displayTitle}"/>${requiredIndicator}</label></h2>
+	<legend><label for="${id}"><c:out value="${question.displayTitle}"/>${requiredIndicator}</label></legend>
 
 <%-- text box --%>
 	<c:if test="${question.numRows == 1}">

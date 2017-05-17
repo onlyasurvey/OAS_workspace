@@ -12,7 +12,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.BindException;
-import org.springframework.web.bind.ServletRequestDataBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -21,7 +20,6 @@ import ca.inforealm.core.security.annotation.ValidUser;
 
 import com.oas.command.model.ChoiceCommand;
 import com.oas.command.model.CreateQuestionCommand;
-import com.oas.command.model.NameObjectCommand;
 import com.oas.command.model.ObjectTextCommand;
 import com.oas.controller.dashboard.AbstractQuestionManagementController;
 import com.oas.model.Question;
@@ -246,7 +244,7 @@ public class CreateQuestionController extends AbstractQuestionManagementControll
 			command.getChoiceList().add(new ChoiceCommand());
 		}
 
-		// must be the correct types
+		// must be the correct type
 		BindException errors = new BindException(bindAndValidate(request, command).getBindingResult());
 
 		if (errors.hasErrors()) {
@@ -261,20 +259,10 @@ public class CreateQuestionController extends AbstractQuestionManagementControll
 			// persist
 			Question question = addOrUpdateQuestion(survey, command, null);
 
+			// if null it will redirect to the Questions Tab
 			if (StringUtils.hasText(request.getParameter("_saveAndEditChoices"))) {
-
-				// redirect to the Add Many Choices form
 				return createRedirect("/html/db/mgt/qchs/" + question.getId() + ".html");
-
-			} else if (StringUtils.hasText(request.getParameter("_saveAndEdit"))) {
-
-				// handles any multiple choice question that wants to redirect
-				// to the edit page immediately (e.g., Scale question editor
-				// does this to show the label editor).
-				return createRedirect("/html/db/mgt/q/" + question.getId() + ".html");
-
 			} else {
-				// default
 				return redirectToSurvey(survey);
 			}
 		}
@@ -373,12 +361,6 @@ public class CreateQuestionController extends AbstractQuestionManagementControll
 		command.setMinimum(1L);
 		command.setMaximum(Constants.DEFAULT_HIGHEST_SCALE);
 
-		// initialize label list
-		for (Long i = command.getMinimum(); i <= command.getMaximum(); i++) {
-			NameObjectCommand noc = new NameObjectCommand(supportedLanguages);
-			command.setLabel(i.intValue(), noc);
-		}
-
 		//
 		model.put("command", command);
 		model.put("showOtherTextOption", false);
@@ -411,19 +393,12 @@ public class CreateQuestionController extends AbstractQuestionManagementControll
 			// this is never handled in the UI; enforce ==1 here
 			command.setMinimum(1L);
 		} else if (QuestionTypeCode.PAGE.equals(typeCode)) {
-			// initialize the map
+			// initialize hte map
 			initializePageContent(getSurveyFromModel(model), command);
 		}
 
 		// must be the correct type
-
-		ServletRequestDataBinder binder = new ServletRequestDataBinder(command);
-		binder.setIgnoreInvalidFields(true);
-		binder.bind(request);
-		BindException errors = new BindException(binder.getBindingResult());
-		// BindException errors = new BindException(bindAndValidate(request,
-		// command).getBindingResult());
-		getValidator().validate(command, errors);
+		BindException errors = new BindException(bindAndValidate(request, command).getBindingResult());
 
 		if (errors.hasErrors()) {
 			model.put("errors", errors);
@@ -432,17 +407,7 @@ public class CreateQuestionController extends AbstractQuestionManagementControll
 			Survey survey = (Survey) model.get("survey");
 			Assert.notNull(survey);
 
-			String url = null;
-
-			if (StringUtils.hasText(request.getParameter("_saveAndEdit"))) {
-
-				// handles any multiple choice question that wants to redirect
-				// to the edit page immediately (e.g., Scale question editor
-				// does this to show the label editor).
-				url = "/html/db/mgt/q/edt/{questionId}.html";
-			}
-
-			return persistAndRedirect(survey, command, null, url);
+			return persistAndRedirect(survey, command, null);
 		}
 	}
 

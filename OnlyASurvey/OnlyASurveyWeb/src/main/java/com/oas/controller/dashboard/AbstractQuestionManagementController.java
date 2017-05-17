@@ -66,13 +66,11 @@ abstract public class AbstractQuestionManagementController extends AbstractOASCo
 	protected ModelAndView persistAndRedirect(Survey survey, CreateQuestionCommand command, Question questionToUpdate, String url) {
 
 		//
-		Question savedQuestion = addOrUpdateQuestion(survey, command, questionToUpdate);
+		addOrUpdateQuestion(survey, command, questionToUpdate);
 
 		//
 		if (StringUtils.hasText(url)) {
-			//
-			String useUrl = url.replaceAll("\\{questionId\\}", savedQuestion.getId().toString());
-			return createRedirect(useUrl);
+			return createRedirect(url);
 		} else {
 			return redirectToSurvey(survey);
 		}

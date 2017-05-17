@@ -31,7 +31,6 @@ import com.oas.model.answer.TextAnswer;
 import com.oas.model.question.BooleanQuestion;
 import com.oas.model.question.ChoiceQuestion;
 import com.oas.model.question.ScaleQuestion;
-import com.oas.model.question.ScaleQuestionLabel;
 import com.oas.model.question.TextQuestion;
 import com.oas.model.question.rules.EntryRule;
 import com.oas.model.question.rules.EntryRuleAction;
@@ -89,9 +88,6 @@ public class ScenarioDataUtil extends AbstractServiceImpl implements ScenarioDat
 	@Unsecured
 	public Survey createTypicalScenario1(Actor owner, boolean persist, boolean published) {
 
-		SupportedLanguage english = supportedLanguageService.findByCode("eng");
-		SupportedLanguage french = supportedLanguageService.findByCode("fra");
-
 		// by default, scenario 1 data is valid
 
 		Survey survey = new Survey(owner);
@@ -102,15 +98,15 @@ public class ScenarioDataUtil extends AbstractServiceImpl implements ScenarioDat
 
 		// questions
 		Question q1 = new BooleanQuestion(survey);
-		q1.addObjectName(english, QUESTION_1_NAME);
-		q1.addObjectName(french, QUESTION_1_NAME);
+		q1.addObjectName(supportedLanguageService.findByCode("eng"), QUESTION_1_NAME);
+		q1.addObjectName(supportedLanguageService.findByCode("fra"), QUESTION_1_NAME);
 		q1.setAllowOtherText(false);
 		q1.setDisplayOrder(0L);
 		q1.setRequired(true);
 
 		TextQuestion q2 = new TextQuestion(survey);
-		q2.addObjectName(english, QUESTION_2_NAME);
-		q2.addObjectName(french, QUESTION_2_NAME);
+		q2.addObjectName(supportedLanguageService.findByCode("eng"), QUESTION_2_NAME);
+		q2.addObjectName(supportedLanguageService.findByCode("fra"), QUESTION_2_NAME);
 		q2.setFieldDisplayLength(40);
 		q2.setMaximumLength(50);
 		q2.setNumRows(1);
@@ -119,8 +115,8 @@ public class ScenarioDataUtil extends AbstractServiceImpl implements ScenarioDat
 		q2.setRequired(true);
 
 		ChoiceQuestion q3 = new ChoiceQuestion(survey);
-		q3.addObjectName(english, "Choice Question 1");
-		q3.addObjectName(french, "Choice Question 1");
+		q3.addObjectName(supportedLanguageService.findByCode("eng"), "Choice Question 1");
+		q3.addObjectName(supportedLanguageService.findByCode("fra"), "Choice Question 1");
 		q3.setAllowOtherText(false);
 		q3.setRandomize(false);
 		q3.setDisplayOrder(2L);
@@ -129,19 +125,19 @@ public class ScenarioDataUtil extends AbstractServiceImpl implements ScenarioDat
 		Choice c1 = new Choice(q3, 0L);
 		Choice c2 = new Choice(q3, 1L);
 		Choice c3 = new Choice(q3, 2L);
-		c1.addObjectName(english, "Fancy Choice 1");
-		c1.addObjectName(french, "Fancy Choice 1");
-		c2.addObjectName(english, "Fancy Choice 2");
-		c2.addObjectName(french, "Fancy Choice 2");
-		c3.addObjectName(english, "Fancy Choice 3");
-		c3.addObjectName(french, "Fancy Choice 3");
+		c1.addObjectName(supportedLanguageService.findByCode("eng"), "Fancy Choice 1");
+		c1.addObjectName(supportedLanguageService.findByCode("fra"), "Fancy Choice 1");
+		c2.addObjectName(supportedLanguageService.findByCode("eng"), "Fancy Choice 2");
+		c2.addObjectName(supportedLanguageService.findByCode("fra"), "Fancy Choice 2");
+		c3.addObjectName(supportedLanguageService.findByCode("eng"), "Fancy Choice 3");
+		c3.addObjectName(supportedLanguageService.findByCode("fra"), "Fancy Choice 3");
 		q3.addChoice(c1);
 		q3.addChoice(c2);
 		q3.addChoice(c3);
 
 		TextQuestion q4 = new TextQuestion(survey);
-		q4.addObjectName(english, QUESTION_4_NAME);
-		q4.addObjectName(french, QUESTION_4_NAME);
+		q4.addObjectName(supportedLanguageService.findByCode("eng"), QUESTION_4_NAME);
+		q4.addObjectName(supportedLanguageService.findByCode("fra"), QUESTION_4_NAME);
 		q4.setFieldDisplayLength(0);
 		q4.setMaximumLength(2000);
 		q4.setNumRows(8);
@@ -149,13 +145,10 @@ public class ScenarioDataUtil extends AbstractServiceImpl implements ScenarioDat
 		q4.setDisplayOrder(3L);
 		q4.setRequired(true);
 
-		ScaleQuestion q5 = new ScaleQuestion(survey, 1L, 11L, 4L);
+		ScaleQuestion q5 = new ScaleQuestion(survey, 1L, 10L, 4L);
 		q5.setRequired(true);
-		q5.addObjectName(english, "Scale Question 1");
-		q5.addObjectName(french, "Scale Question 1");
-		q5.getLabels().put(new ScaleQuestionLabel(english, 1), "Low");
-		q5.getLabels().put(new ScaleQuestionLabel(english, 6), "Neutral");
-		q5.getLabels().put(new ScaleQuestionLabel(english, 11), "High");
+		q5.addObjectName(supportedLanguageService.findByCode("eng"), "Scale Question 1");
+		q5.addObjectName(supportedLanguageService.findByCode("fra"), "Scale Question 1");
 
 		survey.addQuestion(q1);
 		survey.addQuestion(q2);
