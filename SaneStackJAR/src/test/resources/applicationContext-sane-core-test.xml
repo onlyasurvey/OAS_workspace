@@ -117,7 +117,7 @@
 		</property>
 		<property name="hibernateProperties">
 			<props>
-				<prop key="hibernate.default_schema">work</prop>
+				<prop key="hibernate.default_schema">sane</prop>
 <!--
 				<prop key="hibernate.default_schema.new">sane</prop>
 				<prop key="hibernate.show_sql">true</prop>
@@ -133,15 +133,12 @@
 		
 	-->
 
-	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
-		parent="abstractDataSource">
-		<property name="driverClassName" value="org.postgresql.Driver">
-		</property>
-		<property name="url" value="jdbc:postgresql://localhost/work">
-		</property>
-		<property name="username" value="work"></property>
-		<property name="password" value="work"></property>
-		<property name="defaultCatalog" value="work" />
-	</bean>
+	<bean id="dataSource"
+	class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="org.postgresql.Driver" />
+		<property name="url" value="jdbc:postgresql://localhost:5432/SaneStack" />
+		<property name="username" value="sanestack"/>
+		<property name="password" value="bluesky" />
+		</bean>
 
 </beans>

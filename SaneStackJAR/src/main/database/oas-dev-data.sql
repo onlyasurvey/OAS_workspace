@@ -1,19 +1,22 @@
 --
 -- Data for manual testing/inspection/development.  It will ONLY work if it's run after a big-bang.
 --
+-- Set schema path
+SET search_path = sane;
 
 -- Create a user account
+
 INSERT INTO actor( id ) VALUES ( DEFAULT );
 INSERT INTO user_account( id, username, email, md5_password ) VALUES (
-	(SELECT id FROM actor ORDER BY id DESC LIMIT 1), 'test', 	'dev@test.test', md5('test')
+	(SELECT id FROM sane.actor ORDER BY id DESC LIMIT 1), 'test', 	'dev@test.test', md5('test')
 	);
 
 -- SADMAN access
 
-INSERT INTO actor_role ( actor_id, role_id ) VALUES (
-	(SELECT id FROM user_account WHERE email='dev@test.test'),
-	(SELECT r.id FROM role_definition r JOIN application a ON ( a.identifier='SADMAN' and r.application_id = a.id ) WHERE r.identifier='ROLE_USER')
-	);
+-- INSERT INTO actor_role ( actor_id, role_id ) VALUES (
+--	(SELECT id FROM user_account WHERE email='dev@test.test'),
+--	(SELECT r.id FROM role_definition r JOIN application a ON ( a.identifier='SADMAN' and r.application_id = a.id ) WHERE r.identifier='ROLE_USER')
+--	);
 
 
 
@@ -50,7 +53,7 @@ INSERT INTO configuration_item( application_id, identifier, value_type, item_val
 
 INSERT INTO actor_role ( actor_id, role_id ) VALUES (
 	(SELECT id FROM user_account WHERE email='dev@test.test'),
-	(SELECT r.id FROM role_definition r JOIN application a ON ( a.identifier='MSDA' and r.application_id = a.id ) WHERE r.identifier='ROLE_APPLICATION_ADMIN')
+	(SELECT r.id FROM role_definition r JOIN application a ON ( a.identifier='OnlineSurvey' and r.application_id = a.id ) WHERE r.identifier='ROLE_APPLICATION_ADMIN')
 	);
 
 
